@@ -27,7 +27,7 @@ public class ShopPanel extends JPanel {
 		
 		//System.out.println(m.getId());
 		cart = new CartDAO(m.getId());
-		uid = new UserInfo(m.getId(),m);
+		//uid = new UserInfo(m.getId(),m);
 		history = new SellDAO(m.getId());
 		
 		setLayout(null);

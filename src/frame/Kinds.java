@@ -3,24 +3,17 @@ package frame;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.GridLayout;
-import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Random;
 
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
 import javax.swing.JPanel;
 
 import customDAO.CartDAO;
-import customDAO.ItemDAO;
-import customDAO.Items;
 import customDAO.MyInfo;
 import customDAO.SellDAO;
+import customDAO.UserInfo;
 import frame.Bottom.BottomPanel;
-import frame.Shoes.ShoesInfoPanel;
 import frame.Shoes.ShoesPanel;
-import frame.Top.TopInfoPanel;
 import frame.Top.TopPanel;
 import view.RoundedButton;
 

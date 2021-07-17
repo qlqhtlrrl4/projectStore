@@ -15,6 +15,7 @@ import javax.swing.JTextField;
 
 import customDAO.CustomDAO;
 import customDAO.MyInfo;
+import customDAO.UserInfo;
 import view.CustomFont;
 
 
@@ -27,6 +28,7 @@ public class BeginPanel extends JPanel {
 	private JPasswordField passText;
 	private JTextField userText;
 	Font setF;
+	UserInfo userInfo;
 
 	public BeginPanel() {
 
@@ -35,6 +37,7 @@ public class BeginPanel extends JPanel {
 		// setBackground(new Color(229,243,197));
 		setBackground(Color.WHITE);
 		CustomDAO custom = new CustomDAO();
+		
 
 		RoundedButton loginButton = new RoundedButton("로그인");
 		RoundedButton joinButton = new RoundedButton("회원가입");
@@ -169,9 +172,9 @@ public class BeginPanel extends JPanel {
 				// 로그인 정보 가져가기위해서 객체넘김
 				if (!(custom.loginCheck(userText.getText(), String.valueOf(passText.getPassword())).getId().equals(""))) {
 					MyInfo m = custom.loginCheck(userText.getText(), String.valueOf(String.valueOf(passText.getPassword())));
-					//MyInfoDAO mInfo = MyInfoDAO.MyInfoMap.get(userText.getText()).add(m);
+					userInfo = new UserInfo(m.getId(), m);
 					
-					mainFrame.getInstance(new ShopPanel(m));
+					mainFrame.getInstance(new ShopPanel(UserInfo.UserInfoMap.get(m.getId())));
 					
 				} else {
 					JOptionPane.showMessageDialog(null, "로그인 정보 오류");

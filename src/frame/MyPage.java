@@ -69,14 +69,14 @@ public class MyPage extends JPanel {
 		
 		
 		
-		JLabel info = new JLabel(m.getName(),newimg,SwingConstants.LEADING);
+		JLabel info = new JLabel(UserInfo.UserInfoMap.get(m.getId()).getName(),newimg,SwingConstants.LEADING);
 		info.setFont(titleF);
 		info.setBackground(new Color(229,243,197));
 		info.setSize(200,100);
 		info.setLocation(0,90);
 		add(info);
 		
-		RoundedButton member = new RoundedButton(m.getGrade());
+		RoundedButton member = new RoundedButton(UserInfo.getUserInfoMap((m.getId())).gradeCheck(UserInfo.getUserInfoMap(m.getId()).getTotal()));
 		member.setBackground(new Color(255,192,203));
 		member.setFont(setF);
 		member.setSize(140,60);
@@ -126,7 +126,7 @@ public class MyPage extends JPanel {
 		userIdLabel.setHorizontalAlignment(JLabel.RIGHT);
 		panel.add(userIdLabel);
 		
-		userIdValueLabel = new JLabel(m.getName());
+		userIdValueLabel = new JLabel(UserInfo.UserInfoMap.get(m.getId()).getName());
 		userIdValueLabel.setSize(150, 20);
 		userIdValueLabel.setFont(setF);
 		userIdValueLabel.setHorizontalAlignment(JLabel.RIGHT);
@@ -140,7 +140,7 @@ public class MyPage extends JPanel {
 		uesrPwLabel.setHorizontalAlignment(JLabel.RIGHT);
 		panel.add(uesrPwLabel);
 		
-		uesrPwValueLabel = new JLabel(m.getPw());
+		uesrPwValueLabel = new JLabel(UserInfo.UserInfoMap.get(m.getId()).getName());
 		uesrPwValueLabel.setSize(150, 20);
 		uesrPwValueLabel.setFont(setF);
 		uesrPwValueLabel.setHorizontalAlignment(JLabel.RIGHT);

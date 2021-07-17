@@ -87,7 +87,7 @@ public class CartPanel extends JPanel {
 			box.add(new JCheckBox());
 			box.get(i).setBounds(16, 50 + (i * 110), 20, 20);
 			box.get(i).setBackground(Color.WHITE);
-			add(box.get(i));
+			add(box.get(i)); 	
 			// box.get(i).putClientProperty("id",
 			// CartDAO.cartMap.get(m.getId()).get(i).getId());
 			box.get(i).addItemListener(new ItemListener() {

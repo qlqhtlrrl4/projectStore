@@ -40,7 +40,7 @@ public class CustomDAO {
 
 			if (customList.get(i).getId().equals(id) && customList.get(i).getPw().equals(pw)) {
 
-				return new MyInfo(customList.get(i).getName(), id, pw,0,"NORMAL");
+				return new MyInfo(customList.get(i).getName(), id, pw,customList.get(i).getTotal(),customList.get(i).getGrade());
 			}
 
 		}
