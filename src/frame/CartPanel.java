@@ -56,28 +56,14 @@ public class CartPanel extends JPanel {
 		setBackground(Color.WHITE);
 
 		box = new ArrayList<>();
-		ArrayList<JPanel> view = new ArrayList<>();
+
 		ArrayList<ImageIcon> itemImg = new ArrayList<>();
 
-		if ((CartDAO.cartMap.get(m.getId()).size() > 0)) {
-			System.out.println(CartDAO.cartMap.size());
-			panelCount = CartDAO.cartMap.get(m.getId()).size() / 4;
-			System.out.println(panelCount);
-			
-			for (int i = 0; i <= panelCount; i++) {
-				view.add(new JPanel());
-				view.get(i).setBounds(0, 0, 600, 550);
-				view.get(i).setBackground(Color.MAGENTA);
-				view.get(i).setLayout(null);
-				System.out.println(i);
-			}
-		}
-
 		// 버튼 넣을곳
-		pa = new JPanel();
-		pa.setBounds(0, 570, 600, 40);
-		pa.setBackground(Color.gray);
-		pa.setLayout(new FlowLayout());
+		/*
+		 * pa = new JPanel(); pa.setBounds(0, 570, 600, 40);
+		 * pa.setBackground(Color.gray); pa.setLayout(new FlowLayout());
+		 */
 
 		itemImg.clear();
 
@@ -87,124 +73,97 @@ public class CartPanel extends JPanel {
 			System.out.println(CartDAO.cartMap.get(m.getId()).get(i).getItemUrl());
 		}
 
-		int aa = 0;
+		for (int i = 0; i < CartDAO.cartMap.get(m.getId()).size(); i++) {
 
-		for (int j = 0; j < view.size(); j++) {
 
-			for (int i = 0; i < CartDAO.cartMap.get(m.getId()).size(); i++) {
-				if (i == 0) {
-					RoundedButton pageNum = new RoundedButton(String.valueOf(aa));
-					pa.add(pageNum);
-				}
-				if (i != 0 && i % 4 == 0) {
-					RoundedButton pageNum = new RoundedButton(String.valueOf(++aa));
-					pageNum.setSize(30, 50);
-					pa.add(pageNum);
-					pageNum.addActionListener(new ActionListener() {
-						@Override
-						public void actionPerformed(ActionEvent e) {
+			Image image = itemImg.get(i).getImage();
+			Image newImg = image.getScaledInstance(200, 100, java.awt.Image.SCALE_SMOOTH);
+			// 이미지
+			ImageIcon newIcon = new ImageIcon(newImg);
+			JLabel img = new JLabel(newIcon);
+			img.setBounds(50, 13 + (i * 110), 200, 100);
+			add(img);
+
+			box.add(new JCheckBox());
+			box.get(i).setBounds(16, 50 + (i * 110), 20, 20);
+			box.get(i).setBackground(Color.WHITE);
+			add(box.get(i));
+			// box.get(i).putClientProperty("id",
+			// CartDAO.cartMap.get(m.getId()).get(i).getId());
+			box.get(i).addItemListener(new ItemListener() {
+
+				@Override
+				public void itemStateChanged(ItemEvent e) {
+					if (e.getStateChange() == ItemEvent.SELECTED) {
+						sel = 1;
+					} else {
+						sel = -1;
+					}
+					for (int i = 0; i < box.size(); i++) {
+						if (e.getItem() == box.get(i)) {
+							partMoney += sel * CartDAO.cartMap.get(m.getId()).get(i).getCnt()
+									* CartDAO.cartMap.get(m.getId()).get(i).getPrice();
 						}
-					});
+					}
 				}
-				
-				if(i!=0 && i%5 == 0) {
-					
+			});
+
+			JLabel nameInfo = new JLabel("상품명 : " + CartDAO.cartMap.get(m.getId()).get(i).getName()); // 상품명
+			JLabel itemInfo = new JLabel("상품 가격 : " + CartDAO.cartMap.get(m.getId()).get(i).getPrice()
+					* CartDAO.cartMap.get(m.getId()).get(i).getCnt());
+			JLabel cntInfo = new JLabel("수량 ");
+
+			JTextField cntText = new JTextField();
+
+			nameInfo.setBounds(300, 13 + (i * 110), 100, 50);
+			itemInfo.setBounds(300, 13 + (i * 110), 200, 100);
+			cntInfo.setBounds(300, 13 + (i * 110), 100, 150);
+			cntText.setBounds(350, cntInfo.getY() + 65, 40, 20);
+
+			itemInfo.putClientProperty("id", CartDAO.cartMap.get(m.getId()).get(i).getId());
+
+			cntText.setText(Integer.toString(CartDAO.cartMap.get(m.getId()).get(i).getCnt()));
+
+			add(nameInfo);
+			add(itemInfo);
+			add(cntInfo);
+			add(cntText);
+
+			RoundedButton removeBtn = new RoundedButton("삭제");
+			removeBtn.setBounds(500, 25 + (i * 115), 65, 50);
+			removeBtn.putClientProperty("id", CartDAO.cartMap.get(m.getId()).get(i).getId());
+			add(removeBtn);
+
+			removeBtn.addActionListener(new ActionListener() {
+
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					int id = Integer.parseInt(String.valueOf((removeBtn.getClientProperty("id"))));
+					if (cart.remove(id, m.getId())) {
+						mainFrame.getInstance(new CartPanel(m, cart, history));
+					}
 				}
+			});
 
-				if (i >= 0 && i <= 4) {
-					add(view.get(j));
-					Image image = itemImg.get(i).getImage();
-					Image newImg = image.getScaledInstance(200, 100, java.awt.Image.SCALE_SMOOTH);
-					// 이미지
-					ImageIcon newIcon = new ImageIcon(newImg);
-					JLabel img = new JLabel(newIcon);
-					img.setBounds(50, 13 + (i * 110), 200, 100);
-					view.get(j).add(img);
+			RoundedButton editBtn = new RoundedButton("변경");
+			editBtn.setBounds(430, 25 + (i * 115), 65, 50);
+			editBtn.putClientProperty("id", CartDAO.cartMap.get(m.getId()).get(i).getId());
+			add(editBtn);
 
-					box.add(new JCheckBox());
-					box.get(i).setBounds(16, 50 + (i * 110), 20, 20);
-					box.get(i).setBackground(Color.WHITE);
-					view.get(j).add(box.get(i));
-					// box.get(i).putClientProperty("id",
-					// CartDAO.cartMap.get(m.getId()).get(i).getId());
-					box.get(i).addItemListener(new ItemListener() {
+			editBtn.addActionListener(new ActionListener() {
 
-						@Override
-						public void itemStateChanged(ItemEvent e) {
-							if (e.getStateChange() == ItemEvent.SELECTED) {
-								sel = 1;
-							} else {
-								sel = -1;
-							}
-							for (int i = 0; i < box.size(); i++) {
-								if (e.getItem() == box.get(i)) {
-									partMoney += sel * CartDAO.cartMap.get(m.getId()).get(i).getCnt()
-											* CartDAO.cartMap.get(m.getId()).get(i).getPrice();
-								}
-							}
-						}
-					});
+				@Override
+				public void actionPerformed(ActionEvent e) {
 
-					JLabel nameInfo = new JLabel("상품명 : " + CartDAO.cartMap.get(m.getId()).get(i).getName()); // 상품명
-					JLabel itemInfo = new JLabel("상품 가격 : " + CartDAO.cartMap.get(m.getId()).get(i).getPrice()
-							* CartDAO.cartMap.get(m.getId()).get(i).getCnt());
-					JLabel cntInfo = new JLabel("수량 ");
-
-					JTextField cntText = new JTextField();
-
-					nameInfo.setBounds(300, 13 + (i * 110), 100, 50);
-					itemInfo.setBounds(300, 13 + (i * 110), 200, 100);
-					cntInfo.setBounds(300, 13 + (i * 110), 100, 150);
-					cntText.setBounds(350, cntInfo.getY() + 65, 40, 20);
-
-					itemInfo.putClientProperty("id", CartDAO.cartMap.get(m.getId()).get(i).getId());
-
-					cntText.setText(Integer.toString(CartDAO.cartMap.get(m.getId()).get(i).getCnt()));
-
-					view.get(j).add(nameInfo);
-					view.get(j).add(itemInfo);
-					view.get(j).add(cntInfo);
-					view.get(j).add(cntText);
-
-					RoundedButton removeBtn = new RoundedButton("삭제");
-					removeBtn.setBounds(500, 25 + (i * 115), 65, 50);
-					removeBtn.putClientProperty("id", CartDAO.cartMap.get(m.getId()).get(i).getId());
-					view.get(j).add(removeBtn);
-
-					removeBtn.addActionListener(new ActionListener() {
-
-						@Override
-						public void actionPerformed(ActionEvent e) {
-							int id = Integer.parseInt(String.valueOf((removeBtn.getClientProperty("id"))));
-							if (cart.remove(id, m.getId())) {
-								mainFrame.getInstance(new CartPanel(m, cart, history));
-							}
-						}
-					});
-
-					RoundedButton editBtn = new RoundedButton("변경");
-					editBtn.setBounds(430, 25 + (i * 115), 65, 50);
-					editBtn.putClientProperty("id", CartDAO.cartMap.get(m.getId()).get(i).getId());
-					view.get(j).add(editBtn);
-
-					editBtn.addActionListener(new ActionListener() {
-
-						@Override
-						public void actionPerformed(ActionEvent e) {
-
-							int id = Integer.parseInt(String.valueOf((editBtn.getClientProperty("id"))));
-							if (cart.change(id, Integer.parseInt(cntText.getText()), m.getId())) {
-								mainFrame.getInstance(new CartPanel(m, cart, history));
-							}
-						}
-					});
-
+					int id = Integer.parseInt(String.valueOf((editBtn.getClientProperty("id"))));
+					if (cart.change(id, Integer.parseInt(cntText.getText()), m.getId())) {
+						mainFrame.getInstance(new CartPanel(m, cart, history));
+					}
 				}
-			}
+			});
 
 		}
 
-		add(pa);
 		// 총 결제 금액
 		payMoney = cart.totalMoney(m.getId());
 
