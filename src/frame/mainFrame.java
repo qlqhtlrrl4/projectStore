@@ -1,19 +1,20 @@
 package frame;
 
-import java.awt.*;
-import javax.swing.*;
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.FontFormatException;
+import java.awt.GraphicsEnvironment;
+import java.io.File;
+import java.io.IOException;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
 
 public class mainFrame extends JFrame {
 
 	private static mainFrame instance = new mainFrame();
-
+	private static Font  customFont;
 	public mainFrame() {
-
-		/*
-		 * Toolkit tk = Toolkit.getDefaultToolkit();// 해상도 setBounds(((int)
-		 * tk.getScreenSize().getWidth()) / 2 - 300, ((int)
-		 * tk.getScreenSize().getHeight()) / 2 - 400, 600, 800);
-		 */
 
 		setTitle("Store");
 		setSize(600, 800);
@@ -27,14 +28,15 @@ public class mainFrame extends JFrame {
 
 	}
 
-	public static void getInstance(JPanel e) {
-
+	public static void getInstance(JPanel panel) {
+		
+		
 		instance.getContentPane().removeAll();
-		instance.getContentPane().add(e);
-		//instance.add(e);
+		instance.getContentPane().add(panel);
+		//instance.add(panel);
 
 		instance.revalidate(); // 레이아웃 관리자에게 레이아웃정보를 다시 계산하도록 지시
 		instance.repaint(); // 레이아웃을 새로 그린다
 	}// getInstance()
-
+	
 }

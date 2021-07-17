@@ -5,18 +5,65 @@ public class MyInfo {
 	String name;
 	String id;
 	String pw;
+	String grade;
 	int total;
+	double salePrice;
+	
 	
 	MyInfo() {
 		this.id = "";
 	}
 	
-	MyInfo(String name, String id, String pw) {
+	MyInfo(String name, String id, String pw, int total, String grade) {
 		this.name = name;
 		this.id = id;
 		this.pw = pw;
+		this.total = total;
+		this.grade = grade;
 		
 		//grade -> 할인율 
+	}
+	
+	public int salePrice(String grade, int price) {
+		
+		switch(grade) {
+			case "GOLD" : {
+				salePrice = price * 0.9;
+			}break;
+			
+			case "SILVER" : {
+				salePrice = price * 0.93;
+			}break;
+			
+			case "BRONZE" : {
+				salePrice = price * 0.96;
+			}break;
+			
+			case "NORMAL" : {
+				salePrice = price;
+			}break;
+		
+		}
+		return (int)salePrice;
+	}
+		
+	public String gradeCheck(int total) {
+		
+		if(total >= 1000000) {
+			setGrade("GOLD");
+		}
+		else if(total>=500000) {
+			setGrade("SILVER");
+		}
+		
+		else if(total>=100000) {
+			setGrade("BRONZE");
+		}
+		else {
+			setGrade("NORMAL");
+		}
+		
+		return grade;
 	}
 	
 	public String getName() {
@@ -28,6 +75,14 @@ public class MyInfo {
 	public String getId() {
 		return id;
 	}
+	
+	public void setGrade(String grade) {
+		this.grade = grade;
+	}
+	public String getGrade() {
+		return grade;
+	}
+
 	public void setId(String id) {
 		this.id = id;
 	}
@@ -35,6 +90,7 @@ public class MyInfo {
 		return pw;
 	}
 	public void setPw(String pw) {
+		
 		this.pw = pw;
 	}
 	
@@ -43,6 +99,6 @@ public class MyInfo {
 	}
 
 	public void setTotal(int total) {
-		this.total = total;
+		this.total += total;
 	}
 }

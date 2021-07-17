@@ -5,17 +5,19 @@ public class CustomerInfo {
 	String name;
 	String id;
 	String pw;
-	String total;
-	
-	
+	int total;
+	String grade;
 
-	CustomerInfo(String name, String id, String pw) {
+	CustomerInfo(String name, String id, String pw, int total, String grade) {
 		this.name = name;
 		this.id = id;
 		this.pw = pw;
+		this.total = total;
+		this.grade = grade;
 		
 		//grade -> 할인율 
 	}
+	
 	
 	public String getName() {
 		return name;
@@ -36,12 +38,20 @@ public class CustomerInfo {
 		this.pw = pw;
 	}
 	
-	public String getTotal() {
+	public int getTotal() {
 		return total;
 	}
 
-	public void setTotal(String total) {
+	public void setTotal(int total) {
 		this.total = total;
+	}
+	
+	public void setGrade(String grade) {
+		this.grade = grade;
+	}
+	
+	public String getGrade() {
+		return grade;
 	}
 
 }
