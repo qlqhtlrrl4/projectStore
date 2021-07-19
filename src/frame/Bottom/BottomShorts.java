@@ -112,10 +112,11 @@ public class BottomShorts extends JPanel {
 
 		RoundedButton btnBack = new RoundedButton("뒤로가기");
 
-		btnBack.setBackground(new Color(0xA6A6A6));
-		btnBack.setSize(183, 87);
-		btnBack.setLocation(5, 0);
+		btnBack.setBackground(new Color(32, 32, 32));
+		/*btnBack.setSize(183, 87);
+		btnBack.setLocation(5, 0);*/
 		btnBack.setFont(new Font("나눔고딕코딩", Font.BOLD, 22));
+		btnBack.setForeground(new Color(255, 255, 255));
 		bottomSet.add(btnBack);
 
 		btnBack.addActionListener(new ActionListener() {
@@ -130,9 +131,10 @@ public class BottomShorts extends JPanel {
 
 		RoundedButton btnHome = new RoundedButton("처음 페이지");
 
-		btnHome.setBackground(new Color(0xA6A6A6));
-		btnHome.setSize(183, 87);
-		btnHome.setLocation(391, 0);
+		btnHome.setBackground(new Color(32, 32, 32));
+		/*btnHome.setSize(183, 87);
+		btnHome.setLocation(391, 0);*/
+		btnHome.setForeground(new Color(255, 255, 255));
 		btnHome.setFont(new Font("나눔고딕코딩", Font.BOLD, 22));
 		bottomSet.add(btnHome);
 
