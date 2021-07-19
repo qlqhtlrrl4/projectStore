@@ -12,17 +12,8 @@ public class Items {
 	String size;
 	
 	
-	//상품 등록
-/*	public Items(int id, String name, int price, String itemUrl) {
-	
-		this.id = id;
-		this.name = name;
-		this.price = price;
-		this.itemUrl = itemUrl;
-		//this.cnt = cnt;
-		
-	}*/
-	//건화 태큐
+
+	//상품 들록
 	public Items(int id, String name, int price, String itemUrl,String itemInfo, String kind) {
 		
 		this.id = id;

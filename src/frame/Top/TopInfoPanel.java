@@ -4,6 +4,8 @@ import java.awt.Choice;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.GridLayout;
+import java.awt.Image;
+import java.awt.TextArea;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -56,24 +58,36 @@ public class TopInfoPanel extends JPanel {
 			}
 		}
 
-		// 이미지를 JLabel에 붙여서 출력
-		JLabel img = new JLabel(itemImg.get(itemId));
+		Image image = itemImg.get(itemId).getImage();
+		Image newImg = image.getScaledInstance(285, 350, java.awt.Image.SCALE_SMOOTH);
+
+		ImageIcon newIcon = new ImageIcon(newImg);
+		JLabel img = new JLabel(newIcon);
 		img.setBounds(50, 13, 285, 350);
 		add(img);
 
-		// 하단의 버튼
-		JPanel oSet = new JPanel();
+		TextArea info = new TextArea("\n ● 상품 이름" + "\n" + "    " + item.getName() + "\n" + "\n ● 상품 가격\n " + "    "
+				+ item.getPrice() + "\n" + "\n ● 상품 정보" + "\n" + "    " + item.getItemInfo(), 0, 0,
+				TextArea.SCROLLBARS_VERTICAL_ONLY);
+		info.setSize(580, 280);
+		info.setLocation(0, 375);
+		info.setBackground(new Color(255, 255, 255));
+		info.setEditable(false);
+		info.setFont(new Font(Font.DIALOG, Font.PLAIN, 15));
+		add(info);
+
 
 		// 사이즈 가이드
 		JButton opBtn = new JButton("VIEW SIZE GUIDE");
-		opBtn.setBackground(new Color(255, 255, 255));
-		opBtn.setSize(150, 30);
-		opBtn.setLocation(370, 250);
+		opBtn.setBackground(Color.white);
+		opBtn.setSize(187, 30);
+		opBtn.setLocation(345, 105);
 		opBtn.setFont(new Font("나눔고딕코딩", Font.BOLD, 13));
-		oSet.add(opBtn);
-		add(oSet);
+		// oSet.add(opBtn);
+		add(opBtn);
 
 		opBtn.addActionListener(new ActionListener() {
+
 			public void actionPerformed(ActionEvent e) {
 				JFrame f = new JFrame("SIZE GUIDE");
 				f.setLayout(null);
@@ -92,19 +106,15 @@ public class TopInfoPanel extends JPanel {
 
 		add(opBtn);
 
-		JPanel p = new JPanel();
-		p.setBounds(335, 300, 160, 80);
-		// p.setBackground(new Color(232, 232, 232));
-
 		Choice size = new Choice();
-		size.add("size ");
+		size.add("size");
 		size.add("S");
 		size.add("M");
 		size.add("L");
 
-		p.add(size);
-		p.setVisible(true);
-		add(p);
+		size.setSize(80, 0);
+		size.setLocation(450, 60);
+		add(size);
 
 		// 하단의 버튼
 		JPanel bottomSet = new JPanel();
@@ -124,7 +134,15 @@ public class TopInfoPanel extends JPanel {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				mainFrame.getInstance(new TopPanel(m, c, history));
+				if (0 <= item.getId() && item.getId() <= 3) {
+					mainFrame.getInstance(new TPanel(m, c, history));
+				} else if (4 <= item.getId() && item.getId() <= 7) {
+					mainFrame.getInstance(new KnitPanel(m, c, history));
+				} else if (8 <= item.getId() && item.getId() <= 11) {
+					mainFrame.getInstance(new ShirtsPanel(m, c, history));
+				} else {
+					mainFrame.getInstance(new MtmPanel(m, c, history));
+				}
 			}
 		});
 
@@ -139,8 +157,11 @@ public class TopInfoPanel extends JPanel {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				if (size.getSelectedItem().equals("size")) {
+					JOptionPane.showMessageDialog(null, "사이즈를 고르세요.");
+				}
 
-				if (!countField.getText().equals("")) {
+				else if (!countField.getText().equals("")) {
 					payMoney = Integer.parseInt(countField.getText()) * ItemDAO.itemList.get(itemId).getPrice();
 					String grade = m.gradeCheck(m.getTotal());
 
@@ -193,14 +214,24 @@ public class TopInfoPanel extends JPanel {
 
 		countField = new JTextField(20);
 		countField.setSize(80, 20);
-		countField.setLocation(400, 30);
+		countField.setLocation(450, 30);
 		add(countField);
+		
+		JLabel countLabel2 = new JLabel("사이즈");
+		countLabel2.setSize(80, 20);
+		countLabel2.setLocation(350, 60);
+		add(countLabel2);
 
 		cartBnt.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				if (!countField.getText().equals("")) {
+
+				if (size.getSelectedItem().equals("size")) {
+					JOptionPane.showMessageDialog(null, "사이즈를 고르세요.");
+				}
+
+				else if (!countField.getText().equals("")) {
 					if (c.registCart(m.getId(),
 							new Items(ItemDAO.itemList.get(itemId).getId(), ItemDAO.itemList.get(itemId).getName(),
 									ItemDAO.itemList.get(itemId).getPrice(), ItemDAO.itemList.get(itemId).getItemUrl(),
@@ -226,4 +257,5 @@ public class TopInfoPanel extends JPanel {
 		add(bottomSet);
 
 	}
+
 }

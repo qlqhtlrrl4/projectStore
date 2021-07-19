@@ -37,7 +37,7 @@ public class BottomInfoPanel extends JPanel {
 	List<ImageIcon> itemImg;
 
 	public BottomInfoPanel(Items item, MyInfo m, CartDAO c, SellDAO history) {
-		
+
 		this.m = m;
 		this.c = c;
 		this.item = item;
@@ -67,9 +67,8 @@ public class BottomInfoPanel extends JPanel {
 		JPanel bottomSet = new JPanel();
 
 		bottomSet.setBounds(5, 660, 570, 75);
-		bottomSet.setLayout(new GridLayout(1,3,5,0));
+		bottomSet.setLayout(new GridLayout(1, 3, 5, 0));
 		bottomSet.setBackground(Color.WHITE);
-
 
 		RoundedButton backBtn = new RoundedButton("뒤로가기");
 		backBtn.setBackground(new Color(32, 32, 32));
@@ -81,11 +80,11 @@ public class BottomInfoPanel extends JPanel {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				if(item.getId()>=4) {
-					mainFrame.getInstance(new BottomJean(m,c,history));
-				}
-				if(item.getId()>=8) {
-					mainFrame.getInstance(new BottomShorts(m,c,history));
+				if (16 <= item.getId() && item.getId() <= 19) {
+					mainFrame.getInstance(new BottomJean(m, c, history));
+				} else if (20 <= item.getId() && item.getId() <= 23) {
+					mainFrame.getInstance(new BottomShorts(m, c, history));
+
 				}
 			}
 		});
@@ -117,13 +116,11 @@ public class BottomInfoPanel extends JPanel {
 		size.setSize(80, 0);
 		size.setLocation(400, 120);
 		add(size);
-		
-		TextArea info = new TextArea(
-				"\n  ◎브랜드명" + "\n" + "   " + item.getName() + 
-				"\n\n" + "  ◎상품가격" + "\n" + "   " + item.getPrice() + "원" + 
-				"\n\n  ◎상품설명" + "\n" + "   " + item.getItemInfo(),
-				0, 0, TextArea.SCROLLBARS_VERTICAL_ONLY);
-		
+
+		TextArea info = new TextArea("\n  ◎브랜드명" + "\n" + "   " + item.getName() + "\n\n" + "  ◎상품가격" + "\n" + "   "
+				+ item.getPrice() + "원" + "\n\n  ◎상품설명" + "\n" + "   " + item.getItemInfo(), 0, 0,
+				TextArea.SCROLLBARS_VERTICAL_ONLY);
+
 		info.setSize(580, 280);
 		info.setLocation(0, 345);
 		info.setBackground(new Color(0xFFD700));
@@ -142,7 +139,11 @@ public class BottomInfoPanel extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 
-				if (!countField.getText().equals("")) {
+				if (size.getSelectedItem().equals("size")) {
+					JOptionPane.showMessageDialog(null, "사이즈를 고르세요.");
+				}
+
+				else if (!countField.getText().equals("")) {
 					payMoney = Integer.parseInt(countField.getText()) * ItemDAO.itemList.get(itemId).getPrice();
 					String grade = m.gradeCheck(m.getTotal());
 
@@ -157,8 +158,8 @@ public class BottomInfoPanel extends JPanel {
 						SellDAO.historyMap.get(m.getId()).add(new Items(ItemDAO.itemList.get(itemId).getId(),
 								ItemDAO.itemList.get(itemId).getName(), ItemDAO.itemList.get(itemId).getPrice(),
 								ItemDAO.itemList.get(itemId).getItemUrl(), Integer.parseInt(countField.getText()),
-								ItemDAO.itemList.get(itemId).getItemInfo(), ItemDAO.itemList.get(itemId).getKind(),size.getSelectedItem()));
-
+								ItemDAO.itemList.get(itemId).getItemInfo(), ItemDAO.itemList.get(itemId).getKind(),
+								size.getSelectedItem()));
 
 						// 나중에 로그인 유저 결제금액 올려주는 method 추가
 						JOptionPane.showMessageDialog(null, m.salePrice(grade, payMoney) + "원을 결제하셨습니다.");
@@ -188,16 +189,22 @@ public class BottomInfoPanel extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 
-				if (!countField.getText().equals("")) {
+				if (size.getSelectedItem().equals("size")) {
+					JOptionPane.showMessageDialog(null, "사이즈를 고르세요.");
+				}
+
+				else if (!countField.getText().equals("")) {
 					if (c.registCart(m.getId(),
 							new Items(ItemDAO.itemList.get(itemId).getId(), ItemDAO.itemList.get(itemId).getName(),
-									ItemDAO.itemList.get(itemId).getPrice(),
-									ItemDAO.itemList.get(itemId).getItemUrl(),ItemDAO.itemList.get(itemId).getItemInfo(),ItemDAO.itemList.get(itemId).getKind()))) {
+									ItemDAO.itemList.get(itemId).getPrice(), ItemDAO.itemList.get(itemId).getItemUrl(),
+									ItemDAO.itemList.get(itemId).getItemInfo(),
+									ItemDAO.itemList.get(itemId).getKind()))) {
 
 						CartDAO.cartMap.get(m.getId()).add(new Items(ItemDAO.itemList.get(itemId).getId(),
 								ItemDAO.itemList.get(itemId).getName(), ItemDAO.itemList.get(itemId).getPrice(),
 								ItemDAO.itemList.get(itemId).getItemUrl(), Integer.parseInt(countField.getText()),
-								ItemDAO.itemList.get(itemId).getItemInfo(), ItemDAO.itemList.get(itemId).getKind(),size.getSelectedItem()));
+								ItemDAO.itemList.get(itemId).getItemInfo(), ItemDAO.itemList.get(itemId).getKind(),
+								size.getSelectedItem()));
 
 					} else {
 

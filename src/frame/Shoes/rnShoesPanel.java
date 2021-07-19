@@ -46,6 +46,16 @@ public class rnShoesPanel extends JPanel {
 		itemBtn1.setLocation(72, 20);
 		add(itemBtn1);
 
+		JLabel aLabel = new JLabel("나이키 에어포스");
+		aLabel.setBounds(105, 280, 185, 20);
+		aLabel.setFont(new Font("나눔고딕코딩", Font.BOLD, 15));
+		add(aLabel);
+		
+		JLabel aLabel2 = new JLabel("99,000");
+		aLabel2.setBounds(140, 300, 185, 20);
+		aLabel2.setFont(new Font("나눔고딕코딩", Font.BOLD, 15));
+		add(aLabel2);
+		
 		itemBtn1.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -65,6 +75,16 @@ public class rnShoesPanel extends JPanel {
 		itemBtn2.setSize(185, 250);
 		itemBtn2.setLocation(320, 20);
 		add(itemBtn2);
+		
+		JLabel bLabel = new JLabel("아디다스 제트엑스");
+		bLabel.setBounds(350, 280, 185, 20);
+		bLabel.setFont(new Font("나눔고딕코딩", Font.BOLD, 15));
+		add(bLabel);
+
+		JLabel bLabel2 = new JLabel("69,000");
+		bLabel2.setBounds(390, 300, 185, 20);
+		bLabel2.setFont(new Font("나눔고딕코딩", Font.BOLD, 15));
+		add(bLabel2);
 
 		itemBtn2.addActionListener(new ActionListener() {
 
@@ -87,6 +107,16 @@ public class rnShoesPanel extends JPanel {
 		itemBtn3.setLocation(72, 350);
 		add(itemBtn3);
 
+		JLabel cLabel = new JLabel("뉴발란스 480");
+		cLabel.setBounds(115, 600, 185, 30);
+		cLabel.setFont(new Font("나눔고딕코딩", Font.BOLD, 15));
+		add(cLabel);
+
+		JLabel cLabel2 = new JLabel("79,000");
+		cLabel2.setBounds(138, 620, 185, 30);
+		cLabel2.setFont(new Font("나눔고딕코딩", Font.BOLD, 15));
+		add(cLabel2);
+		
 		itemBtn3.addActionListener(new ActionListener() {
 
 			@Override
@@ -107,6 +137,16 @@ public class rnShoesPanel extends JPanel {
 		itemBtn4.setSize(185, 250);
 		itemBtn4.setLocation(320, 350);
 		add(itemBtn4);
+		
+		JLabel dLabel = new JLabel("COURT-MASTER");
+		dLabel.setBounds(352, 600, 185, 30);
+		dLabel.setFont(new Font("나눔고딕코딩", Font.BOLD, 15));
+		add(dLabel);
+
+		JLabel dLabel2 = new JLabel("119,000");
+		dLabel2.setBounds(382, 620, 185, 30);
+		dLabel2.setFont(new Font("나눔고딕코딩", Font.BOLD, 15));
+		add(dLabel2);
 
 		itemBtn4.addActionListener(new ActionListener() {
 

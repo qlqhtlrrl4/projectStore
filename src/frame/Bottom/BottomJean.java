@@ -120,7 +120,6 @@ public class BottomJean extends JPanel {
 
 		RoundedButton btnNext = new RoundedButton("처음 페이지");
 
-
 		btnNext.setBackground(new Color(32, 32, 32));
 		btnNext.setFont(new Font("나눔고딕코딩", Font.BOLD, 18));
 		btnNext.setForeground(new Color(255, 255, 255));
@@ -130,8 +129,7 @@ public class BottomJean extends JPanel {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				// 다음페이지로 넘어가기 기능 만들어줘야 한다.
-				// FrameMovieSelect2 클래스를 만들어서 1번과 동일하게 내용 처리
+				
 				mainFrame.getInstance(new Kinds(m, cart, history));
 			}
 		});

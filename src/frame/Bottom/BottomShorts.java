@@ -145,7 +145,7 @@ public class BottomShorts extends JPanel {
 			}
 		});
 
-		add(bottomSet, BorderLayout.SOUTH);
+		add(bottomSet);
 	}
 
 }

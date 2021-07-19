@@ -10,14 +10,12 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
-
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-
 import customDAO.CartDAO;
 import customDAO.ItemDAO;
 import customDAO.Items;
@@ -55,8 +53,6 @@ public class ShoesInfoPanel extends JPanel {
 				itemId = ItemDAO.itemList.get(i).getId();
 
 			}
-
-			// itemId =ItemDAO.itemList.get(i).getId();
 		}
 
 		Image image = itemImg.get(itemId).getImage();
@@ -70,6 +66,7 @@ public class ShoesInfoPanel extends JPanel {
 		TextArea info = new TextArea("\n◈ 상품 이름" + "\n" + "   " + item.getName() + "\n" + "\n◈ 상품 가격\n " + "   "
 				+ item.getPrice() + "\n" + "\n◈ 상품 정보" + "\n" + "   " + item.getItemInfo(), 0, 0,
 				TextArea.SCROLLBARS_VERTICAL_ONLY);
+
 		info.setSize(580, 280);
 		info.setLocation(0, 375);
 		info.setBackground(new Color(0xFFD700));
@@ -94,18 +91,17 @@ public class ShoesInfoPanel extends JPanel {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				if (12 <= item.getId() && item.getId() <= 15) {
+				if (24 <= item.getId() && item.getId() <= 27) {
 					mainFrame.getInstance(new MensShoesPanel(m, c, history));
-				} else if (16 <= item.getId() && item.getId() <= 19) {
+				} else if (28 <= item.getId() && item.getId() <= 31) {
 					mainFrame.getInstance(new SlipperPanel(m, c, history));
-				} else if (20 <= item.getId() && item.getId() <= 23) {
+				} else if (32 <= item.getId() && item.getId() <= 35) {
 					mainFrame.getInstance(new rnShoesPanel(m, c, history));
 				} else {
 					mainFrame.getInstance(new SandlePanel(m, c, history));
 				}
 			}
 		});
-		// add(backBtn);
 
 		JLabel countLabel = new JLabel("수량");
 		countLabel.setSize(80, 20);
@@ -147,9 +143,12 @@ public class ShoesInfoPanel extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 
-				// 중복확인 후
+				if (size.getSelectedItem().equals("size")) {
+					JOptionPane.showMessageDialog(null, "사이즈를 고르세요.");
+				}
 
-				if (!countField.getText().equals("")) {
+				// 중복확인 후
+				else if (!countField.getText().equals("")) {
 					payMoney = Integer.parseInt(countField.getText()) * ItemDAO.itemList.get(itemId).getPrice();
 					String grade = m.gradeCheck(m.getTotal());
 
@@ -164,7 +163,8 @@ public class ShoesInfoPanel extends JPanel {
 						SellDAO.historyMap.get(m.getId()).add(new Items(ItemDAO.itemList.get(itemId).getId(),
 								ItemDAO.itemList.get(itemId).getName(), ItemDAO.itemList.get(itemId).getPrice(),
 								ItemDAO.itemList.get(itemId).getItemUrl(), Integer.parseInt(countField.getText()),
-								ItemDAO.itemList.get(itemId).getItemInfo(), ItemDAO.itemList.get(itemId).getKind(),size.getSelectedItem()));
+								ItemDAO.itemList.get(itemId).getItemInfo(), ItemDAO.itemList.get(itemId).getKind(),
+								size.getSelectedItem()));
 
 						// 나중에 로그인 유저 결제금액 올려주는 method 추가
 						JOptionPane.showMessageDialog(null, m.salePrice(grade, payMoney) + "원을 결제하셨습니다.");
@@ -195,11 +195,16 @@ public class ShoesInfoPanel extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 
-				if (!countField.getText().equals("")) {
+				if (size.getSelectedItem().equals("size")) {
+					JOptionPane.showMessageDialog(null, "사이즈를 고르세요.");
+				}
+
+				else if (!countField.getText().equals("")) {
 					if (c.registCart(m.getId(),
 							new Items(ItemDAO.itemList.get(itemId).getId(), ItemDAO.itemList.get(itemId).getName(),
-									ItemDAO.itemList.get(itemId).getPrice(),
-									ItemDAO.itemList.get(itemId).getItemUrl(),ItemDAO.itemList.get(itemId).getItemInfo(),ItemDAO.itemList.get(itemId).getKind()))) {
+									ItemDAO.itemList.get(itemId).getPrice(), ItemDAO.itemList.get(itemId).getItemUrl(),
+									ItemDAO.itemList.get(itemId).getItemInfo(),
+									ItemDAO.itemList.get(itemId).getKind()))) {
 
 						CartDAO.cartMap.get(m.getId()).add(new Items(ItemDAO.itemList.get(itemId).getId(),
 								ItemDAO.itemList.get(itemId).getName(), ItemDAO.itemList.get(itemId).getPrice(),
@@ -218,12 +223,6 @@ public class ShoesInfoPanel extends JPanel {
 				} else {
 					JOptionPane.showMessageDialog(null, "수량을 입력하시오");
 				}
-
-				System.out.println(CartDAO.cartMap.get(m.getId()).size());
-				for (int i = 0; i < CartDAO.cartMap.get(m.getId()).size(); i++) {
-					System.out.println(CartDAO.cartMap.get(m.getId()).get(i).getCnt() + "    itemInfoPanel");
-				}
-				//
 
 			}
 		});

@@ -24,10 +24,8 @@ public class ShopPanel extends JPanel {
 
 	// JPanel 구조
 	public ShopPanel(MyInfo m) {
-		
-		//System.out.println(m.getId());
+			
 		cart = new CartDAO(m.getId());
-		//uid = new UserInfo(m.getId(),m);
 		history = new SellDAO(m.getId());
 		
 		setLayout(null);

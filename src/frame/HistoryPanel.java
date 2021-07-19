@@ -8,13 +8,12 @@ import java.awt.GridLayout;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.ItemEvent;
-import java.awt.event.ItemListener;
 import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
@@ -125,16 +124,23 @@ public class HistoryPanel extends JPanel {
 						pgNum.get(Integer.parseInt(pageBtn.getText()) - 1).add(cntText);
 						pgNum.get(Integer.parseInt(pageBtn.getText()) - 1).add(sizeInfo);
 
-						RoundedButton removeBtn = new RoundedButton("삭제");
-						removeBtn.setBounds(500, 25 + ((i % 5) * 115), 65, 50);
-						removeBtn.putClientProperty("id", SellDAO.historyMap.get(m.getId()).get(i).getId());
-						pgNum.get(Integer.parseInt(pageBtn.getText()) - 1).add(removeBtn);
 
-						RoundedButton editBtn = new RoundedButton("변경");
-						editBtn.setBounds(430, 25 + ((i % 5) * 115), 65, 50);
-						editBtn.putClientProperty("id", SellDAO.historyMap.get(m.getId()).get(i).getId());
-						pgNum.get(Integer.parseInt(pageBtn.getText()) - 1).add(editBtn);
-
+						RoundedButton detailBtn = new RoundedButton("상세보기");
+						detailBtn.setBounds(430, 25 + ((i % 5) * 115), 130, 70);
+						detailBtn.putClientProperty("id", SellDAO.historyMap.get(m.getId()).get(i).getId());
+						pgNum.get(Integer.parseInt(pageBtn.getText()) - 1).add(detailBtn);
+						
+/*						detailBtn.addActionListener(new ActionListener() {
+							
+							@Override
+							public void actionPerformed(ActionEvent e) {
+								
+								
+								JFrame detailPage = new JFrame();
+								detailPage.setLayout(null);
+							}
+						});
+*/
 					}
 				}
 
@@ -204,15 +210,10 @@ public class HistoryPanel extends JPanel {
 						pgNum.get(Integer.parseInt(pageBtn.getText()) - 1).add(sizeInfo);
 						
 						
-						RoundedButton removeBtn = new RoundedButton("삭제");
-						removeBtn.setBounds(500, 25 + ((i % 5) * 115), 65, 50);
-						removeBtn.putClientProperty("id", SellDAO.historyMap.get(m.getId()).get(i).getId());
-						pgNum.get(Integer.parseInt(pageBtn.getText()) - 1).add(removeBtn);
-
-						RoundedButton editBtn = new RoundedButton("변경");
-						editBtn.setBounds(430, 25 + ((i % 5) * 115), 65, 50);
-						editBtn.putClientProperty("id", SellDAO.historyMap.get(m.getId()).get(i).getId());
-						pgNum.get(Integer.parseInt(pageBtn.getText()) - 1).add(editBtn);
+						RoundedButton detailBtn = new RoundedButton("변경");
+						detailBtn.setBounds(430, 25 + ((i % 5) * 115), 130, 70);
+						detailBtn.putClientProperty("id", SellDAO.historyMap.get(m.getId()).get(i).getId());
+						pgNum.get(Integer.parseInt(pageBtn.getText()) - 1).add(detailBtn);
 
 					}
 				}

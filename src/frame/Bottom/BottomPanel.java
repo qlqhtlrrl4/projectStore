@@ -107,5 +107,14 @@ public class BottomPanel extends JPanel {
 
 		bottomSet.add(mainBtn);
 		add(bottomSet);
+		
+		mainBtn.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				mainFrame.getInstance(new ShopPanel(m));
+				
+			}
+		});
 	}
 }
