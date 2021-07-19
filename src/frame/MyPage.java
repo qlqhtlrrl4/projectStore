@@ -54,7 +54,8 @@ public class MyPage extends JPanel {
 		setSize(600, 800);
 		
 		//맨위 
-		JLabel shopName = new JLabel("마이 페이지");
+		JLabel shopName = new JLabel("마이  페이지");
+		shopName.setHorizontalAlignment(JLabel.CENTER);
 		shopName.setFont(titleF);
 		shopName.setOpaque(true);
 		shopName.setBackground(new Color(229,243,197));

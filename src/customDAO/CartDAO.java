@@ -64,10 +64,11 @@ public class CartDAO {
 	}
 	
 
-	public boolean change(int id,int cnt,String userId) {
+	public boolean change(int id,int cnt,String userId,String size) {
 		for(int i=0;i<cartMap.get(userId).size();i++)  {
 			if(cartMap.get(userId).get(i).getId()==id) {
 				cartMap.get(userId).get(i).setCnt(cnt);
+				cartMap.get(userId).get(i).setSize(size);
 				return true;
 			}
 		}

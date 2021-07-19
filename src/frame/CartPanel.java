@@ -217,7 +217,7 @@ public class CartPanel extends JPanel {
 							public void actionPerformed(ActionEvent e) {
 
 								int id = Integer.parseInt(String.valueOf((editBtn.getClientProperty("id"))));
-								if (cart.change(id, Integer.parseInt(cntText.getText()), m.getId())) {
+								if (cart.change(id, Integer.parseInt(cntText.getText()), m.getId(),size.getSelectedItem())) {
 									mainFrame.getInstance(new CartPanel(m, cart, history));
 								}
 							}
@@ -349,7 +349,7 @@ public class CartPanel extends JPanel {
 							public void actionPerformed(ActionEvent e) {
 
 								int id = Integer.parseInt(String.valueOf((editBtn.getClientProperty("id"))));
-								if (cart.change(id, Integer.parseInt(cntText.getText()), m.getId())) {
+								if (cart.change(id, Integer.parseInt(cntText.getText()), m.getId(),size.getSelectedItem())) {
 									mainFrame.getInstance(new CartPanel(m, cart, history));
 								}
 							}
