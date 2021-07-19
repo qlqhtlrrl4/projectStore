@@ -9,6 +9,7 @@ public class Items {
 	String itemUrl;
 	String itemInfo;
 	String kind;
+	String size;
 	
 	
 	//상품 등록
@@ -35,13 +36,16 @@ public class Items {
 	}
 	
 	// 장바구니에 사용할 상품
-	public Items(int  id, String name, int price, String itemUrl, int cnt) {
+	public Items(int  id, String name, int price, String itemUrl,int cnt,String itemInfo,String kind, String size) {
 	
 		this.id = id;
 		this.name = name;
 		this.price = price;
 		this.itemUrl = itemUrl;
 		this.cnt = cnt;
+		this.size=size;
+		this.kind=kind;
+		this.itemInfo = itemInfo;
 	}
 
 	public int getCnt() {
@@ -103,4 +107,13 @@ public class Items {
 	public void setKind(String kind) {
 		this.kind = kind;
 	}
+	
+	public String getSize() {
+		return size;
+	}
+
+	public void setSize(String size) {
+		this.size = size;
+	}
+	
 }

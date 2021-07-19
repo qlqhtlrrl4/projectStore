@@ -1,5 +1,6 @@
 package frame;
 
+import java.awt.Choice;
 import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.Font;
@@ -88,6 +89,7 @@ public class CartPanel extends JPanel {
 
 				if (Integer.parseInt(pageBtn.getText()) == panelCount) {
 
+							
 					pgNum.get(Integer.parseInt(pageBtn.getText()) - 1).setBounds(0, 0, 600, 560);
 					pgNum.get(Integer.parseInt(pageBtn.getText()) - 1).setBackground(Color.WHITE);
 					pgNum.get(Integer.parseInt(pageBtn.getText()) - 1).setLayout(null);
@@ -100,7 +102,7 @@ public class CartPanel extends JPanel {
 						// 이미지
 						ImageIcon newIcon = new ImageIcon(newImg);
 						JLabel img = new JLabel(newIcon);
-						img.setBounds(50, 13 + (((i) % 5) * 110), 200, 100);
+						img.setBounds(50, 13 + ((i % 5) * 110), 200, 100);
 						pgNum.get(Integer.parseInt(pageBtn.getText()) - 1).add(img);
 
 						box.add(new JCheckBox());
@@ -132,21 +134,55 @@ public class CartPanel extends JPanel {
 						JLabel cntInfo = new JLabel("수량 ");
 
 						JTextField cntText = new JTextField();
-
-						nameInfo.setBounds(300, 13 + ((i % 5) * 110), 100, 50);
-						itemInfo.setBounds(300, 13 + ((i % 5) * 110), 200, 100);
-						cntInfo.setBounds(300, 13 + ((i % 5) * 110), 100, 150);
-						cntText.setBounds(350, cntInfo.getY() + 65, 40, 20);
-
+						JLabel sizeInfo = new JLabel("사이즈");
+						Choice size = new Choice();
+						
+						nameInfo.setBounds(300, 13 + ((i % 5) * 110), 100, 15);
+						itemInfo.setBounds(300, 38 + ((i % 5) * 110), 200, 15);
+						cntInfo.setBounds(300, 63 + ((i % 5) * 110), 100, 15);
+						cntText.setBounds(350, 58 + ((i % 5) * 110), 60, 20);
+						sizeInfo.setBounds(300, 88+ ((i % 5) * 110), 40, 15);
+						size.setBounds(350, 84+((i % 5) * 110), 70, 20);
+						
+						
 						itemInfo.putClientProperty("id", CartDAO.cartMap.get(m.getId()).get(i).getId());
 
 						cntText.setText(Integer.toString(CartDAO.cartMap.get(m.getId()).get(i).getCnt()));
 
+						if(CartDAO.cartMap.get(m.getId()).get(i).getKind().equals("상의")) {
+							size.add(CartDAO.cartMap.get(m.getId()).get(i).getSize());
+							size.add("size");
+							size.add("S");
+							size.add("M");
+							size.add("L");
+						}
+						else if(CartDAO.cartMap.get(m.getId()).get(i).getKind().equals("하의")) {
+							size.add(CartDAO.cartMap.get(m.getId()).get(i).getSize());
+							size.add("size");
+							size.add("28");
+							size.add("30");
+							size.add("32");
+							size.add("34");
+						}
+						else if(CartDAO.cartMap.get(m.getId()).get(i).getKind().equals("신발")) {
+							size.add(CartDAO.cartMap.get(m.getId()).get(i).getSize());
+							size.add("size");
+							size.add("240");
+							size.add("250");
+							size.add("260");
+							size.add("270");
+							size.add("280");
+						}
+						
 						pgNum.get(Integer.parseInt(pageBtn.getText()) - 1).add(nameInfo);
 						pgNum.get(Integer.parseInt(pageBtn.getText()) - 1).add(itemInfo);
 						pgNum.get(Integer.parseInt(pageBtn.getText()) - 1).add(cntInfo);
 						pgNum.get(Integer.parseInt(pageBtn.getText()) - 1).add(cntText);
+						pgNum.get(Integer.parseInt(pageBtn.getText()) - 1).add(sizeInfo);
+						pgNum.get(Integer.parseInt(pageBtn.getText()) - 1).add(size);
 
+						
+						
 						RoundedButton removeBtn = new RoundedButton("삭제");
 						removeBtn.setBounds(500, 25 + ((i % 5) * 115), 65, 50);
 						removeBtn.putClientProperty("id", CartDAO.cartMap.get(m.getId()).get(i).getId());
@@ -228,21 +264,54 @@ public class CartPanel extends JPanel {
 						JLabel cntInfo = new JLabel("수량 ");
 
 						JTextField cntText = new JTextField();
-
-						nameInfo.setBounds(300, 13 + ((i % 5) * 110), 100, 50);
-						itemInfo.setBounds(300, 13 + ((i % 5) * 110), 200, 100);
-						cntInfo.setBounds(300, 13 + ((i % 5) * 110), 100, 150);
-						cntText.setBounds(350, cntInfo.getY() + 65, 40, 20);
+						JLabel sizeInfo = new JLabel("사이즈");
+						Choice size = new Choice();
+						
+						nameInfo.setBounds(300, 13 + ((i % 5) * 110), 100, 15);
+						itemInfo.setBounds(300, 38 + ((i % 5) * 110), 200, 15);
+						cntInfo.setBounds(300, 63 + ((i % 5) * 110), 100, 15);
+						cntText.setBounds(350, 58 + ((i % 5) * 110), 60, 20);
+						sizeInfo.setBounds(300, 88+ ((i % 5) * 110), 40, 15);
+						size.setBounds(350, 84+((i % 5) * 110), 70, 20);
 
 						itemInfo.putClientProperty("id", CartDAO.cartMap.get(m.getId()).get(i).getId());
 
 						cntText.setText(Integer.toString(CartDAO.cartMap.get(m.getId()).get(i).getCnt()));
 
+						if(CartDAO.cartMap.get(m.getId()).get(i).getKind().equals("상의")) {
+							size.add(CartDAO.cartMap.get(m.getId()).get(i).getSize());
+							size.add("size");
+							size.add("S");
+							size.add("M");
+							size.add("L");
+						}
+						else if(CartDAO.cartMap.get(m.getId()).get(i).getKind().equals("하의")) {
+							size.add(CartDAO.cartMap.get(m.getId()).get(i).getSize());
+							size.add("size");
+							size.add("28");
+							size.add("30");
+							size.add("32");
+							size.add("34");
+						}
+						else if(CartDAO.cartMap.get(m.getId()).get(i).getKind().equals("신발")) {
+							size.add(CartDAO.cartMap.get(m.getId()).get(i).getSize());
+							size.add("size");
+							size.add("240");
+							size.add("250");
+							size.add("260");
+							size.add("270");
+							size.add("280");
+						}
+						
 						pgNum.get(Integer.parseInt(pageBtn.getText()) - 1).add(nameInfo);
 						pgNum.get(Integer.parseInt(pageBtn.getText()) - 1).add(itemInfo);
 						pgNum.get(Integer.parseInt(pageBtn.getText()) - 1).add(cntInfo);
 						pgNum.get(Integer.parseInt(pageBtn.getText()) - 1).add(cntText);
+						pgNum.get(Integer.parseInt(pageBtn.getText()) - 1).add(sizeInfo);
+						pgNum.get(Integer.parseInt(pageBtn.getText()) - 1).add(size);
 
+						
+						
 						RoundedButton removeBtn = new RoundedButton("삭제");
 						removeBtn.setBounds(500, 25 + ((i % 5) * 115), 65, 50);
 						removeBtn.putClientProperty("id", CartDAO.cartMap.get(m.getId()).get(i).getId());

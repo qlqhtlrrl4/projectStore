@@ -156,7 +156,9 @@ public class BottomInfoPanel extends JPanel {
 
 						SellDAO.historyMap.get(m.getId()).add(new Items(ItemDAO.itemList.get(itemId).getId(),
 								ItemDAO.itemList.get(itemId).getName(), ItemDAO.itemList.get(itemId).getPrice(),
-								ItemDAO.itemList.get(itemId).getItemUrl(), Integer.parseInt(countField.getText())));
+								ItemDAO.itemList.get(itemId).getItemUrl(), Integer.parseInt(countField.getText()),
+								ItemDAO.itemList.get(itemId).getItemInfo(), ItemDAO.itemList.get(itemId).getKind(),size.getSelectedItem()));
+
 
 						// 나중에 로그인 유저 결제금액 올려주는 method 추가
 						JOptionPane.showMessageDialog(null, m.salePrice(grade, payMoney) + "원을 결제하셨습니다.");
@@ -194,7 +196,9 @@ public class BottomInfoPanel extends JPanel {
 
 						CartDAO.cartMap.get(m.getId()).add(new Items(ItemDAO.itemList.get(itemId).getId(),
 								ItemDAO.itemList.get(itemId).getName(), ItemDAO.itemList.get(itemId).getPrice(),
-								ItemDAO.itemList.get(itemId).getItemUrl(), Integer.parseInt(countField.getText())));
+								ItemDAO.itemList.get(itemId).getItemUrl(), Integer.parseInt(countField.getText()),
+								ItemDAO.itemList.get(itemId).getItemInfo(), ItemDAO.itemList.get(itemId).getKind(),size.getSelectedItem()));
+
 					} else {
 
 						for (int i = 0; i < CartDAO.cartMap.get(m.getId()).size(); i++) {

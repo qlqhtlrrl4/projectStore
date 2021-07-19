@@ -44,10 +44,9 @@ public class TopInfoPanel extends JPanel {
 		setLayout(null);
 		setSize(600, 800);
 		setBackground(Color.WHITE);
-		
 
 		itemImg = new ArrayList<>();
-		
+
 		for (int i = 0; i < ItemDAO.itemList.size(); i++) {
 
 			itemImg.add(new ImageIcon(ItemDAO.itemList.get(i).getItemUrl()));
@@ -95,15 +94,15 @@ public class TopInfoPanel extends JPanel {
 
 		JPanel p = new JPanel();
 		p.setBounds(335, 300, 160, 80);
-		//p.setBackground(new Color(232, 232, 232));
+		// p.setBackground(new Color(232, 232, 232));
 
-		Choice day = new Choice();
-		day.add(" Select size ");
-		day.add("S");
-		day.add("M");
-		day.add("L");
+		Choice size = new Choice();
+		size.add("size ");
+		size.add("S");
+		size.add("M");
+		size.add("L");
 
-		p.add(day);
+		p.add(size);
 		p.setVisible(true);
 		add(p);
 
@@ -111,8 +110,8 @@ public class TopInfoPanel extends JPanel {
 		JPanel bottomSet = new JPanel();
 
 		bottomSet.setBounds(5, 660, 570, 75);
-		bottomSet.setLayout(new GridLayout(1,3,5,0));
-		bottomSet.setBackground(Color.WHITE); 
+		bottomSet.setLayout(new GridLayout(1, 3, 5, 0));
+		bottomSet.setBackground(Color.WHITE);
 
 		RoundedButton backBtn = new RoundedButton("BACK");
 		backBtn.setBackground(new Color(32, 32, 32));
@@ -155,8 +154,9 @@ public class TopInfoPanel extends JPanel {
 
 						SellDAO.historyMap.get(m.getId()).add(new Items(ItemDAO.itemList.get(itemId).getId(),
 								ItemDAO.itemList.get(itemId).getName(), ItemDAO.itemList.get(itemId).getPrice(),
-								ItemDAO.itemList.get(itemId).getItemUrl(), Integer.parseInt(countField.getText())));
-						System.out.println(day.getSelectedItem());
+								ItemDAO.itemList.get(itemId).getItemUrl(), Integer.parseInt(countField.getText()),
+								ItemDAO.itemList.get(itemId).getItemInfo(), ItemDAO.itemList.get(itemId).getKind(),
+								size.getSelectedItem()));
 
 						// 나중에 로그인 유저 결제금액 올려주는 method 추가
 						JOptionPane.showMessageDialog(null, m.salePrice(grade, payMoney) + "원을 결제하셨습니다.");
@@ -203,11 +203,14 @@ public class TopInfoPanel extends JPanel {
 				if (!countField.getText().equals("")) {
 					if (c.registCart(m.getId(),
 							new Items(ItemDAO.itemList.get(itemId).getId(), ItemDAO.itemList.get(itemId).getName(),
-									ItemDAO.itemList.get(itemId).getPrice(),
-									ItemDAO.itemList.get(itemId).getItemUrl(),ItemDAO.itemList.get(itemId).getItemInfo(),ItemDAO.itemList.get(itemId).getKind()))) {
+									ItemDAO.itemList.get(itemId).getPrice(), ItemDAO.itemList.get(itemId).getItemUrl(),
+									ItemDAO.itemList.get(itemId).getItemInfo(),
+									ItemDAO.itemList.get(itemId).getKind()))) {
 						CartDAO.cartMap.get(m.getId()).add(new Items(ItemDAO.itemList.get(itemId).getId(),
 								ItemDAO.itemList.get(itemId).getName(), ItemDAO.itemList.get(itemId).getPrice(),
-								ItemDAO.itemList.get(itemId).getItemUrl(), Integer.parseInt(countField.getText())));
+								ItemDAO.itemList.get(itemId).getItemUrl(), Integer.parseInt(countField.getText()),
+								ItemDAO.itemList.get(itemId).getItemInfo(), ItemDAO.itemList.get(itemId).getKind(),
+								size.getSelectedItem()));
 					} else {
 						for (int i = 0; i < CartDAO.cartMap.get(m.getId()).size(); i++) {
 							CartDAO.cartMap.get(m.getId()).get(i).setCnt(CartDAO.cartMap.get(m.getId()).get(i).getCnt()

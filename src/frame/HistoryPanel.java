@@ -1,5 +1,6 @@
 package frame;
 
+import java.awt.Choice;
 import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.Font;
@@ -18,6 +19,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import customDAO.CartDAO;
 import customDAO.MyInfo;
 import customDAO.SellDAO;
 import view.CustomFont;
@@ -25,7 +27,6 @@ import view.RoundedButton;
 
 public class HistoryPanel extends JPanel {
 
-	
 	int page = 0;
 	ArrayList<JCheckBox> box = new ArrayList<>();
 	int panelCount = 0;
@@ -46,7 +47,6 @@ public class HistoryPanel extends JPanel {
 	}
 
 	public HistoryPanel(MyInfo m, SellDAO h) {
-
 
 		this.m = m;
 
@@ -104,18 +104,16 @@ public class HistoryPanel extends JPanel {
 						img.setBounds(50, 13 + (((i) % 5) * 110), 200, 100);
 						pgNum.get(Integer.parseInt(pageBtn.getText()) - 1).add(img);
 
-
 						JLabel nameInfo = new JLabel("상품명 : " + SellDAO.historyMap.get(m.getId()).get(i).getName()); // 상품명
-						JLabel itemInfo = new JLabel("상품 가격 : " + SellDAO.historyMap.get(m.getId()).get(i).getPrice()
-								* SellDAO.historyMap.get(m.getId()).get(i).getCnt());
-						JLabel cntInfo = new JLabel("수량 ");
-
+						JLabel itemInfo = new JLabel("상품 가격 : " + SellDAO.historyMap.get(m.getId()).get(i).getPrice());
+						JLabel cntInfo = new JLabel("수량 : " + SellDAO.historyMap.get(m.getId()).get(i).getCnt());
 						JTextField cntText = new JTextField();
+						JLabel sizeInfo = new JLabel("사이즈 : " + SellDAO.historyMap.get(m.getId()).get(i).getSize());
 
-						nameInfo.setBounds(300, 13 + ((i % 5) * 110), 100, 50);
-						itemInfo.setBounds(300, 13 + ((i % 5) * 110), 200, 100);
-						cntInfo.setBounds(300, 13 + ((i % 5) * 110), 100, 150);
-						cntText.setBounds(350, cntInfo.getY() + 65, 40, 20);
+						nameInfo.setBounds(300, 13 + ((i % 5) * 110), 100, 15);
+						itemInfo.setBounds(300, 38 + ((i % 5) * 110), 200, 15);
+						cntInfo.setBounds(300, 63 + ((i % 5) * 110), 200, 15);
+						sizeInfo.setBounds(300, 88 + ((i % 5) * 110), 400, 15);
 
 						itemInfo.putClientProperty("id", SellDAO.historyMap.get(m.getId()).get(i).getId());
 
@@ -125,20 +123,18 @@ public class HistoryPanel extends JPanel {
 						pgNum.get(Integer.parseInt(pageBtn.getText()) - 1).add(itemInfo);
 						pgNum.get(Integer.parseInt(pageBtn.getText()) - 1).add(cntInfo);
 						pgNum.get(Integer.parseInt(pageBtn.getText()) - 1).add(cntText);
+						pgNum.get(Integer.parseInt(pageBtn.getText()) - 1).add(sizeInfo);
 
 						RoundedButton removeBtn = new RoundedButton("삭제");
 						removeBtn.setBounds(500, 25 + ((i % 5) * 115), 65, 50);
 						removeBtn.putClientProperty("id", SellDAO.historyMap.get(m.getId()).get(i).getId());
 						pgNum.get(Integer.parseInt(pageBtn.getText()) - 1).add(removeBtn);
 
-						
-
 						RoundedButton editBtn = new RoundedButton("변경");
 						editBtn.setBounds(430, 25 + ((i % 5) * 115), 65, 50);
 						editBtn.putClientProperty("id", SellDAO.historyMap.get(m.getId()).get(i).getId());
 						pgNum.get(Integer.parseInt(pageBtn.getText()) - 1).add(editBtn);
 
-						
 					}
 				}
 
@@ -160,16 +156,42 @@ public class HistoryPanel extends JPanel {
 						pgNum.get(Integer.parseInt(pageBtn.getText()) - 1).add(img);
 
 						JLabel nameInfo = new JLabel("상품명 : " + SellDAO.historyMap.get(m.getId()).get(i).getName()); // 상품명
-						JLabel itemInfo = new JLabel("상품 가격 : " + SellDAO.historyMap.get(m.getId()).get(i).getPrice()
-								* SellDAO.historyMap.get(m.getId()).get(i).getCnt());
-						JLabel cntInfo = new JLabel("수량 ");
-
+						JLabel itemInfo = new JLabel("상품 가격 : " + SellDAO.historyMap.get(m.getId()).get(i).getPrice());
+						JLabel cntInfo = new JLabel("수량 " + SellDAO.historyMap.get(m.getId()).get(i).getCnt());
 						JTextField cntText = new JTextField();
+						JLabel sizeInfo = new JLabel("사이즈" + SellDAO.historyMap.get(m.getId()).get(i).getSize());
 
-						nameInfo.setBounds(300, 13 + ((i % 5) * 110), 100, 50);
-						itemInfo.setBounds(300, 13 + ((i % 5) * 110), 200, 100);
-						cntInfo.setBounds(300, 13 + ((i % 5) * 110), 100, 150);
-						cntText.setBounds(350, cntInfo.getY() + 65, 40, 20);
+						Choice size = new Choice();
+
+						if (CartDAO.cartMap.get(m.getId()).get(i).getKind().equals("상의")) {
+							size.add(CartDAO.cartMap.get(m.getId()).get(i).getSize());
+							size.add("size");
+							size.add("S");
+							size.add("M");
+							size.add("L");
+						} else if (CartDAO.cartMap.get(m.getId()).get(i).getKind().equals("하의")) {
+							size.add(CartDAO.cartMap.get(m.getId()).get(i).getSize());
+							size.add("size");
+							size.add("28");
+							size.add("30");
+							size.add("32");
+							size.add("34");
+						} else if (CartDAO.cartMap.get(m.getId()).get(i).getKind().equals("신발")) {
+							size.add(CartDAO.cartMap.get(m.getId()).get(i).getSize());
+							size.add("size");
+							size.add("240");
+							size.add("250");
+							size.add("260");
+							size.add("270");
+							size.add("280");
+						}
+
+						nameInfo.setBounds(300, 13 + ((i % 5) * 110), 100, 15);
+						itemInfo.setBounds(300, 38 + ((i % 5) * 110), 200, 15);
+						cntInfo.setBounds(300, 63 + ((i % 5) * 110), 100, 15);
+						cntText.setBounds(350, 58 + ((i % 5) * 110), 60, 20);
+						sizeInfo.setBounds(300, 88 + ((i % 5) * 110), 400, 15);
+						
 
 						itemInfo.putClientProperty("id", SellDAO.historyMap.get(m.getId()).get(i).getId());
 
@@ -179,20 +201,19 @@ public class HistoryPanel extends JPanel {
 						pgNum.get(Integer.parseInt(pageBtn.getText()) - 1).add(itemInfo);
 						pgNum.get(Integer.parseInt(pageBtn.getText()) - 1).add(cntInfo);
 						pgNum.get(Integer.parseInt(pageBtn.getText()) - 1).add(cntText);
-
+						pgNum.get(Integer.parseInt(pageBtn.getText()) - 1).add(sizeInfo);
+						
+						
 						RoundedButton removeBtn = new RoundedButton("삭제");
 						removeBtn.setBounds(500, 25 + ((i % 5) * 115), 65, 50);
 						removeBtn.putClientProperty("id", SellDAO.historyMap.get(m.getId()).get(i).getId());
 						pgNum.get(Integer.parseInt(pageBtn.getText()) - 1).add(removeBtn);
-
-						
 
 						RoundedButton editBtn = new RoundedButton("변경");
 						editBtn.setBounds(430, 25 + ((i % 5) * 115), 65, 50);
 						editBtn.putClientProperty("id", SellDAO.historyMap.get(m.getId()).get(i).getId());
 						pgNum.get(Integer.parseInt(pageBtn.getText()) - 1).add(editBtn);
 
-						
 					}
 				}
 
@@ -250,18 +271,17 @@ public class HistoryPanel extends JPanel {
 		mainBtn.setBackground(new Color(32, 32, 32));
 		mainBtn.setFont(new Font("나눔고딕코딩", Font.BOLD, 18));
 		mainBtn.setForeground(new Color(255, 255, 255));
-		
+
 		mainBtn.addActionListener(new ActionListener() {
-			
+
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				mainFrame.getInstance(new ShopPanel());
-				
+
 			}
 		});
-		
+
 		bottomSet.add(mainBtn);
-		
 
 		add(bottomSet);
 	}
