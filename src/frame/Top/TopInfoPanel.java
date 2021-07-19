@@ -69,6 +69,7 @@ public class TopInfoPanel extends JPanel {
 		TextArea info = new TextArea("\n ● 상품 이름" + "\n" + "    " + item.getName() + "\n" + "\n ● 상품 가격\n " + "    "
 				+ item.getPrice() + "\n" + "\n ● 상품 정보" + "\n" + "    " + item.getItemInfo(), 0, 0,
 				TextArea.SCROLLBARS_VERTICAL_ONLY);
+		
 		info.setSize(580, 280);
 		info.setLocation(0, 375);
 		info.setBackground(new Color(255, 255, 255));

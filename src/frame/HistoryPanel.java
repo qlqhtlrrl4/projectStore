@@ -6,6 +6,7 @@ import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.Image;
+import java.awt.TextArea;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -19,6 +20,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import customDAO.CartDAO;
+import customDAO.ItemDAO;
 import customDAO.MyInfo;
 import customDAO.SellDAO;
 import view.CustomFont;
@@ -32,6 +34,8 @@ public class HistoryPanel extends JPanel {
 	JPanel cartViewPanel;
 	ArrayList<JPanel> pgNum = new ArrayList<>();
 	JPanel pa;
+	
+	int itemId = 0;
 
 	int partMoney = 0;
 	int payMoney = 0;
@@ -45,7 +49,7 @@ public class HistoryPanel extends JPanel {
 	public HistoryPanel() {
 	}
 
-	public HistoryPanel(MyInfo m, SellDAO h) {
+	public HistoryPanel(MyInfo m, CartDAO cart,SellDAO h) {
 
 		this.m = m;
 
@@ -130,7 +134,7 @@ public class HistoryPanel extends JPanel {
 						detailBtn.putClientProperty("id", SellDAO.historyMap.get(m.getId()).get(i).getId());
 						pgNum.get(Integer.parseInt(pageBtn.getText()) - 1).add(detailBtn);
 						
-/*						detailBtn.addActionListener(new ActionListener() {
+						detailBtn.addActionListener(new ActionListener() {
 							
 							@Override
 							public void actionPerformed(ActionEvent e) {
@@ -138,9 +142,37 @@ public class HistoryPanel extends JPanel {
 								
 								JFrame detailPage = new JFrame();
 								detailPage.setLayout(null);
+								detailPage.setSize(600,800);
+								detailPage.setBackground(Color.WHITE);
+								int id = Integer.parseInt(String.valueOf((detailBtn.getClientProperty("id"))));
+								
+								
+								ImageIcon icon = new ImageIcon(ItemDAO.itemList.get(id).getItemUrl());
+								
+								Image image = icon.getImage();
+								Image newImg = image.getScaledInstance(350, 340, java.awt.Image.SCALE_SMOOTH);
+								ImageIcon newIcon = new ImageIcon(newImg);
+								JLabel img = new JLabel(newIcon);
+								img.setBounds(20, 0, 500, 370);
+								detailPage.add(img);
+															
+								
+								TextArea info = new TextArea("\n◈ 상품 이름" + "\n" + "   " + ItemDAO.itemList.get(id).getName() + "\n" + "\n◈ 상품 가격\n " + "   "
+										+ ItemDAO.itemList.get(id).getPrice() + "\n" + "\n◈ 상품 정보" + "\n" + "   " + ItemDAO.itemList.get(id).getItemInfo(), 0, 0,
+										TextArea.SCROLLBARS_VERTICAL_ONLY);
+
+								info.setSize(580, 350);
+								info.setLocation(0, 375);
+								info.setBackground(new Color(0xFFD700));
+								info.setFont(new Font(Font.DIALOG, Font.BOLD, 20));
+								detailPage.add(info);
+								detailPage.setDefaultCloseOperation(detailPage.DISPOSE_ON_CLOSE);
+								
+								detailPage.setVisible(true);
+								
 							}
 						});
-*/
+
 					}
 				}
 
@@ -277,7 +309,7 @@ public class HistoryPanel extends JPanel {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				mainFrame.getInstance(new ShopPanel());
+				mainFrame.getInstance(new Kinds(m,cart,h));
 
 			}
 		});

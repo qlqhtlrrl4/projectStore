@@ -236,7 +236,7 @@ public class MyPage extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				
-				mainFrame.getInstance(new HistoryPanel(m, history));
+				mainFrame.getInstance(new HistoryPanel(m, cart,history));
 			}
 		});
 
