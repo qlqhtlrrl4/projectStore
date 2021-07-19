@@ -69,7 +69,7 @@ public class ShoesInfoPanel extends JPanel {
 
 		info.setSize(580, 280);
 		info.setLocation(0, 375);
-		info.setBackground(new Color(0xFFD700));
+		info.setBackground(new Color(255, 255, 255));
 		info.setFont(new Font(Font.DIALOG, Font.BOLD, 20));
 		add(info);
 		// 하단의 버튼

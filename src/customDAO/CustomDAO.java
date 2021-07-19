@@ -70,7 +70,7 @@ public class CustomDAO {
 	public String findId(String name) {
 
 		for (int i = 0; i < customList.size(); i++) {
-			if (customList.get(i).getId().equals(name)) {
+			if (customList.get(i).getName().equals(name)) {
 				return customList.get(i).getId();
 			}
 		}

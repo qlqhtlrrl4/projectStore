@@ -202,8 +202,8 @@ public class BeginPanel extends JPanel {
 			public void actionPerformed(ActionEvent arg0) {
 				String id = JOptionPane.showInputDialog("아이디를 입력하시오 ");
 
-				if (!(custom.findId(id) == "")) {
-					String pw = custom.findId(id);
+				if (!(custom.findPw(id) == "")) {
+					String pw = custom.findPw(id);
 					JOptionPane.showMessageDialog(null, "pw : " + pw);
 				} else {
 					JOptionPane.showMessageDialog(null, "정보가 없습니다.");

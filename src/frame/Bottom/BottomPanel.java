@@ -47,8 +47,9 @@ public class BottomPanel extends JPanel {
 		RoundedButton btnJean = new RoundedButton("청바지");
 		btnJean.setBounds(72, 400, 185, 100);
 		btnJean.setLayout(null);
-		btnJean.setBackground(new Color(0xA6A6A6));
+		btnJean.setBackground(new Color(0,0,0));
 		btnJean.setFont(new Font("나눔고딕코딩", Font.BOLD, 22));
+		btnJean.setForeground(new Color(255, 255, 255));
 		add(btnJean);
 
 		btnJean.addActionListener(new ActionListener() {
@@ -63,8 +64,9 @@ public class BottomPanel extends JPanel {
 		RoundedButton btnShorts = new RoundedButton("반바지");
 		btnShorts.setBounds(320, 400, 185, 100);
 		btnShorts.setLayout(null);
-		btnShorts.setBackground(new Color(0xA6A6A6));
+		btnShorts.setBackground(new Color(0, 0, 0));
 		btnShorts.setFont(new Font("나눔고딕코딩", Font.BOLD, 22));
+		btnShorts.setForeground(new Color(255, 255, 255));
 		add(btnShorts);
 
 		btnShorts.addActionListener(new ActionListener() {

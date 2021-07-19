@@ -107,7 +107,8 @@ public class BottomInfoPanel extends JPanel {
 		add(countLabel2);
 
 		Choice size = new Choice();
-
+		
+		size.add("size");
 		size.add("28");
 		size.add("30");
 		size.add("32");
@@ -123,7 +124,7 @@ public class BottomInfoPanel extends JPanel {
 
 		info.setSize(580, 280);
 		info.setLocation(0, 345);
-		info.setBackground(new Color(0xFFD700));
+		info.setBackground(new Color(255, 255, 255));
 		info.setFont(new Font(Font.DIALOG, Font.BOLD, 20));
 		add(info);
 
