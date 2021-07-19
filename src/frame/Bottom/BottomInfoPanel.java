@@ -24,6 +24,7 @@ import customDAO.MyInfo;
 import customDAO.SellDAO;
 import frame.Kinds;
 import frame.mainFrame;
+import view.CustomFont;
 import view.RoundedButton;
 
 public class BottomInfoPanel extends JPanel {
@@ -35,6 +36,9 @@ public class BottomInfoPanel extends JPanel {
 	int itemId;
 	JTextField countField;
 	List<ImageIcon> itemImg;
+	
+	CustomFont baemin = new CustomFont();
+	Font font = baemin.getCreateFont2();
 
 	public BottomInfoPanel(Items item, MyInfo m, CartDAO c, SellDAO history) {
 
@@ -70,9 +74,9 @@ public class BottomInfoPanel extends JPanel {
 		bottomSet.setLayout(new GridLayout(1, 3, 5, 0));
 		bottomSet.setBackground(Color.WHITE);
 
-		RoundedButton backBtn = new RoundedButton("뒤로가기");
+		RoundedButton backBtn = new RoundedButton("BACK");
 		backBtn.setBackground(new Color(32, 32, 32));
-		backBtn.setFont(new Font("나눔고딕코딩", Font.BOLD, 18));
+		backBtn.setFont(font);
 		backBtn.setForeground(new Color(255, 255, 255));
 		bottomSet.add(backBtn);
 
@@ -121,19 +125,20 @@ public class BottomInfoPanel extends JPanel {
 		TextArea info = new TextArea("\n  ◎브랜드명" + "\n" + "   " + item.getName() + "\n\n" + "  ◎상품가격" + "\n" + "   "
 				+ item.getPrice() + "원" + "\n\n  ◎상품설명" + "\n" + "   " + item.getItemInfo(), 0, 0,
 				TextArea.SCROLLBARS_VERTICAL_ONLY);
-
+		
+		info.setFont(font);
 		info.setSize(580, 280);
 		info.setLocation(0, 345);
 		info.setBackground(new Color(255, 255, 255));
 		info.setFont(new Font(Font.DIALOG, Font.BOLD, 20));
 		add(info);
 
-		RoundedButton sellBtn = new RoundedButton("구매하기");
+		RoundedButton sellBtn = new RoundedButton("BUY NOW");
 
 		sellBtn.setBackground(new Color(32, 32, 32));
 		sellBtn.setFont(new Font("나눔고딕코딩", Font.BOLD, 18));
 		sellBtn.setForeground(new Color(255, 255, 255));
-		bottomSet.add(sellBtn);
+		//bottomSet.add(sellBtn);
 
 		sellBtn.addActionListener(new ActionListener() {
 
@@ -178,12 +183,13 @@ public class BottomInfoPanel extends JPanel {
 			}
 		});
 
-		RoundedButton cartBnt = new RoundedButton("장바구니");
+		RoundedButton cartBnt = new RoundedButton("ADD TO CART");
 
 		cartBnt.setBackground(new Color(32, 32, 32));
-		cartBnt.setFont(new Font("나눔고딕코딩", Font.BOLD, 18));
+		cartBnt.setFont(font);
 		cartBnt.setForeground(new Color(255, 255, 255));
 		bottomSet.add(cartBnt);
+		bottomSet.add(sellBtn);
 
 		cartBnt.addActionListener(new ActionListener() {
 

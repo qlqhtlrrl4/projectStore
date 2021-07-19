@@ -18,6 +18,7 @@ import customDAO.MyInfo;
 import customDAO.SellDAO;
 import frame.Kinds;
 import frame.mainFrame;
+import view.CustomFont;
 import view.RoundedButton;
 
 public class BottomJean extends JPanel {
@@ -27,10 +28,14 @@ public class BottomJean extends JPanel {
 		setLayout(null);
 		setSize(600, 800);
 		setBackground(Color.WHITE);
+		
+		CustomFont baemin = new CustomFont();
+		Font font = baemin.getCreateFont2();
 
 		ImageIcon bottom1 = new ImageIcon("모드나인.jpg");
 		JButton btnBottom1 = new JButton(bottom1);
 		btnBottom1.setName("모드나인");
+		
 
 		btnBottom1.setSize(185, 250);
 		btnBottom1.setLocation(72, 30);
@@ -103,10 +108,10 @@ public class BottomJean extends JPanel {
 		bottomSet.setLayout(new GridLayout(1,2,5,0));
 		bottomSet.setBackground(Color.WHITE);
 
-		RoundedButton btnBack = new RoundedButton("뒤로가기");
+		RoundedButton btnBack = new RoundedButton("BACK");
 
 		btnBack.setBackground(new Color(32, 32, 32));
-		btnBack.setFont(new Font("나눔고딕코딩", Font.BOLD, 18));
+		btnBack.setFont(font);
 		btnBack.setForeground(new Color(255, 255, 255));
 		bottomSet.add(btnBack);
 
@@ -118,21 +123,6 @@ public class BottomJean extends JPanel {
 			}
 		});
 
-		RoundedButton btnNext = new RoundedButton("처음 페이지");
-
-		btnNext.setBackground(new Color(32, 32, 32));
-		btnNext.setFont(new Font("나눔고딕코딩", Font.BOLD, 18));
-		btnNext.setForeground(new Color(255, 255, 255));
-		bottomSet.add(btnNext);
-
-		btnNext.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				
-				mainFrame.getInstance(new Kinds(m, cart, history));
-			}
-		});
 
 		add(bottomSet);
 

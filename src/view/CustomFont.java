@@ -47,6 +47,26 @@ public class CustomFont {
 		
 	}
 	
+	public Font getCreateFont2() {
+		Font customFont = null;
+		try {
+		    //create the font to use. Specify the size!
+			customFont = Font.createFont(Font.TRUETYPE_FONT, new File("BMHANNAPro.ttf")).deriveFont(23f);
+		    GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
+		    //register the font
+		    ge.registerFont(customFont);
+		} catch (IOException e) {
+		    e.printStackTrace();
+		} catch(FontFormatException e) {
+		    e.printStackTrace();
+		}
+		
+	
+		return customFont;
+		
+		
+	}
+	
 	
 	
 

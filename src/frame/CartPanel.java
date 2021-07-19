@@ -43,6 +43,9 @@ public class CartPanel extends JPanel {
 	JCheckBox select;
 	MyInfo m;
 
+	CustomFont baemin = new CustomFont();
+	Font font = baemin.getCreateFont2();
+	
 	public CartPanel() {
 	}
 	
@@ -50,7 +53,7 @@ public class CartPanel extends JPanel {
 
 		this.m = m;
 
-		CustomFont font = new CustomFont();
+		
 
 		setLayout(null);
 		setSize(600, 800);
@@ -62,7 +65,7 @@ public class CartPanel extends JPanel {
 
 		pa = new JPanel();
 		pa.setBounds(0, 570, 600, 40);
-		pa.setBackground(Color.gray);
+		pa.setBackground(Color.WHITE);
 		pa.setLayout(new FlowLayout());
 
 		itemImg.clear();
@@ -85,7 +88,8 @@ public class CartPanel extends JPanel {
 			pgNum.get(0).setVisible(true);
 
 			for (int j = 0; j < panelCount; j++) {
-				JButton pageBtn = new JButton(String.valueOf(j + 1));
+				RoundedButton pageBtn = new RoundedButton(String.valueOf(j + 1));
+				pageBtn.setFont(font);
 
 				if (Integer.parseInt(pageBtn.getText()) == panelCount) {
 
@@ -132,9 +136,10 @@ public class CartPanel extends JPanel {
 						JLabel itemInfo = new JLabel("상품 가격 : " + CartDAO.cartMap.get(m.getId()).get(i).getPrice()
 								* CartDAO.cartMap.get(m.getId()).get(i).getCnt());
 						JLabel cntInfo = new JLabel("수량 ");
+						
 
-						JTextField cntText = new JTextField();
-						JLabel sizeInfo = new JLabel("사이즈");
+						JTextField cntText = new JTextField();			
+						JLabel sizeInfo = new JLabel("사이즈");						
 						Choice size = new Choice();
 						
 						nameInfo.setBounds(300, 13 + ((i % 5) * 110), 100, 15);
@@ -184,6 +189,7 @@ public class CartPanel extends JPanel {
 						
 						
 						RoundedButton removeBtn = new RoundedButton("삭제");
+								
 						removeBtn.setBounds(500, 25 + ((i % 5) * 115), 65, 50);
 						removeBtn.putClientProperty("id", CartDAO.cartMap.get(m.getId()).get(i).getId());
 						pgNum.get(Integer.parseInt(pageBtn.getText()) - 1).add(removeBtn);
@@ -200,6 +206,7 @@ public class CartPanel extends JPanel {
 						});
 
 						RoundedButton editBtn = new RoundedButton("변경");
+						
 						editBtn.setBounds(430, 25 + ((i % 5) * 115), 65, 50);
 						editBtn.putClientProperty("id", CartDAO.cartMap.get(m.getId()).get(i).getId());
 						pgNum.get(Integer.parseInt(pageBtn.getText()) - 1).add(editBtn);
@@ -273,6 +280,7 @@ public class CartPanel extends JPanel {
 						cntText.setBounds(350, 58 + ((i % 5) * 110), 60, 20);
 						sizeInfo.setBounds(300, 88+ ((i % 5) * 110), 40, 15);
 						size.setBounds(350, 84+((i % 5) * 110), 70, 20);
+						
 
 						itemInfo.putClientProperty("id", CartDAO.cartMap.get(m.getId()).get(i).getId());
 
@@ -313,6 +321,7 @@ public class CartPanel extends JPanel {
 						
 						
 						RoundedButton removeBtn = new RoundedButton("삭제");
+						
 						removeBtn.setBounds(500, 25 + ((i % 5) * 115), 65, 50);
 						removeBtn.putClientProperty("id", CartDAO.cartMap.get(m.getId()).get(i).getId());
 						pgNum.get(Integer.parseInt(pageBtn.getText()) - 1).add(removeBtn);
@@ -329,6 +338,7 @@ public class CartPanel extends JPanel {
 						});
 
 						RoundedButton editBtn = new RoundedButton("변경");
+						
 						editBtn.setBounds(430, 25 + ((i % 5) * 115), 65, 50);
 						editBtn.putClientProperty("id", CartDAO.cartMap.get(m.getId()).get(i).getId());
 						pgNum.get(Integer.parseInt(pageBtn.getText()) - 1).add(editBtn);
@@ -383,11 +393,11 @@ public class CartPanel extends JPanel {
 		bottomSet.setLayout(new GridLayout(1, 2, 5, 0));
 		bottomSet.setBackground(Color.WHITE);
 
-		RoundedButton backBtn = new RoundedButton("뒤로가기");
+		RoundedButton backBtn = new RoundedButton("BACK");
 
 		backBtn.setBackground(new Color(32, 32, 32));
 		backBtn.setForeground(new Color(255, 255, 255));
-		backBtn.setFont(new Font("나눔고딕코딩", Font.BOLD, 18));
+		backBtn.setFont(font);
 		bottomSet.add(backBtn);
 
 		backBtn.addActionListener(new ActionListener() {
@@ -398,11 +408,12 @@ public class CartPanel extends JPanel {
 			}
 		});
 
-		RoundedButton payBtn = new RoundedButton("결제하기");
+		RoundedButton payBtn = new RoundedButton("PAY");
+		payBtn.setFont(font);
 		payBtn.setBackground(new Color(32, 32, 32));
-		payBtn.setFont(new Font("나눔고딕코딩", Font.BOLD, 18));
+		payBtn.setFont(font);
 		payBtn.setForeground(new Color(255, 255, 255));
-		bottomSet.add(payBtn);
+		
 
 		payBtn.addActionListener(new ActionListener() {
 
@@ -444,11 +455,13 @@ public class CartPanel extends JPanel {
 			}
 		});
 
-		RoundedButton partPayBtn = new RoundedButton("부분결제");
+		RoundedButton partPayBtn = new RoundedButton("PARTIAL PAY");
+		partPayBtn.setFont(font);
 		partPayBtn.setBackground(new Color(32, 32, 32));
-		partPayBtn.setFont(new Font("나눔고딕코딩", Font.BOLD, 18));
+		partPayBtn.setFont(font);
 		partPayBtn.setForeground(new Color(255, 255, 255));
 		bottomSet.add(partPayBtn);
+		bottomSet.add(payBtn);
 
 		partPayBtn.addActionListener(new ActionListener() {
 

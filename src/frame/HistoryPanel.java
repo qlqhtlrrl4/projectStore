@@ -35,6 +35,8 @@ public class HistoryPanel extends JPanel {
 	ArrayList<JPanel> pgNum = new ArrayList<>();
 	JPanel pa;
 	
+	
+	
 	int itemId = 0;
 
 	int partMoney = 0;
@@ -53,7 +55,9 @@ public class HistoryPanel extends JPanel {
 
 		this.m = m;
 
-		CustomFont font = new CustomFont();
+		//CustomFont font = new CustomFont();
+		CustomFont baemin = new CustomFont();
+		Font font = baemin.getCreateFont2();
 
 		setLayout(null);
 		setSize(600, 800);
@@ -285,10 +289,10 @@ public class HistoryPanel extends JPanel {
 		bottomSet.setLayout(new GridLayout(1, 4, 5, 0));
 		bottomSet.setBackground(Color.WHITE);
 
-		RoundedButton backBtn = new RoundedButton("뒤로가기");
+		RoundedButton backBtn = new RoundedButton("BACK");
 
 		backBtn.setBackground(new Color(32, 32, 32));
-		backBtn.setFont(new Font("나눔고딕코딩", Font.BOLD, 18));
+		backBtn.setFont(font);
 		backBtn.setForeground(new Color(255, 255, 255));
 		bottomSet.add(backBtn);
 
@@ -300,9 +304,9 @@ public class HistoryPanel extends JPanel {
 			}
 		});
 
-		RoundedButton mainBtn = new RoundedButton("메인으로");
+		RoundedButton mainBtn = new RoundedButton("MAIN");
 		mainBtn.setBackground(new Color(32, 32, 32));
-		mainBtn.setFont(new Font("나눔고딕코딩", Font.BOLD, 18));
+		mainBtn.setFont(font);
 		mainBtn.setForeground(new Color(255, 255, 255));
 
 		mainBtn.addActionListener(new ActionListener() {

@@ -18,6 +18,7 @@ import customDAO.Items;
 import customDAO.MyInfo;
 import customDAO.SellDAO;
 import frame.mainFrame;
+import view.CustomFont;
 import view.RoundedButton;
 
 public class SlipperPanel extends JPanel {
@@ -29,6 +30,9 @@ public class SlipperPanel extends JPanel {
 		setLayout(null);
 		setSize(600, 800);
 		setBackground(Color.WHITE);
+		
+		CustomFont baemin = new CustomFont();
+		Font font = baemin.getCreateFont2();
 
 		JPanel bottomSet = new JPanel();
 
@@ -49,13 +53,13 @@ public class SlipperPanel extends JPanel {
 		add(itemBtn1);
 
 		JLabel aLabel = new JLabel("island");
-		aLabel.setBounds(143, 280, 185, 20);
-		aLabel.setFont(new Font("나눔고딕코딩", Font.BOLD, 15));
+		aLabel.setBounds(138, 280, 185, 20);
+		aLabel.setFont(font);
 		add(aLabel);
 
 		JLabel aLabel2 = new JLabel("150,000");
-		aLabel2.setBounds(135, 300, 185, 20);
-		aLabel2.setFont(new Font("나눔고딕코딩", Font.BOLD, 15));
+		aLabel2.setBounds(130, 300, 185, 20);
+		aLabel2.setFont(font);
 		add(aLabel2);
 
 		itemBtn1.addActionListener(new ActionListener() {
@@ -79,13 +83,13 @@ public class SlipperPanel extends JPanel {
 		add(itemBtn2);
 
 		JLabel bLabel = new JLabel("taw&toe");
-		bLabel.setBounds(380, 280, 185, 20);
-		bLabel.setFont(new Font("나눔고딕코딩", Font.BOLD, 15));
+		bLabel.setBounds(375, 280, 185, 20);
+		bLabel.setFont(font);
 		add(bLabel);
 
 		JLabel bLabel2 = new JLabel("50,000");
-		bLabel2.setBounds(387, 300, 185, 20);
-		bLabel2.setFont(new Font("나눔고딕코딩", Font.BOLD, 15));
+		bLabel2.setBounds(377, 300, 185, 20);
+		bLabel2.setFont(font);
 		add(bLabel2);
 
 		itemBtn2.addActionListener(new ActionListener() {
@@ -111,13 +115,13 @@ public class SlipperPanel extends JPanel {
 		add(itemBtn3);
 
 		JLabel cLabel = new JLabel("YeezySlide");
-		cLabel.setBounds(125, 600, 185, 30);
-		cLabel.setFont(new Font("나눔고딕코딩", Font.BOLD, 15));
+		cLabel.setBounds(120, 600, 185, 30);
+		cLabel.setFont(font);
 		add(cLabel);
 
 		JLabel cLabel2 = new JLabel("250,000");
-		cLabel2.setBounds(138, 620, 185, 30);
-		cLabel2.setFont(new Font("나눔고딕코딩", Font.BOLD, 15));
+		cLabel2.setBounds(128, 620, 185, 30);
+		cLabel2.setFont(font);
 		add(cLabel2);
 
 		itemBtn3.addActionListener(new ActionListener() {
@@ -142,13 +146,13 @@ public class SlipperPanel extends JPanel {
 		add(itemBtn4);
 
 		JLabel dLabel = new JLabel("birkenStock");
-		dLabel.setBounds(370, 600, 185, 30);
-		dLabel.setFont(new Font("나눔고딕코딩", Font.BOLD, 15));
+		dLabel.setBounds(365, 600, 185, 30);
+		dLabel.setFont(font);
 		add(dLabel);
 
 		JLabel dLabel2 = new JLabel("80,000");
-		dLabel2.setBounds(387, 620, 185, 30);
-		dLabel2.setFont(new Font("나눔고딕코딩", Font.BOLD, 15));
+		dLabel2.setBounds(375, 620, 185, 30);
+		dLabel2.setFont(font);
 		add(dLabel2);
 
 		itemBtn4.addActionListener(new ActionListener() {
@@ -162,10 +166,10 @@ public class SlipperPanel extends JPanel {
 
 		// 이전페이지
 
-		RoundedButton backBtn = new RoundedButton("이전 페이지");
+		RoundedButton backBtn = new RoundedButton("BACK");
 
 		backBtn.setBackground(new Color(32, 32, 32));
-		backBtn.setFont(new Font("나눔고딕코딩", Font.BOLD, 18));
+		backBtn.setFont(font);
 		backBtn.setForeground(new Color(255, 255, 255));
 
 		bottomSet.add(backBtn);

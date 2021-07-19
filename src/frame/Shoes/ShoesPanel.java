@@ -17,6 +17,7 @@ import customDAO.MyInfo;
 import customDAO.SellDAO;
 import frame.Kinds;
 import frame.mainFrame;
+import view.CustomFont;
 import view.RoundedButton;
 
 public class ShoesPanel extends JPanel {
@@ -30,6 +31,9 @@ public class ShoesPanel extends JPanel {
 		setLayout(null);
 		setSize(600, 800);
 		setBackground(Color.WHITE);
+		
+		CustomFont baemin = new CustomFont();
+		Font font = baemin.getCreateFont2();
 
 		JPanel bottomSet = new JPanel();
 
@@ -37,74 +41,79 @@ public class ShoesPanel extends JPanel {
 		bottomSet.setLayout(new GridLayout(1, 3, 5, 0));
 		bottomSet.setBackground(Color.WHITE);
 
-		ImageIcon item1 = new ImageIcon("구두5.png");
+		/*ImageIcon item1 = new ImageIcon("구두5.png");
 		Image ximg = item1.getImage();
 		Image yimg = ximg.getScaledInstance(183, 183, java.awt.Image.SCALE_SMOOTH);
 		ImageIcon newimg = new ImageIcon(yimg);
 		JLabel j1 = new JLabel(newimg);
 		j1.setBounds(50, 50, 183, 183);
-		add(j1);
+		add(j1);*/
 
-		RoundedButton MensShoesBtn = new RoundedButton("구두");
-		MensShoesBtn.setBackground(new Color(0xA6A6A6));
-		MensShoesBtn.setSize(183, 87);
-		MensShoesBtn.setLocation(50, 250);
-		MensShoesBtn.setFont(new Font("나눔고딕코딩", Font.BOLD, 22));
+		RoundedButton MensShoesBtn = new RoundedButton("SHOES");
+		MensShoesBtn.setBackground(Color.WHITE);
+		MensShoesBtn.setSize(200, 70);
+		MensShoesBtn.setLocation(190, 120);
+		//TBtn.setFont(new Font("나눔고딕코딩", Font.BOLD, 22));
+		MensShoesBtn.setFont(font);
 
 		add(MensShoesBtn);
 
-		ImageIcon item2 = new ImageIcon("슬리퍼5.jpg");
+		/*ImageIcon item2 = new ImageIcon("슬리퍼5.jpg");
 		Image ximg2 = item2.getImage();
 		Image yimg2 = ximg2.getScaledInstance(183, 183, java.awt.Image.SCALE_SMOOTH);
 		ImageIcon newimg2 = new ImageIcon(yimg2);
 		JLabel j2 = new JLabel(newimg2);
 		j2.setBounds(350, 50, 183, 183);
-		add(j2);
+		add(j2);*/
 
-		RoundedButton SlipperBtn = new RoundedButton("슬리퍼");
+		RoundedButton SlipperBtn = new RoundedButton("SLIPPER");
 
-		SlipperBtn.setBackground(new Color(0xA6A6A6));
-		SlipperBtn.setSize(183, 87);
-		SlipperBtn.setLocation(350, 250);
-		SlipperBtn.setFont(new Font("나눔고딕코딩", Font.BOLD, 22));
+		SlipperBtn.setBackground(Color.WHITE);
+		SlipperBtn.setSize(200, 70);
+		SlipperBtn.setLocation(190, 240);
+		//TBtn.setFont(new Font("나눔고딕코딩", Font.BOLD, 22));
+		SlipperBtn.setFont(font);
 		add(SlipperBtn);
 
-		ImageIcon item3 = new ImageIcon("운동화.jpg");
+		/*ImageIcon item3 = new ImageIcon("운동화.jpg");
 		Image ximg3 = item3.getImage();
 		Image yimg3 = ximg3.getScaledInstance(183, 183, java.awt.Image.SCALE_SMOOTH);
 		ImageIcon newimg3 = new ImageIcon(yimg3);
 		JLabel j3 = new JLabel(newimg3);
 		j3.setBounds(50, 350, 183, 183);
-		add(j3);
+		add(j3);*/
 
-		RoundedButton rnBtn = new RoundedButton("운동화");
-		rnBtn.setBackground(new Color(0xA6A6A6));
-		rnBtn.setSize(183, 87);
-		rnBtn.setLocation(50, 550);
-		rnBtn.setFont(new Font("나눔고딕코딩", Font.BOLD, 22));
+		RoundedButton rnBtn = new RoundedButton("SPORTS SHOES");
+		rnBtn.setBackground(Color.WHITE);
+		rnBtn.setSize(200, 70);
+		rnBtn.setLocation(190, 360);
+		//TBtn.setFont(new Font("나눔고딕코딩", Font.BOLD, 22));
+		rnBtn.setFont(font);
 		add(rnBtn);
 
-		ImageIcon item4 = new ImageIcon("샌들.jpg");
+		/*ImageIcon item4 = new ImageIcon("샌들.jpg");
 		Image ximg4 = item4.getImage();
 		Image yimg4 = ximg4.getScaledInstance(183, 183, java.awt.Image.SCALE_SMOOTH);
 		ImageIcon newimg4 = new ImageIcon(yimg4);
 		JLabel j4 = new JLabel(newimg4);
 		j4.setBounds(350, 350, 183, 183);
-		add(j4);
+		add(j4);*/
 
-		RoundedButton sandleBtn = new RoundedButton("샌들");
+		RoundedButton sandleBtn = new RoundedButton("SANDAL");
 
-		sandleBtn.setBackground(new Color(0xA6A6A6));
-		sandleBtn.setSize(183, 87);
-		sandleBtn.setLocation(350, 550);
-		sandleBtn.setFont(new Font("나눔고딕코딩", Font.BOLD, 22));
+		sandleBtn.setBackground(Color.WHITE);
+		sandleBtn.setSize(200, 70);
+		sandleBtn.setLocation(190, 480);
+		//BlouseBtn.setFont(new Font("나눔고딕코딩", Font.BOLD, 22));
+		sandleBtn.setFont(font);
 		add(sandleBtn);
 
 		// 이전페이지
-		RoundedButton backBtn = new RoundedButton("이전 페이지");
+		RoundedButton backBtn = new RoundedButton("BACK");
 
 		backBtn.setBackground(new Color(32, 32, 32));
-		backBtn.setFont(new Font("나눔고딕코딩", Font.BOLD, 18));
+		//backBtn.setFont(new Font("나눔고딕코딩", Font.BOLD, 18));
+		backBtn.setFont(font);
 		backBtn.setForeground(new Color(255, 255, 255));
 		bottomSet.add(backBtn);
 

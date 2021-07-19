@@ -16,6 +16,7 @@ import customDAO.MyInfo;
 import customDAO.SellDAO;
 import frame.Kinds;
 import frame.mainFrame;
+import view.CustomFont;
 import view.RoundedButton;
 import customDAO.CartDAO;
 import customDAO.ItemDAO;
@@ -27,6 +28,9 @@ public class BottomShorts extends JPanel {
 		setLayout(null);
 		setSize(600, 800);
 		setBackground(Color.WHITE);
+		
+		CustomFont baemin = new CustomFont();
+		Font font = baemin.getCreateFont2();
 
 		// 하의5 정보
 		ImageIcon bottom5 = new ImageIcon("무신사 스탠다드.jpg");
@@ -110,12 +114,10 @@ public class BottomShorts extends JPanel {
 		bottomSet.setLayout(new GridLayout(1, 3, 5, 0));
 		bottomSet.setBackground(Color.WHITE);
 
-		RoundedButton btnBack = new RoundedButton("뒤로가기");
+		RoundedButton btnBack = new RoundedButton("BACK");
 
 		btnBack.setBackground(new Color(32, 32, 32));
-		/*btnBack.setSize(183, 87);
-		btnBack.setLocation(5, 0);*/
-		btnBack.setFont(new Font("나눔고딕코딩", Font.BOLD, 22));
+		btnBack.setFont(font);
 		btnBack.setForeground(new Color(255, 255, 255));
 		bottomSet.add(btnBack);
 
@@ -129,23 +131,6 @@ public class BottomShorts extends JPanel {
 			}
 		});
 
-		RoundedButton btnHome = new RoundedButton("처음 페이지");
-
-		btnHome.setBackground(new Color(32, 32, 32));
-		/*btnHome.setSize(183, 87);
-		btnHome.setLocation(391, 0);*/
-		btnHome.setForeground(new Color(255, 255, 255));
-		btnHome.setFont(new Font("나눔고딕코딩", Font.BOLD, 22));
-		bottomSet.add(btnHome);
-
-		btnHome.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-
-				mainFrame.getInstance(new Kinds(m, cart, history));
-			}
-		});
 
 		add(bottomSet);
 	}

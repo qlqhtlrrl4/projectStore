@@ -15,6 +15,7 @@ import customDAO.UserInfo;
 import frame.Bottom.BottomPanel;
 import frame.Shoes.ShoesPanel;
 import frame.Top.TopPanel;
+import view.CustomFont;
 import view.RoundedButton;
 
 public class Kinds extends JPanel {
@@ -28,20 +29,24 @@ public class Kinds extends JPanel {
 		setLayout(null);
 		setSize(600, 800);
 		setBackground(Color.WHITE);
+		
+		CustomFont baemin = new CustomFont();
+		Font font = baemin.getCreateFont2();
 
 		JPanel bottomSet = new JPanel();
 
 		bottomSet.setBounds(5, 660, 570, 75);
-		bottomSet.setLayout(new GridLayout(1,4,5,0));
+		bottomSet.setLayout(new GridLayout(1,1,5,0));
 		bottomSet.setBackground(Color.WHITE);
 		
-		RoundedButton topBtn = new RoundedButton("상의");
+		RoundedButton topBtn = new RoundedButton("TOP");
 
-		topBtn.setBackground(new Color(32, 32, 32));
-		topBtn.setFont(new Font("나눔고딕코딩", Font.BOLD, 18));
-		topBtn.setForeground(new Color(255, 255, 255));
-		
-		bottomSet.add(topBtn);
+		topBtn.setBackground(Color.WHITE);
+		topBtn.setSize(200, 70);
+		topBtn.setLocation(190, 120);
+		//TBtn.setFont(new Font("나눔고딕코딩", Font.BOLD, 22));
+		topBtn.setFont(font);
+		add(topBtn);
 		
 		topBtn.addActionListener(new ActionListener() {
 			@Override
@@ -50,12 +55,14 @@ public class Kinds extends JPanel {
 			}
 		});
 
-		RoundedButton bottomBtn = new RoundedButton("하의");
+		RoundedButton bottomBtn = new RoundedButton("BOTTOM");
 
-		bottomBtn.setBackground(new Color(32, 32, 32));
-		bottomBtn.setFont(new Font("나눔고딕코딩", Font.BOLD, 18));
-		bottomBtn.setForeground(new Color(255, 255, 255));
-		bottomSet.add(bottomBtn);
+		bottomBtn.setBackground(Color.WHITE);
+		bottomBtn.setSize(200, 70);
+		bottomBtn.setLocation(190, 280);
+		//KnitBtn.setFont(new Font("나눔고딕코딩", Font.BOLD, 22));
+		bottomBtn.setFont(font);
+		add(bottomBtn);
 
 		bottomBtn.addActionListener(new ActionListener() {
 			@Override
@@ -64,14 +71,14 @@ public class Kinds extends JPanel {
 			}
 		});
 
-		RoundedButton shoesBtn = new RoundedButton("신발");
+		RoundedButton shoesBtn = new RoundedButton("SHOES");
 
-		shoesBtn.setBackground(new Color(32, 32, 32));
-		shoesBtn.setFont(new Font("나눔고딕코딩", Font.BOLD, 18));
-		shoesBtn.setForeground(new Color(255, 255, 255));
-		
-		
-		bottomSet.add(shoesBtn);
+		shoesBtn.setBackground(Color.WHITE);
+		shoesBtn.setSize(200, 70);
+		shoesBtn.setLocation(190, 440);
+		//BlouseBtn.setFont(new Font("나눔고딕코딩", Font.BOLD, 22));
+		shoesBtn.setFont(font);
+		add(shoesBtn);
 
 		shoesBtn.addActionListener(new ActionListener() {
 			@Override
@@ -80,10 +87,11 @@ public class Kinds extends JPanel {
 			}
 		});
 
-		RoundedButton backBtn = new RoundedButton("이전 페이지");
+		RoundedButton backBtn = new RoundedButton("BACK");
 
 		backBtn.setBackground(new Color(32, 32, 32));
-		backBtn.setFont(new Font("나눔고딕코딩", Font.BOLD, 18));
+		//backBtn.setFont(new Font("나눔고딕코딩", Font.BOLD, 18));
+		backBtn.setFont(font);
 		backBtn.setForeground(new Color(255, 255, 255));
 		
 		bottomSet.add(backBtn);

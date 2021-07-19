@@ -19,6 +19,7 @@ import customDAO.SellDAO;
 import frame.Kinds;
 import frame.ShopPanel;
 import frame.mainFrame;
+import view.CustomFont;
 import view.RoundedButton;
 
 public class BottomPanel extends JPanel {
@@ -28,8 +29,11 @@ public class BottomPanel extends JPanel {
 		setLayout(null);
 		setSize(600, 800);
 		setBackground(Color.WHITE);
+		
+		CustomFont baemin = new CustomFont();
+		Font font = baemin.getCreateFont2();
 
-		// 청바지 버튼 위 이미지
+		/*// 청바지 버튼 위 이미지
 		ImageIcon jean = new ImageIcon("청바지.jpg");
 		JLabel lb1 = new JLabel(jean);
 
@@ -41,15 +45,15 @@ public class BottomPanel extends JPanel {
 		JLabel lb2 = new JLabel(shorts);
 
 		add(lb2);
-		lb2.setBounds(320, 100, 185, 250);
+		lb2.setBounds(320, 100, 185, 250);*/
 
 		// 청바지 버튼 설정
-		RoundedButton btnJean = new RoundedButton("청바지");
-		btnJean.setBounds(72, 400, 185, 100);
-		btnJean.setLayout(null);
-		btnJean.setBackground(new Color(0,0,0));
-		btnJean.setFont(new Font("나눔고딕코딩", Font.BOLD, 22));
-		btnJean.setForeground(new Color(255, 255, 255));
+		RoundedButton btnJean = new RoundedButton("BLUE JEANS");
+		btnJean.setBackground(Color.WHITE);
+		btnJean.setSize(200, 70);
+		btnJean.setLocation(190, 220);
+		//TBtn.setFont(new Font("나눔고딕코딩", Font.BOLD, 22));
+		btnJean.setFont(font);
 		add(btnJean);
 
 		btnJean.addActionListener(new ActionListener() {
@@ -61,12 +65,12 @@ public class BottomPanel extends JPanel {
 		});
 
 		// 반바지 버튼 설정
-		RoundedButton btnShorts = new RoundedButton("반바지");
-		btnShorts.setBounds(320, 400, 185, 100);
-		btnShorts.setLayout(null);
-		btnShorts.setBackground(new Color(0, 0, 0));
-		btnShorts.setFont(new Font("나눔고딕코딩", Font.BOLD, 22));
-		btnShorts.setForeground(new Color(255, 255, 255));
+		RoundedButton btnShorts = new RoundedButton("SHORTS");
+		btnShorts.setBackground(Color.WHITE);
+		btnShorts.setSize(200, 70);
+		btnShorts.setLocation(190, 380);
+		//KnitBtn.setFont(new Font("나눔고딕코딩", Font.BOLD, 22));
+		btnShorts.setFont(font);
 		add(btnShorts);
 
 		btnShorts.addActionListener(new ActionListener() {
@@ -84,10 +88,11 @@ public class BottomPanel extends JPanel {
 		bottomSet.setLayout(new GridLayout(1,2,5,0));
 		bottomSet.setBackground(Color.WHITE);
 
-		RoundedButton backBtn = new RoundedButton("이전 페이지");
+		RoundedButton backBtn = new RoundedButton("BACK");
 
 		backBtn.setBackground(new Color(32, 32, 32));
-		backBtn.setFont(new Font("나눔고딕코딩", Font.BOLD, 18));
+		//backBtn.setFont(new Font("나눔고딕코딩", Font.BOLD, 18));
+		backBtn.setFont(font);
 		backBtn.setForeground(new Color(255, 255, 255));
 
 		bottomSet.add(backBtn);
@@ -100,8 +105,9 @@ public class BottomPanel extends JPanel {
 				mainFrame.getInstance(new Kinds(m,cart,history));
 			}
 		});
+		add(bottomSet);
 		
-		RoundedButton mainBtn = new RoundedButton("처음으로");
+		/*RoundedButton mainBtn = new RoundedButton("처음으로");
 
 		mainBtn.setBackground(new Color(32, 32, 32));
 		mainBtn.setFont(new Font("나눔고딕코딩", Font.BOLD, 18));
@@ -117,6 +123,6 @@ public class BottomPanel extends JPanel {
 				mainFrame.getInstance(new ShopPanel(m));
 				
 			}
-		});
+		});*/
 	}
 }

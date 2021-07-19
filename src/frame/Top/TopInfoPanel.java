@@ -26,6 +26,7 @@ import customDAO.MyInfo;
 import customDAO.SellDAO;
 import frame.Kinds;
 import frame.mainFrame;
+import view.CustomFont;
 import view.RoundedButton;
 
 public class TopInfoPanel extends JPanel {
@@ -33,6 +34,9 @@ public class TopInfoPanel extends JPanel {
 	MyInfo m;
 	CartDAO c;
 	int payMoney;
+	
+	CustomFont baemin = new CustomFont();
+	Font font = baemin.getCreateFont2();
 
 	JTextField countField;
 	List<ImageIcon> itemImg;
@@ -69,12 +73,13 @@ public class TopInfoPanel extends JPanel {
 		TextArea info = new TextArea("\n ● 상품 이름" + "\n" + "    " + item.getName() + "\n" + "\n ● 상품 가격\n " + "    "
 				+ item.getPrice() + "\n" + "\n ● 상품 정보" + "\n" + "    " + item.getItemInfo(), 0, 0,
 				TextArea.SCROLLBARS_VERTICAL_ONLY);
+		info.setFont(font);
 		
 		info.setSize(580, 280);
 		info.setLocation(0, 375);
 		info.setBackground(new Color(255, 255, 255));
 		info.setEditable(false);
-		info.setFont(new Font(Font.DIALOG, Font.PLAIN, 15));
+		info.setFont(font);
 		add(info);
 
 
@@ -83,7 +88,7 @@ public class TopInfoPanel extends JPanel {
 		opBtn.setBackground(Color.white);
 		opBtn.setSize(187, 30);
 		opBtn.setLocation(345, 105);
-		opBtn.setFont(new Font("나눔고딕코딩", Font.BOLD, 13));
+		//opBtn.setFont(font);
 		// oSet.add(opBtn);
 		add(opBtn);
 
@@ -126,7 +131,7 @@ public class TopInfoPanel extends JPanel {
 
 		RoundedButton backBtn = new RoundedButton("BACK");
 		backBtn.setBackground(new Color(32, 32, 32));
-		backBtn.setFont(new Font("나눔고딕코딩", Font.BOLD, 18));
+		backBtn.setFont(font);
 		backBtn.setForeground(new Color(255, 255, 255));
 
 		bottomSet.add(backBtn);
@@ -150,9 +155,9 @@ public class TopInfoPanel extends JPanel {
 		RoundedButton sellBtn = new RoundedButton("BUY NOW");
 
 		sellBtn.setBackground(new Color(32, 32, 32));
-		sellBtn.setFont(new Font("나눔고딕코딩", Font.BOLD, 18));
+		sellBtn.setFont(font);
 		sellBtn.setForeground(new Color(255, 255, 255));
-		bottomSet.add(sellBtn);
+		//bottomSet.add(sellBtn);
 
 		sellBtn.addActionListener(new ActionListener() {
 
@@ -199,12 +204,11 @@ public class TopInfoPanel extends JPanel {
 		RoundedButton cartBnt = new RoundedButton("ADD TO CART");
 
 		cartBnt.setBackground(new Color(32, 32, 32));
-		cartBnt.setFont(new Font("나눔고딕코딩", Font.BOLD, 18));
+		cartBnt.setFont(font);
 		cartBnt.setForeground(new Color(255, 255, 255));
 
-		cartBnt.setFont(new Font("나눔고딕코딩", Font.BOLD, 18));
-		cartBnt.setForeground(new Color(255, 255, 255));
 		bottomSet.add(cartBnt);
+		bottomSet.add(sellBtn);
 
 		add(bottomSet);
 

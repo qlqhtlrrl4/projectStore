@@ -39,20 +39,25 @@ public class BeginPanel extends JPanel {
 		CustomDAO custom = new CustomDAO();
 		
 
-		RoundedButton loginButton = new RoundedButton("로그인");
-		RoundedButton joinButton = new RoundedButton("회원가입");
+		RoundedButton loginButton = new RoundedButton("LOGIN");
+		RoundedButton joinButton = new RoundedButton("JOIN");
 		RoundedButton infoCheckBtn = new RoundedButton("아이디 찾기");
 		RoundedButton infoCheckBtn2 = new RoundedButton("비밀번호 찾기");
 
 		CustomFont font = new CustomFont();
 
 		setF = font.getCreateFont();
+		
+		CustomFont baedal = new CustomFont();
+		Font setF2 = baedal.getCreateFont2();
+		
+		
 
-		loginButton.setFont(setF);
+		loginButton.setFont(setF2);
 		loginButton.setForeground(Color.WHITE);
-		joinButton.setFont(setF);
-		infoCheckBtn.setFont(setF);
-		infoCheckBtn2.setFont(setF);
+		joinButton.setFont(setF2);
+		infoCheckBtn.setFont(setF2);
+		infoCheckBtn2.setFont(setF2);
 
 		loginButton.setBackground(new Color(32, 32, 32));
 		joinButton.setBackground(new Color(224, 224, 224));

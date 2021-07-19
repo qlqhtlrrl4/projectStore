@@ -18,6 +18,7 @@ import customDAO.SellDAO;
 import frame.Kinds;
 
 import frame.mainFrame;
+import view.CustomFont;
 import view.RoundedButton;
 
 public class TopPanel extends JPanel {
@@ -27,6 +28,9 @@ public class TopPanel extends JPanel {
 		setLayout(null);
 		setSize(600, 800);
 		setBackground(Color.WHITE);
+		
+		CustomFont baemin = new CustomFont();
+		Font font = baemin.getCreateFont2();
 
 		JPanel bottomSet = new JPanel();
 		
@@ -38,7 +42,8 @@ public class TopPanel extends JPanel {
 		TBtn.setBackground(Color.WHITE);
 		TBtn.setSize(200, 70);
 		TBtn.setLocation(190, 120);
-		TBtn.setFont(new Font("나눔고딕코딩", Font.BOLD, 22));
+		//TBtn.setFont(new Font("나눔고딕코딩", Font.BOLD, 22));
+		TBtn.setFont(font);
 		add(TBtn);
 
 		TBtn.addActionListener(new ActionListener() {
@@ -54,7 +59,8 @@ public class TopPanel extends JPanel {
 		KnitBtn.setBackground(Color.WHITE);
 		KnitBtn.setSize(200, 70);
 		KnitBtn.setLocation(190, 240);
-		KnitBtn.setFont(new Font("나눔고딕코딩", Font.BOLD, 22));
+		//KnitBtn.setFont(new Font("나눔고딕코딩", Font.BOLD, 22));
+		KnitBtn.setFont(font);
 		add(KnitBtn);
 
 		// 니트페이지
@@ -70,7 +76,8 @@ public class TopPanel extends JPanel {
 		BlouseBtn.setBackground(Color.WHITE);
 		BlouseBtn.setSize(200, 70);
 		BlouseBtn.setLocation(190, 360);
-		BlouseBtn.setFont(new Font("나눔고딕코딩", Font.BOLD, 22));
+		//BlouseBtn.setFont(new Font("나눔고딕코딩", Font.BOLD, 22));
+		BlouseBtn.setFont(font);
 		add(BlouseBtn);
 
 		// 셔츠블라우스페이지
@@ -88,7 +95,8 @@ public class TopPanel extends JPanel {
 		MtmBtn.setBackground(Color.WHITE);
 		MtmBtn.setSize(200, 70);
 		MtmBtn.setLocation(190, 480);
-		MtmBtn.setFont(new Font("나눔고딕코딩", Font.BOLD, 22));
+		//MtmBtn.setFont(new Font("나눔고딕코딩", Font.BOLD, 22));
+		MtmBtn.setFont(font);
 		add(MtmBtn);
 
 		// 맨투맨후드티페이지
@@ -100,10 +108,11 @@ public class TopPanel extends JPanel {
 			}
 		});
 
-		RoundedButton backBtn = new RoundedButton("뒤로가기");
+		RoundedButton backBtn = new RoundedButton("BACK");
 
 		backBtn.setBackground(new Color(32, 32, 32));
-		backBtn.setFont(new Font("나눔고딕코딩", Font.BOLD, 18));
+		//backBtn.setFont(new Font("나눔고딕코딩", Font.BOLD, 18));
+		backBtn.setFont(font);
 		backBtn.setForeground(new Color(255, 255, 255));
 
 		bottomSet.add(backBtn);

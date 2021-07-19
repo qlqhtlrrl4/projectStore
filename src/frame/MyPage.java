@@ -45,9 +45,10 @@ public class MyPage extends JPanel {
 	public MyPage(MyInfo m, CartDAO cart, SellDAO history) {
 
 		// JPanel
-		CustomFont font = new CustomFont();
-		Font setF = font.getCreateFont();
-		Font titleF = font.TitleFont();
+		CustomFont baemin = new CustomFont();
+		//Font setF = font.getCreateFont();
+		Font font = baemin.getCreateFont2();
+		Font titleF = baemin.TitleFont();
 		setLayout(null);
 		setBackground(Color.WHITE);
 		setSize(600, 800);
@@ -62,7 +63,7 @@ public class MyPage extends JPanel {
 		//shopName.setHorizontalAlignment(JLabel.CENTER);
 		add(shopName);
 		
-		ImageIcon item1 = new ImageIcon("hu.jpg");
+		ImageIcon item1 = new ImageIcon("my.png");
 		Image ximg=item1.getImage();
 		Image yimg= ximg.getScaledInstance(150, 100, java.awt.Image.SCALE_SMOOTH);
 		ImageIcon newimg=new ImageIcon(yimg);
@@ -78,13 +79,13 @@ public class MyPage extends JPanel {
 		
 		RoundedButton member = new RoundedButton(UserInfo.getUserInfoMap((m.getId())).gradeCheck(UserInfo.getUserInfoMap(m.getId()).getTotal()));
 		member.setBackground(new Color(255,192,203));
-		member.setFont(setF);
+		member.setFont(font);
 		member.setSize(140,60);
 		member.setLocation(280,110);
 		add(member);
 		
-		RoundedButton topLogoutBtn = new RoundedButton("로그아웃");	
-		topLogoutBtn.setFont(setF);
+		RoundedButton topLogoutBtn = new RoundedButton("LOGOUT");	
+		topLogoutBtn.setFont(font);
 		topLogoutBtn.setBackground(new Color(220,255,255));
 		topLogoutBtn.setSize(150,60);
 		topLogoutBtn.setLocation(430,110);
@@ -122,13 +123,13 @@ public class MyPage extends JPanel {
 		
 		userIdLabel = new JLabel("이름 : ");
 		userIdLabel.setSize(100, 20);
-		userIdLabel.setFont(setF);
+		userIdLabel.setFont(font);
 		userIdLabel.setHorizontalAlignment(JLabel.RIGHT);
 		panel.add(userIdLabel);
 		
 		userIdValueLabel = new JLabel(UserInfo.UserInfoMap.get(m.getId()).getName());
 		userIdValueLabel.setSize(150, 20);
-		userIdValueLabel.setFont(setF);
+		userIdValueLabel.setFont(font);
 		userIdValueLabel.setHorizontalAlignment(JLabel.RIGHT);
 		
 		panel.add(userIdValueLabel);
@@ -136,13 +137,13 @@ public class MyPage extends JPanel {
 	
 		uesrPwLabel = new JLabel("비밀번호 : ");
 		uesrPwLabel.setSize(150, 20);
-		uesrPwLabel.setFont(setF);
+		uesrPwLabel.setFont(font);
 		uesrPwLabel.setHorizontalAlignment(JLabel.RIGHT);
 		panel.add(uesrPwLabel);
 		
 		uesrPwValueLabel = new JLabel(UserInfo.UserInfoMap.get(m.getId()).getName());
 		uesrPwValueLabel.setSize(150, 20);
-		uesrPwValueLabel.setFont(setF);
+		uesrPwValueLabel.setFont(font);
 		uesrPwValueLabel.setHorizontalAlignment(JLabel.RIGHT);
 		panel.add(uesrPwValueLabel);
 
@@ -150,25 +151,25 @@ public class MyPage extends JPanel {
 		// 결제금액
 		userGrade = new JLabel("등급 : ");
 		userGrade.setSize(150, 20);
-		userGrade.setFont(setF);
+		userGrade.setFont(font);
 		userGrade.setHorizontalAlignment(JLabel.RIGHT);
 		panel.add(userGrade);
 		
 		JLabel userGradeValue = new JLabel(UserInfo.getUserInfoMap((m.getId())).gradeCheck(UserInfo.getUserInfoMap(m.getId()).getTotal()));
 		userGradeValue.setSize(150, 20);
-		userGradeValue.setFont(setF);
+		userGradeValue.setFont(font);
 		userGradeValue.setHorizontalAlignment(JLabel.RIGHT);
 		panel.add(userGradeValue);
 		
 		userTotal = new JLabel("총 결제 금액 :");
 		userTotal.setSize(150, 20);
-		userTotal.setFont(setF);
+		userTotal.setFont(font);
 		userTotal.setHorizontalAlignment(JLabel.RIGHT);
 		panel.add(userTotal);
 		
 		JLabel userTotalValue = new JLabel(String.valueOf(UserInfo.getUserInfoMap(m.getId()).getTotal()));
 		userTotalValue.setSize(150, 20);
-		userTotalValue.setFont(setF);
+		userTotalValue.setFont(font);
 		userTotalValue.setHorizontalAlignment(JLabel.RIGHT);
 		panel.add(userTotalValue);
 
@@ -178,10 +179,10 @@ public class MyPage extends JPanel {
 		bottomSet.setLayout(new GridLayout(1,3,5,0));
 		bottomSet.setBackground(Color.WHITE);
 
-		RoundedButton backBtn = new RoundedButton("초기화면");
+		RoundedButton backBtn = new RoundedButton("BACK");
 		
 		backBtn.setBackground(new Color(32, 32, 32));
-		backBtn.setFont(new Font("나눔고딕코딩", Font.BOLD, 18));
+		backBtn.setFont(font);
 		backBtn.setForeground(new Color(255, 255, 255));
 		
 		bottomSet.add(backBtn);
@@ -195,10 +196,10 @@ public class MyPage extends JPanel {
 		});
 	
 
-		RoundedButton logOutBtn = new RoundedButton("로그아웃");
+		RoundedButton logOutBtn = new RoundedButton("LOGOUT");
 
 		logOutBtn.setBackground(new Color(32, 32, 32));
-		logOutBtn.setFont(new Font("나눔고딕코딩", Font.BOLD, 18));
+		logOutBtn.setFont(font);
 		logOutBtn.setForeground(new Color(255, 255, 255));
 		
 		bottomSet.add(logOutBtn);
@@ -223,10 +224,10 @@ public class MyPage extends JPanel {
 			}
 		});
 
-		RoundedButton cartBnt = new RoundedButton("구매내역");
+		RoundedButton cartBnt = new RoundedButton("HISTORY");
 
 		cartBnt.setBackground(new Color(32, 32, 32));
-		cartBnt.setFont(new Font("나눔고딕코딩", Font.BOLD, 18));
+		cartBnt.setFont(font);
 		cartBnt.setForeground(new Color(255, 255, 255));
 		
 		bottomSet.add(cartBnt);
