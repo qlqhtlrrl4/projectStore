@@ -7,7 +7,6 @@ public class StroeMain {
 
 	public static void main(String[] args) {
 				
-
 		mainFrame.getInstance(new BeginPanel());
 
 	}

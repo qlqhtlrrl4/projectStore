@@ -49,7 +49,7 @@ public class RegistPanel extends JPanel {
 		add(shopName);
 				
 		
-		JLabel join = new JLabel("회원 가입하기");
+		JLabel join = new JLabel("회원 가입");
 		join.setFont(titleF);
 		join.setSize(600, 60);
 		join.setLocation(0,150);
