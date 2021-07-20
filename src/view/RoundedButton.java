@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.FontMetrics;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.Image;
 import java.awt.Rectangle;
 import java.awt.RenderingHints;
 
@@ -32,6 +33,8 @@ public class RoundedButton extends JButton {
 		super(icon);
 		decorate();
 	}
+	
+	
 
 	public RoundedButton(String text, Icon icon) {
 		super(text, icon);

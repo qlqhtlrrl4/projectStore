@@ -288,14 +288,14 @@ public class CartPanel extends JPanel {
 
 						if(CartDAO.cartMap.get(m.getId()).get(i).getKind().equals("상의")) {
 							size.add(CartDAO.cartMap.get(m.getId()).get(i).getSize());
-							size.add("size");
+							
 							size.add("S");
 							size.add("M");
 							size.add("L");
 						}
 						else if(CartDAO.cartMap.get(m.getId()).get(i).getKind().equals("하의")) {
 							size.add(CartDAO.cartMap.get(m.getId()).get(i).getSize());
-							size.add("size");
+							
 							size.add("28");
 							size.add("30");
 							size.add("32");
@@ -303,7 +303,7 @@ public class CartPanel extends JPanel {
 						}
 						else if(CartDAO.cartMap.get(m.getId()).get(i).getKind().equals("신발")) {
 							size.add(CartDAO.cartMap.get(m.getId()).get(i).getSize());
-							size.add("size");
+							
 							size.add("240");
 							size.add("250");
 							size.add("260");

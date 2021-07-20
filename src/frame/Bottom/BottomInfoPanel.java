@@ -36,10 +36,15 @@ public class BottomInfoPanel extends JPanel {
 	int itemId;
 	JTextField countField;
 	List<ImageIcon> itemImg;
+<<<<<<< HEAD
 	
 	CustomFont baemin = new CustomFont();
 	Font font = baemin.getCreateFont2();
 
+=======
+	String str;
+	
+>>>>>>> 2bffac1cabdccadc0f23c5f78048d1905c537057
 	public BottomInfoPanel(Items item, MyInfo m, CartDAO c, SellDAO history) {
 
 		this.m = m;

@@ -121,7 +121,7 @@ public class BottomPanel extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				mainFrame.getInstance(new ShopPanel(m));
-				
+				system.out.println("1");
 			}
 		});*/
 	}

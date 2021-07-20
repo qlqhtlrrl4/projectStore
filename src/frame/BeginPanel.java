@@ -7,18 +7,19 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
+
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
+import customDAO.CartDAO;
 import customDAO.CustomDAO;
 import customDAO.MyInfo;
+import customDAO.SellDAO;
 import customDAO.UserInfo;
 import view.CustomFont;
-
-
 import view.RoundedButton;
 
 public class BeginPanel extends JPanel {
@@ -37,6 +38,7 @@ public class BeginPanel extends JPanel {
 		// setBackground(new Color(229,243,197));
 		setBackground(Color.WHITE);
 		CustomDAO custom = new CustomDAO();
+		
 		
 
 		RoundedButton loginButton = new RoundedButton("LOGIN");
@@ -179,7 +181,10 @@ public class BeginPanel extends JPanel {
 					MyInfo m = custom.loginCheck(userText.getText(), String.valueOf(String.valueOf(passText.getPassword())));
 					userInfo = new UserInfo(m.getId(), m);
 					
-					mainFrame.getInstance(new ShopPanel(UserInfo.UserInfoMap.get(m.getId())));
+					CartDAO cart = new CartDAO(m.getId());
+					SellDAO history = new SellDAO(m.getId());
+					
+					mainFrame.getInstance(new Kinds(UserInfo.UserInfoMap.get(m.getId()),cart,history));
 					
 				} else {
 					JOptionPane.showMessageDialog(null, "로그인 정보 오류");

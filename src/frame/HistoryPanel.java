@@ -69,7 +69,7 @@ public class HistoryPanel extends JPanel {
 
 		pa = new JPanel();
 		pa.setBounds(0, 570, 600, 40);
-		pa.setBackground(Color.gray);
+		pa.setBackground(Color.WHITE);
 		pa.setLayout(new FlowLayout());
 
 		itemImg.clear();
@@ -92,7 +92,8 @@ public class HistoryPanel extends JPanel {
 			pgNum.get(0).setVisible(true);
 
 			for (int j = 0; j < panelCount; j++) {
-				JButton pageBtn = new JButton(String.valueOf(j + 1));
+				RoundedButton pageBtn = new RoundedButton(String.valueOf(j + 1));
+				pageBtn.setFont(font);
 
 				if (Integer.parseInt(pageBtn.getText()) == panelCount) {
 
@@ -202,31 +203,6 @@ public class HistoryPanel extends JPanel {
 						JLabel cntInfo = new JLabel("수량 " + SellDAO.historyMap.get(m.getId()).get(i).getCnt());
 						JTextField cntText = new JTextField();
 						JLabel sizeInfo = new JLabel("사이즈" + SellDAO.historyMap.get(m.getId()).get(i).getSize());
-
-						Choice size = new Choice();
-
-						if (CartDAO.cartMap.get(m.getId()).get(i).getKind().equals("상의")) {
-							size.add(CartDAO.cartMap.get(m.getId()).get(i).getSize());
-							size.add("size");
-							size.add("S");
-							size.add("M");
-							size.add("L");
-						} else if (CartDAO.cartMap.get(m.getId()).get(i).getKind().equals("하의")) {
-							size.add(CartDAO.cartMap.get(m.getId()).get(i).getSize());
-							size.add("size");
-							size.add("28");
-							size.add("30");
-							size.add("32");
-							size.add("34");
-						} else if (CartDAO.cartMap.get(m.getId()).get(i).getKind().equals("신발")) {
-							size.add(CartDAO.cartMap.get(m.getId()).get(i).getSize());
-							size.add("size");
-							size.add("240");
-							size.add("250");
-							size.add("260");
-							size.add("270");
-							size.add("280");
-						}
 
 						nameInfo.setBounds(300, 13 + ((i % 5) * 110), 100, 15);
 						itemInfo.setBounds(300, 38 + ((i % 5) * 110), 200, 15);

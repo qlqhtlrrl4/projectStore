@@ -49,7 +49,7 @@ public class CartDAO {
 		return false;	
 	}
 	
-	public int partPay(int id) {
+	/*public int partPay(int id) {
 		
 		int partMoney =0;
 		
@@ -61,7 +61,7 @@ public class CartDAO {
 		}
 		return partMoney;	
 		
-	}
+	}*/
 	
 
 	public boolean change(int id,int cnt,String userId,String size) {
