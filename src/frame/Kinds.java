@@ -3,9 +3,12 @@ package frame;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.GridLayout;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JPanel;
 
 import customDAO.CartDAO;
@@ -32,19 +35,26 @@ public class Kinds extends JPanel {
 		
 		CustomFont baemin = new CustomFont();
 		Font font = baemin.getCreateFont2();
-
-		JPanel bottomSet = new JPanel();
-
-		bottomSet.setBounds(5, 660, 570, 75);
-		bottomSet.setLayout(new GridLayout(1,1,5,0));
-		bottomSet.setBackground(Color.WHITE);
+		
+		RoundedButton shopBtn = new RoundedButton("CATEGORY");
+		shopBtn.setBackground(Color.WHITE);
+		shopBtn.setSize(200, 70);
+		shopBtn.setLocation(190, 100);
+		shopBtn.setFont(font);
+		add(shopBtn);
+		
+		shopBtn.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				mainFrame.getInstance(new Kinds(m, cart,history));
+			}
+		});
 		
 		RoundedButton topBtn = new RoundedButton("TOP");
 
 		topBtn.setBackground(Color.WHITE);
 		topBtn.setSize(200, 70);
-		topBtn.setLocation(190, 120);
-		//TBtn.setFont(new Font("나눔고딕코딩", Font.BOLD, 22));
+		topBtn.setLocation(190, 260);
 		topBtn.setFont(font);
 		add(topBtn);
 		
@@ -59,8 +69,7 @@ public class Kinds extends JPanel {
 
 		bottomBtn.setBackground(Color.WHITE);
 		bottomBtn.setSize(200, 70);
-		bottomBtn.setLocation(190, 280);
-		//KnitBtn.setFont(new Font("나눔고딕코딩", Font.BOLD, 22));
+		bottomBtn.setLocation(190, 420);
 		bottomBtn.setFont(font);
 		add(bottomBtn);
 
@@ -75,8 +84,8 @@ public class Kinds extends JPanel {
 
 		shoesBtn.setBackground(Color.WHITE);
 		shoesBtn.setSize(200, 70);
-		shoesBtn.setLocation(190, 440);
-		//BlouseBtn.setFont(new Font("나눔고딕코딩", Font.BOLD, 22));
+		shoesBtn.setLocation(190, 580);
+		
 		shoesBtn.setFont(font);
 		add(shoesBtn);
 
@@ -86,26 +95,56 @@ public class Kinds extends JPanel {
 				mainFrame.getInstance(new ShoesPanel(m, cart,history));
 			}
 		});
-
-		RoundedButton backBtn = new RoundedButton("BACK");
-
-		backBtn.setBackground(new Color(32, 32, 32));
-		//backBtn.setFont(new Font("나눔고딕코딩", Font.BOLD, 18));
-		backBtn.setFont(font);
-		backBtn.setForeground(new Color(255, 255, 255));
 		
-		bottomSet.add(backBtn);
+		JPanel topLogo = new JPanel();
+		topLogo.setBounds(0,0,600,70);
+		topLogo.setBackground(new Color(219,206,190));
+		topLogo.setLayout(null);
+		add(topLogo);
+		
+		ImageIcon icon = new ImageIcon("cartimg3.png");
 
-		backBtn.addActionListener(new ActionListener() {
+		Image image = icon.getImage();
+		Image newImg = image.getScaledInstance(50, 50, java.awt.Image.SCALE_SMOOTH);
+		ImageIcon newIcon = new ImageIcon(newImg);
+
+		JButton cartImgBtn = new JButton(newIcon);
+		cartImgBtn.setBackground(new Color(219,206,190));
+		cartImgBtn.setBorderPainted(false);
+		cartImgBtn.setBounds(500, 10, 50, 50);
+
+		topLogo.add(cartImgBtn);
+		
+		cartImgBtn.addActionListener(new ActionListener() {
+			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				mainFrame.getInstance(new ShopPanel(m));
+				mainFrame.getInstance(new CartPanel(m,cart,history));
+				
 			}
 		});
 		
-		add(bottomSet);
+		ImageIcon icon2 = new ImageIcon("mypageIcon2.png");
+		Image image2 = icon2.getImage();
+		Image newImg2 = image2.getScaledInstance(40, 40, java.awt.Image.SCALE_SMOOTH);
+		ImageIcon myIcon = new ImageIcon(newImg2);
 		
-
+		JButton myPageImgBtn = new JButton(myIcon);
+		myPageImgBtn.setBackground(new Color(219,206,190));
+		myPageImgBtn.setBorderPainted(false);
+		myPageImgBtn.setBounds(430, 10, 50, 50);
+		
+		myPageImgBtn.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				mainFrame.getInstance(new MyPage(m,cart,history));
+				
+			}
+		});
+		
+		topLogo.add(myPageImgBtn);
+		
 	}
 
 }

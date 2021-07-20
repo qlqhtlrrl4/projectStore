@@ -83,10 +83,60 @@ public class HistoryPanel extends JPanel {
 		if ((SellDAO.historyMap.get(m.getId()).size() > 0)) {
 
 			panelCount = (int) Math
-					.ceil(Double.parseDouble(String.valueOf(SellDAO.historyMap.get(m.getId()).size())) / 5.0);
+					.ceil(Double.parseDouble(String.valueOf(SellDAO.historyMap.get(m.getId()).size())) / 4.0);
 
 			for (int i = 0; i < panelCount; i++) {
 				pgNum.add(new JPanel());
+				
+				JPanel topLogo = new JPanel();
+				topLogo.setBounds(0,0,600,70);
+				topLogo.setBackground(new Color(219,206,190));
+				topLogo.setLayout(null);
+				add(topLogo);
+				
+				ImageIcon icon = new ImageIcon("cartimg3.png");
+
+				Image image3 = icon.getImage();
+				Image newImg3 = image3.getScaledInstance(50, 50, java.awt.Image.SCALE_SMOOTH);
+				ImageIcon newIcon3 = new ImageIcon(newImg3);
+
+				JButton cartImgBtn = new JButton(newIcon3);
+				cartImgBtn.setBackground(new Color(219,206,190));
+				cartImgBtn.setBorderPainted(false);
+				cartImgBtn.setBounds(500, 10, 50, 50);
+
+				topLogo.add(cartImgBtn);
+				
+				cartImgBtn.addActionListener(new ActionListener() {
+					
+					@Override
+					public void actionPerformed(ActionEvent e) {
+						mainFrame.getInstance(new CartPanel(m,cart,h));
+						
+					}
+				});
+				
+				ImageIcon icon2 = new ImageIcon("mypageIcon2.png");
+				Image image2 = icon2.getImage();
+				Image newImg2 = image2.getScaledInstance(40, 40, java.awt.Image.SCALE_SMOOTH);
+				ImageIcon myIcon = new ImageIcon(newImg2);
+				
+				JButton myPageImgBtn = new JButton(myIcon);
+				myPageImgBtn.setBackground(new Color(219,206,190));
+				myPageImgBtn.setBorderPainted(false);
+				myPageImgBtn.setBounds(430, 10, 50, 50);
+				
+				myPageImgBtn.addActionListener(new ActionListener() {
+					
+					@Override
+					public void actionPerformed(ActionEvent e) {
+						mainFrame.getInstance(new MyPage(m,cart,h));
+						
+					}
+				});
+				
+				topLogo.add(myPageImgBtn);
+				pgNum.get(i).add(topLogo);
 			}
 
 			pgNum.get(0).setVisible(true);
@@ -101,7 +151,7 @@ public class HistoryPanel extends JPanel {
 					pgNum.get(Integer.parseInt(pageBtn.getText()) - 1).setBackground(Color.WHITE);
 					pgNum.get(Integer.parseInt(pageBtn.getText()) - 1).setLayout(null);
 
-					for (int i = (Integer.parseInt(pageBtn.getText()) - 1) * 5; i < (SellDAO.historyMap.get(m.getId())
+					for (int i = (Integer.parseInt(pageBtn.getText()) - 1) * 4; i < (SellDAO.historyMap.get(m.getId())
 							.size()); i++) {
 
 						Image image = itemImg.get(i).getImage();
@@ -109,7 +159,7 @@ public class HistoryPanel extends JPanel {
 						// 이미지
 						ImageIcon newIcon = new ImageIcon(newImg);
 						JLabel img = new JLabel(newIcon);
-						img.setBounds(50, 13 + (((i) % 5) * 110), 200, 100);
+						img.setBounds(50, 90 + (((i) % 4) * 110), 200, 100);
 						pgNum.get(Integer.parseInt(pageBtn.getText()) - 1).add(img);
 
 						JLabel nameInfo = new JLabel("상품명 : " + SellDAO.historyMap.get(m.getId()).get(i).getName()); // 상품명
@@ -118,10 +168,12 @@ public class HistoryPanel extends JPanel {
 						JTextField cntText = new JTextField();
 						JLabel sizeInfo = new JLabel("사이즈 : " + SellDAO.historyMap.get(m.getId()).get(i).getSize());
 
-						nameInfo.setBounds(300, 13 + ((i % 5) * 110), 100, 15);
-						itemInfo.setBounds(300, 38 + ((i % 5) * 110), 200, 15);
-						cntInfo.setBounds(300, 63 + ((i % 5) * 110), 200, 15);
-						sizeInfo.setBounds(300, 88 + ((i % 5) * 110), 400, 15);
+						nameInfo.setBounds(300, 90 + ((i % 4) * 110), 100, 15);
+						itemInfo.setBounds(300, 115 + ((i % 4) * 110), 200, 15);
+						cntInfo.setBounds(300, 140 + ((i % 4) * 110), 100, 15);
+						cntText.setBounds(350, 135 + ((i % 4) * 110), 60, 20);
+						sizeInfo.setBounds(300, 165 + ((i % 4) * 110), 40, 15);
+						
 
 						itemInfo.putClientProperty("id", SellDAO.historyMap.get(m.getId()).get(i).getId());
 
@@ -135,7 +187,7 @@ public class HistoryPanel extends JPanel {
 
 
 						RoundedButton detailBtn = new RoundedButton("상세보기");
-						detailBtn.setBounds(430, 25 + ((i % 5) * 115), 130, 70);
+						detailBtn.setBounds(430, 102 + ((i % 4) * 115), 130, 70);
 						detailBtn.putClientProperty("id", SellDAO.historyMap.get(m.getId()).get(i).getId());
 						pgNum.get(Integer.parseInt(pageBtn.getText()) - 1).add(detailBtn);
 						
@@ -187,15 +239,15 @@ public class HistoryPanel extends JPanel {
 					pgNum.get(Integer.parseInt(pageBtn.getText()) - 1).setBackground(Color.WHITE);
 					pgNum.get(Integer.parseInt(pageBtn.getText()) - 1).setLayout(null);
 
-					for (int i = (Integer.parseInt(pageBtn.getText()) - 1) * 5; i < Integer.parseInt(pageBtn.getText())
-							* 5; i++) {
+					for (int i = (Integer.parseInt(pageBtn.getText()) - 1) * 4; i < Integer.parseInt(pageBtn.getText())
+							* 4; i++) {
 
 						Image image = itemImg.get(i).getImage();
 						Image newImg = image.getScaledInstance(200, 100, java.awt.Image.SCALE_SMOOTH);
 						// 이미지
 						ImageIcon newIcon = new ImageIcon(newImg);
 						JLabel img = new JLabel(newIcon);
-						img.setBounds(50, 13 + ((i % 5) * 110), 200, 100);
+						img.setBounds(50, 90 + ((i % 4) * 110), 200, 100);
 						pgNum.get(Integer.parseInt(pageBtn.getText()) - 1).add(img);
 
 						JLabel nameInfo = new JLabel("상품명 : " + SellDAO.historyMap.get(m.getId()).get(i).getName()); // 상품명
@@ -204,11 +256,12 @@ public class HistoryPanel extends JPanel {
 						JTextField cntText = new JTextField();
 						JLabel sizeInfo = new JLabel("사이즈" + SellDAO.historyMap.get(m.getId()).get(i).getSize());
 
-						nameInfo.setBounds(300, 13 + ((i % 5) * 110), 100, 15);
-						itemInfo.setBounds(300, 38 + ((i % 5) * 110), 200, 15);
-						cntInfo.setBounds(300, 63 + ((i % 5) * 110), 100, 15);
-						cntText.setBounds(350, 58 + ((i % 5) * 110), 60, 20);
-						sizeInfo.setBounds(300, 88 + ((i % 5) * 110), 400, 15);
+						nameInfo.setBounds(300, 90 + ((i % 4) * 110), 100, 15);
+						itemInfo.setBounds(300, 115 + ((i % 4) * 110), 200, 15);
+						cntInfo.setBounds(300, 140 + ((i % 4) * 110), 100, 15);
+						cntText.setBounds(350, 135 + ((i % 4) * 110), 60, 20);
+						sizeInfo.setBounds(300, 165 + ((i % 4) * 110), 40, 15);
+						
 						
 
 						itemInfo.putClientProperty("id", SellDAO.historyMap.get(m.getId()).get(i).getId());
@@ -223,7 +276,7 @@ public class HistoryPanel extends JPanel {
 						
 						
 						RoundedButton detailBtn = new RoundedButton("변경");
-						detailBtn.setBounds(430, 25 + ((i % 5) * 115), 130, 70);
+						detailBtn.setBounds(430, 102 + ((i % 4) * 115), 130, 70);
 						detailBtn.putClientProperty("id", SellDAO.historyMap.get(m.getId()).get(i).getId());
 						pgNum.get(Integer.parseInt(pageBtn.getText()) - 1).add(detailBtn);
 
@@ -276,7 +329,7 @@ public class HistoryPanel extends JPanel {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				mainFrame.getInstance(new ShopPanel(m));
+				mainFrame.getInstance(new MyPage(m,cart,h));
 			}
 		});
 
@@ -297,6 +350,57 @@ public class HistoryPanel extends JPanel {
 		bottomSet.add(mainBtn);
 
 		add(bottomSet);
+		
+		JPanel topLogo = new JPanel();
+		topLogo.setBounds(0,0,600,70);
+		topLogo.setBackground(new Color(219,206,190));
+		topLogo.setLayout(null);
+		add(topLogo);
+		
+		ImageIcon icon = new ImageIcon("cartimg3.png");
+
+		Image image3 = icon.getImage();
+		Image newImg3 = image3.getScaledInstance(50, 50, java.awt.Image.SCALE_SMOOTH);
+		ImageIcon newIcon3 = new ImageIcon(newImg3);
+
+		JButton cartImgBtn = new JButton(newIcon3);
+		cartImgBtn.setBackground(new Color(219,206,190));
+		cartImgBtn.setBorderPainted(false);
+		cartImgBtn.setBounds(500, 10, 50, 50);
+
+		topLogo.add(cartImgBtn);
+		
+		cartImgBtn.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				mainFrame.getInstance(new CartPanel(m,cart,h));
+				
+			}
+		});
+		
+		ImageIcon icon2 = new ImageIcon("mypageIcon2.png");
+		Image image2 = icon2.getImage();
+		Image newImg2 = image2.getScaledInstance(40, 40, java.awt.Image.SCALE_SMOOTH);
+		ImageIcon myIcon = new ImageIcon(newImg2);
+		
+		JButton myPageImgBtn = new JButton(myIcon);
+		myPageImgBtn.setBackground(new Color(219,206,190));
+		myPageImgBtn.setBorderPainted(false);
+		myPageImgBtn.setBounds(430, 10, 50, 50);
+		
+		myPageImgBtn.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				mainFrame.getInstance(new MyPage(m,cart,h));
+				
+			}
+		});
+		
+		topLogo.add(myPageImgBtn);
+		
+
 	}
 
 }

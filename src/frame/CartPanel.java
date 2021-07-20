@@ -45,15 +45,13 @@ public class CartPanel extends JPanel {
 
 	CustomFont baemin = new CustomFont();
 	Font font = baemin.getCreateFont2();
-	
+
 	public CartPanel() {
 	}
-	
+
 	public CartPanel(MyInfo m, CartDAO cart, SellDAO history) {
 
 		this.m = m;
-
-		
 
 		setLayout(null);
 		setSize(600, 800);
@@ -79,10 +77,60 @@ public class CartPanel extends JPanel {
 		if ((CartDAO.cartMap.get(m.getId()).size() > 0)) {
 
 			panelCount = (int) Math
-					.ceil(Double.parseDouble(String.valueOf(CartDAO.cartMap.get(m.getId()).size())) / 5.0);
+					.ceil(Double.parseDouble(String.valueOf(CartDAO.cartMap.get(m.getId()).size())) / 4.0);
 
 			for (int i = 0; i < panelCount; i++) {
 				pgNum.add(new JPanel());
+				JPanel topLogo = new JPanel();
+				topLogo.setBounds(0,0,600,70);
+				topLogo.setBackground(new Color(219,206,190));
+				topLogo.setLayout(null);
+				add(topLogo);
+				
+				ImageIcon icon = new ImageIcon("cartimg3.png");
+
+				Image image3 = icon.getImage();
+				Image newImg3 = image3.getScaledInstance(50, 50, java.awt.Image.SCALE_SMOOTH);
+				ImageIcon newIcon3 = new ImageIcon(newImg3);
+
+				JButton cartImgBtn = new JButton(newIcon3);
+				cartImgBtn.setBackground(new Color(219,206,190));
+				cartImgBtn.setBorderPainted(false);
+				cartImgBtn.setBounds(500, 10, 50, 50);
+
+				topLogo.add(cartImgBtn);
+				
+				cartImgBtn.addActionListener(new ActionListener() {
+					
+					@Override
+					public void actionPerformed(ActionEvent e) {
+						mainFrame.getInstance(new CartPanel(m,cart,history));
+						
+					}
+				});
+				
+				ImageIcon icon2 = new ImageIcon("mypageIcon2.png");
+				Image image2 = icon2.getImage();
+				Image newImg2 = image2.getScaledInstance(40, 40, java.awt.Image.SCALE_SMOOTH);
+				ImageIcon myIcon = new ImageIcon(newImg2);
+				
+				JButton myPageImgBtn = new JButton(myIcon);
+				myPageImgBtn.setBackground(new Color(219,206,190));
+				myPageImgBtn.setBorderPainted(false);
+				myPageImgBtn.setBounds(430, 10, 50, 50);
+				
+				myPageImgBtn.addActionListener(new ActionListener() {
+					
+					@Override
+					public void actionPerformed(ActionEvent e) {
+						mainFrame.getInstance(new MyPage(m,cart,history));
+						
+					}
+				});
+				
+				topLogo.add(myPageImgBtn);
+				pgNum.get(i).add(topLogo);
+				
 			}
 
 			pgNum.get(0).setVisible(true);
@@ -93,12 +141,11 @@ public class CartPanel extends JPanel {
 
 				if (Integer.parseInt(pageBtn.getText()) == panelCount) {
 
-							
 					pgNum.get(Integer.parseInt(pageBtn.getText()) - 1).setBounds(0, 0, 600, 560);
 					pgNum.get(Integer.parseInt(pageBtn.getText()) - 1).setBackground(Color.WHITE);
 					pgNum.get(Integer.parseInt(pageBtn.getText()) - 1).setLayout(null);
 
-					for (int i = (Integer.parseInt(pageBtn.getText()) - 1) * 5; i < (CartDAO.cartMap.get(m.getId())
+					for (int i = (Integer.parseInt(pageBtn.getText()) - 1) * 4; i < (CartDAO.cartMap.get(m.getId())
 							.size()); i++) {
 
 						Image image = itemImg.get(i).getImage();
@@ -106,144 +153,11 @@ public class CartPanel extends JPanel {
 						// 이미지
 						ImageIcon newIcon = new ImageIcon(newImg);
 						JLabel img = new JLabel(newIcon);
-						img.setBounds(50, 13 + ((i % 5) * 110), 200, 100);
+						img.setBounds(50, 90 + ((i % 4) * 110), 200, 100);
 						pgNum.get(Integer.parseInt(pageBtn.getText()) - 1).add(img);
 
 						box.add(new JCheckBox());
-						box.get(i).setBounds(16, 50 + ((i % 5) * 110), 20, 20);
-						box.get(i).setBackground(Color.WHITE);
-						pgNum.get(Integer.parseInt(pageBtn.getText()) - 1).add(box.get(i));
-
-						box.get(i).addItemListener(new ItemListener() {
-
-							@Override
-							public void itemStateChanged(ItemEvent e) {
-								if (e.getStateChange() == ItemEvent.SELECTED) {
-									sel = 1;
-								} else {
-									sel = -1;
-								}
-								for (int k = 0; k < box.size(); k++) {
-									if (e.getItem() == box.get(k)) {
-										partMoney += sel * CartDAO.cartMap.get(m.getId()).get(k).getCnt()
-												* CartDAO.cartMap.get(m.getId()).get(k).getPrice();
-									}
-								}
-							}
-						});
-
-						JLabel nameInfo = new JLabel("상품명 : " + CartDAO.cartMap.get(m.getId()).get(i).getName()); // 상품명
-						JLabel itemInfo = new JLabel("상품 가격 : " + CartDAO.cartMap.get(m.getId()).get(i).getPrice()
-								* CartDAO.cartMap.get(m.getId()).get(i).getCnt());
-						JLabel cntInfo = new JLabel("수량 ");
-						
-
-						JTextField cntText = new JTextField();			
-						JLabel sizeInfo = new JLabel("사이즈");						
-						Choice size = new Choice();
-						
-						nameInfo.setBounds(300, 13 + ((i % 5) * 110), 100, 15);
-						itemInfo.setBounds(300, 38 + ((i % 5) * 110), 200, 15);
-						cntInfo.setBounds(300, 63 + ((i % 5) * 110), 100, 15);
-						cntText.setBounds(350, 58 + ((i % 5) * 110), 60, 20);
-						sizeInfo.setBounds(300, 88+ ((i % 5) * 110), 40, 15);
-						size.setBounds(350, 84+((i % 5) * 110), 70, 20);
-						
-						
-						itemInfo.putClientProperty("id", CartDAO.cartMap.get(m.getId()).get(i).getId());
-
-						cntText.setText(Integer.toString(CartDAO.cartMap.get(m.getId()).get(i).getCnt()));
-
-						if(CartDAO.cartMap.get(m.getId()).get(i).getKind().equals("상의")) {
-							size.add(CartDAO.cartMap.get(m.getId()).get(i).getSize());
-							size.add("size");
-							size.add("S");
-							size.add("M");
-							size.add("L");
-						}
-						else if(CartDAO.cartMap.get(m.getId()).get(i).getKind().equals("하의")) {
-							size.add(CartDAO.cartMap.get(m.getId()).get(i).getSize());
-							size.add("size");
-							size.add("28");
-							size.add("30");
-							size.add("32");
-							size.add("34");
-						}
-						else if(CartDAO.cartMap.get(m.getId()).get(i).getKind().equals("신발")) {
-							size.add(CartDAO.cartMap.get(m.getId()).get(i).getSize());
-							size.add("size");
-							size.add("240");
-							size.add("250");
-							size.add("260");
-							size.add("270");
-							size.add("280");
-						}
-						
-						pgNum.get(Integer.parseInt(pageBtn.getText()) - 1).add(nameInfo);
-						pgNum.get(Integer.parseInt(pageBtn.getText()) - 1).add(itemInfo);
-						pgNum.get(Integer.parseInt(pageBtn.getText()) - 1).add(cntInfo);
-						pgNum.get(Integer.parseInt(pageBtn.getText()) - 1).add(cntText);
-						pgNum.get(Integer.parseInt(pageBtn.getText()) - 1).add(sizeInfo);
-						pgNum.get(Integer.parseInt(pageBtn.getText()) - 1).add(size);
-
-						
-						
-						RoundedButton removeBtn = new RoundedButton("삭제");
-								
-						removeBtn.setBounds(500, 25 + ((i % 5) * 115), 65, 50);
-						removeBtn.putClientProperty("id", CartDAO.cartMap.get(m.getId()).get(i).getId());
-						pgNum.get(Integer.parseInt(pageBtn.getText()) - 1).add(removeBtn);
-
-						removeBtn.addActionListener(new ActionListener() {
-
-							@Override
-							public void actionPerformed(ActionEvent e) {
-								int id = Integer.parseInt(String.valueOf((removeBtn.getClientProperty("id"))));
-								if (cart.remove(id, m.getId())) {
-									mainFrame.getInstance(new CartPanel(m, cart, history));
-								}
-							}
-						});
-
-						RoundedButton editBtn = new RoundedButton("변경");
-						
-						editBtn.setBounds(430, 25 + ((i % 5) * 115), 65, 50);
-						editBtn.putClientProperty("id", CartDAO.cartMap.get(m.getId()).get(i).getId());
-						pgNum.get(Integer.parseInt(pageBtn.getText()) - 1).add(editBtn);
-
-						editBtn.addActionListener(new ActionListener() {
-
-							@Override
-							public void actionPerformed(ActionEvent e) {
-
-								int id = Integer.parseInt(String.valueOf((editBtn.getClientProperty("id"))));
-								if (cart.change(id, Integer.parseInt(cntText.getText()), m.getId(),size.getSelectedItem())) {
-									mainFrame.getInstance(new CartPanel(m, cart, history));
-								}
-							}
-						});
-					}
-				}
-
-				else {
-
-					pgNum.get(Integer.parseInt(pageBtn.getText()) - 1).setBounds(0, 0, 600, 560);
-					pgNum.get(Integer.parseInt(pageBtn.getText()) - 1).setBackground(Color.WHITE);
-					pgNum.get(Integer.parseInt(pageBtn.getText()) - 1).setLayout(null);
-
-					for (int i = (Integer.parseInt(pageBtn.getText()) - 1) * 5; i < Integer.parseInt(pageBtn.getText())
-							* 5; i++) {
-
-						Image image = itemImg.get(i).getImage();
-						Image newImg = image.getScaledInstance(200, 100, java.awt.Image.SCALE_SMOOTH);
-						// 이미지
-						ImageIcon newIcon = new ImageIcon(newImg);
-						JLabel img = new JLabel(newIcon);
-						img.setBounds(50, 13 + ((i % 5) * 110), 200, 100);
-						pgNum.get(Integer.parseInt(pageBtn.getText()) - 1).add(img);
-
-						box.add(new JCheckBox());
-						box.get(i).setBounds(16, 50 + ((i % 5) * 110), 20, 20);
+						box.get(i).setBounds(16, 127 + ((i % 4) * 110), 20, 20);
 						box.get(i).setBackground(Color.WHITE);
 						pgNum.get(Integer.parseInt(pageBtn.getText()) - 1).add(box.get(i));
 
@@ -273,44 +187,41 @@ public class CartPanel extends JPanel {
 						JTextField cntText = new JTextField();
 						JLabel sizeInfo = new JLabel("사이즈");
 						Choice size = new Choice();
-						
-						nameInfo.setBounds(300, 13 + ((i % 5) * 110), 100, 15);
-						itemInfo.setBounds(300, 38 + ((i % 5) * 110), 200, 15);
-						cntInfo.setBounds(300, 63 + ((i % 5) * 110), 100, 15);
-						cntText.setBounds(350, 58 + ((i % 5) * 110), 60, 20);
-						sizeInfo.setBounds(300, 88+ ((i % 5) * 110), 40, 15);
-						size.setBounds(350, 84+((i % 5) * 110), 70, 20);
-						
+
+						nameInfo.setBounds(300, 90 + ((i % 4) * 110), 100, 15);
+						itemInfo.setBounds(300, 115 + ((i % 4) * 110), 200, 15);
+						cntInfo.setBounds(300, 140 + ((i % 4) * 110), 100, 15);
+						cntText.setBounds(350, 135 + ((i % 4) * 110), 60, 20);
+						sizeInfo.setBounds(300, 165 + ((i % 4) * 110), 40, 15);
+						size.setBounds(350, 161 + ((i % 4) * 110), 70, 20);
 
 						itemInfo.putClientProperty("id", CartDAO.cartMap.get(m.getId()).get(i).getId());
 
 						cntText.setText(Integer.toString(CartDAO.cartMap.get(m.getId()).get(i).getCnt()));
 
-						if(CartDAO.cartMap.get(m.getId()).get(i).getKind().equals("상의")) {
+						if (CartDAO.cartMap.get(m.getId()).get(i).getKind().equals("상의")) {
 							size.add(CartDAO.cartMap.get(m.getId()).get(i).getSize());
-							
+							size.add("size");
 							size.add("S");
 							size.add("M");
 							size.add("L");
-						}
-						else if(CartDAO.cartMap.get(m.getId()).get(i).getKind().equals("하의")) {
+						} else if (CartDAO.cartMap.get(m.getId()).get(i).getKind().equals("하의")) {
 							size.add(CartDAO.cartMap.get(m.getId()).get(i).getSize());
-							
+							size.add("size");
 							size.add("28");
 							size.add("30");
 							size.add("32");
 							size.add("34");
-						}
-						else if(CartDAO.cartMap.get(m.getId()).get(i).getKind().equals("신발")) {
+						} else if (CartDAO.cartMap.get(m.getId()).get(i).getKind().equals("신발")) {
 							size.add(CartDAO.cartMap.get(m.getId()).get(i).getSize());
-							
+							size.add("size");
 							size.add("240");
 							size.add("250");
 							size.add("260");
 							size.add("270");
 							size.add("280");
 						}
-						
+
 						pgNum.get(Integer.parseInt(pageBtn.getText()) - 1).add(nameInfo);
 						pgNum.get(Integer.parseInt(pageBtn.getText()) - 1).add(itemInfo);
 						pgNum.get(Integer.parseInt(pageBtn.getText()) - 1).add(cntInfo);
@@ -318,11 +229,9 @@ public class CartPanel extends JPanel {
 						pgNum.get(Integer.parseInt(pageBtn.getText()) - 1).add(sizeInfo);
 						pgNum.get(Integer.parseInt(pageBtn.getText()) - 1).add(size);
 
-						
-						
 						RoundedButton removeBtn = new RoundedButton("삭제");
-						
-						removeBtn.setBounds(500, 25 + ((i % 5) * 115), 65, 50);
+
+						removeBtn.setBounds(500, 102 + ((i % 4) * 115), 65, 50);
 						removeBtn.putClientProperty("id", CartDAO.cartMap.get(m.getId()).get(i).getId());
 						pgNum.get(Integer.parseInt(pageBtn.getText()) - 1).add(removeBtn);
 
@@ -338,8 +247,8 @@ public class CartPanel extends JPanel {
 						});
 
 						RoundedButton editBtn = new RoundedButton("변경");
-						
-						editBtn.setBounds(430, 25 + ((i % 5) * 115), 65, 50);
+
+						editBtn.setBounds(430, 102 + ((i % 4) * 115), 65, 50);
 						editBtn.putClientProperty("id", CartDAO.cartMap.get(m.getId()).get(i).getId());
 						pgNum.get(Integer.parseInt(pageBtn.getText()) - 1).add(editBtn);
 
@@ -349,7 +258,136 @@ public class CartPanel extends JPanel {
 							public void actionPerformed(ActionEvent e) {
 
 								int id = Integer.parseInt(String.valueOf((editBtn.getClientProperty("id"))));
-								if (cart.change(id, Integer.parseInt(cntText.getText()), m.getId(),size.getSelectedItem())) {
+								if (cart.change(id, Integer.parseInt(cntText.getText()), m.getId(),
+										size.getSelectedItem())) {
+									mainFrame.getInstance(new CartPanel(m, cart, history));
+								}
+							}
+						});
+					}
+				}
+
+				else {
+
+					pgNum.get(Integer.parseInt(pageBtn.getText()) - 1).setBounds(0, 0, 600, 560);
+					pgNum.get(Integer.parseInt(pageBtn.getText()) - 1).setBackground(Color.WHITE);
+					pgNum.get(Integer.parseInt(pageBtn.getText()) - 1).setLayout(null);
+
+					for (int i = (Integer.parseInt(pageBtn.getText()) - 1) * 4; i < Integer.parseInt(pageBtn.getText())
+							* 4; i++) {
+
+						Image image = itemImg.get(i).getImage();
+						Image newImg = image.getScaledInstance(200, 100, java.awt.Image.SCALE_SMOOTH);
+						// 이미지
+						ImageIcon newIcon = new ImageIcon(newImg);
+						JLabel img = new JLabel(newIcon);
+						img.setBounds(50, 90 + ((i % 4) * 110), 200, 100);
+						pgNum.get(Integer.parseInt(pageBtn.getText()) - 1).add(img);
+
+						box.add(new JCheckBox());
+						box.get(i).setBounds(16, 127 + ((i % 4) * 110), 20, 20);
+						box.get(i).setBackground(Color.WHITE);
+						pgNum.get(Integer.parseInt(pageBtn.getText()) - 1).add(box.get(i));
+
+						box.get(i).addItemListener(new ItemListener() {
+
+							@Override
+							public void itemStateChanged(ItemEvent e) {
+								if (e.getStateChange() == ItemEvent.SELECTED) {
+									sel = 1;
+								} else {
+									sel = -1;
+								}
+								for (int k = 0; k < box.size(); k++) {
+									if (e.getItem() == box.get(k)) {
+										partMoney += sel * CartDAO.cartMap.get(m.getId()).get(k).getCnt()
+												* CartDAO.cartMap.get(m.getId()).get(k).getPrice();
+									}
+								}
+							}
+						});
+
+						JLabel nameInfo = new JLabel("상품명 : " + CartDAO.cartMap.get(m.getId()).get(i).getName()); // 상품명
+						JLabel itemInfo = new JLabel("상품 가격 : " + CartDAO.cartMap.get(m.getId()).get(i).getPrice()
+								* CartDAO.cartMap.get(m.getId()).get(i).getCnt());
+						JLabel cntInfo = new JLabel("수량 ");
+
+						JTextField cntText = new JTextField();
+						JLabel sizeInfo = new JLabel("사이즈");
+						Choice size = new Choice();
+
+						nameInfo.setBounds(300, 90 + ((i % 4) * 110), 100, 15);
+						itemInfo.setBounds(300, 115 + ((i % 4) * 110), 200, 15);
+						cntInfo.setBounds(300, 140 + ((i % 4) * 110), 100, 15);
+						cntText.setBounds(350, 135 + ((i % 4) * 110), 60, 20);
+						sizeInfo.setBounds(300, 165 + ((i % 4) * 110), 40, 15);
+						size.setBounds(350, 161 + ((i % 4) * 110), 70, 20);
+
+						itemInfo.putClientProperty("id", CartDAO.cartMap.get(m.getId()).get(i).getId());
+
+						cntText.setText(Integer.toString(CartDAO.cartMap.get(m.getId()).get(i).getCnt()));
+
+						if (CartDAO.cartMap.get(m.getId()).get(i).getKind().equals("상의")) {
+							size.add(CartDAO.cartMap.get(m.getId()).get(i).getSize());
+
+							size.add("S");
+							size.add("M");
+							size.add("L");
+						} else if (CartDAO.cartMap.get(m.getId()).get(i).getKind().equals("하의")) {
+							size.add(CartDAO.cartMap.get(m.getId()).get(i).getSize());
+
+							size.add("28");
+							size.add("30");
+							size.add("32");
+							size.add("34");
+						} else if (CartDAO.cartMap.get(m.getId()).get(i).getKind().equals("신발")) {
+							size.add(CartDAO.cartMap.get(m.getId()).get(i).getSize());
+
+							size.add("240");
+							size.add("250");
+							size.add("260");
+							size.add("270");
+							size.add("280");
+						}
+
+						pgNum.get(Integer.parseInt(pageBtn.getText()) - 1).add(nameInfo);
+						pgNum.get(Integer.parseInt(pageBtn.getText()) - 1).add(itemInfo);
+						pgNum.get(Integer.parseInt(pageBtn.getText()) - 1).add(cntInfo);
+						pgNum.get(Integer.parseInt(pageBtn.getText()) - 1).add(cntText);
+						pgNum.get(Integer.parseInt(pageBtn.getText()) - 1).add(sizeInfo);
+						pgNum.get(Integer.parseInt(pageBtn.getText()) - 1).add(size);
+
+						RoundedButton removeBtn = new RoundedButton("삭제");
+
+						removeBtn.setBounds(500, 102 + ((i % 4) * 115), 65, 50);
+						removeBtn.putClientProperty("id", CartDAO.cartMap.get(m.getId()).get(i).getId());
+						pgNum.get(Integer.parseInt(pageBtn.getText()) - 1).add(removeBtn);
+
+						removeBtn.addActionListener(new ActionListener() {
+
+							@Override
+							public void actionPerformed(ActionEvent e) {
+								int id = Integer.parseInt(String.valueOf((removeBtn.getClientProperty("id"))));
+								if (cart.remove(id, m.getId())) {
+									mainFrame.getInstance(new CartPanel(m, cart, history));
+								}
+							}
+						});
+
+						RoundedButton editBtn = new RoundedButton("변경");
+
+						editBtn.setBounds(430, 102 + ((i % 4) * 115), 65, 50);
+						editBtn.putClientProperty("id", CartDAO.cartMap.get(m.getId()).get(i).getId());
+						pgNum.get(Integer.parseInt(pageBtn.getText()) - 1).add(editBtn);
+
+						editBtn.addActionListener(new ActionListener() {
+
+							@Override
+							public void actionPerformed(ActionEvent e) {
+
+								int id = Integer.parseInt(String.valueOf((editBtn.getClientProperty("id"))));
+								if (cart.change(id, Integer.parseInt(cntText.getText()), m.getId(),
+										size.getSelectedItem())) {
 									mainFrame.getInstance(new CartPanel(m, cart, history));
 								}
 							}
@@ -365,14 +403,13 @@ public class CartPanel extends JPanel {
 						for (int j = 0; j < pgNum.size(); j++) {
 							if (Integer.parseInt(pageBtn.getText()) - 1 == j) {
 								pgNum.get(j).setVisible(true);
-								
+
 							} else {
 								pgNum.get(j).setVisible(false);
 							}
 						}
 					}
 
-					
 				});
 
 				pa.add(pageBtn);
@@ -404,7 +441,7 @@ public class CartPanel extends JPanel {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				mainFrame.getInstance(new ShopPanel(m));
+				mainFrame.getInstance(new Kinds(m, cart, history));
 			}
 		});
 
@@ -413,7 +450,6 @@ public class CartPanel extends JPanel {
 		payBtn.setBackground(new Color(32, 32, 32));
 		payBtn.setFont(font);
 		payBtn.setForeground(new Color(255, 255, 255));
-		
 
 		payBtn.addActionListener(new ActionListener() {
 
@@ -524,6 +560,56 @@ public class CartPanel extends JPanel {
 		});
 
 		add(bottomSet);
+
+		JPanel topLogo = new JPanel();
+		topLogo.setBounds(0,0,600,70);
+		topLogo.setBackground(new Color(219,206,190));
+		topLogo.setLayout(null);
+		add(topLogo);
+		
+		ImageIcon icon = new ImageIcon("cartimg3.png");
+
+		Image image3 = icon.getImage();
+		Image newImg3 = image3.getScaledInstance(50, 50, java.awt.Image.SCALE_SMOOTH);
+		ImageIcon newIcon3 = new ImageIcon(newImg3);
+
+		JButton cartImgBtn = new JButton(newIcon3);
+		cartImgBtn.setBackground(new Color(219,206,190));
+		cartImgBtn.setBorderPainted(false);
+		cartImgBtn.setBounds(500, 10, 50, 50);
+
+		topLogo.add(cartImgBtn);
+		
+		cartImgBtn.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				mainFrame.getInstance(new CartPanel(m,cart,history));
+				
+			}
+		});
+		
+		ImageIcon icon2 = new ImageIcon("mypageIcon2.png");
+		Image image2 = icon2.getImage();
+		Image newImg2 = image2.getScaledInstance(40, 40, java.awt.Image.SCALE_SMOOTH);
+		ImageIcon myIcon = new ImageIcon(newImg2);
+		
+		JButton myPageImgBtn = new JButton(myIcon);
+		myPageImgBtn.setBackground(new Color(219,206,190));
+		myPageImgBtn.setBorderPainted(false);
+		myPageImgBtn.setBounds(430, 10, 50, 50);
+		
+		myPageImgBtn.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				mainFrame.getInstance(new MyPage(m,cart,history));
+				
+			}
+		});
+		
+		topLogo.add(myPageImgBtn);
+		//pgNum.get(i).add(topLogo);
 
 	}
 

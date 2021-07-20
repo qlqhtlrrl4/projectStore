@@ -3,6 +3,7 @@ package frame.Bottom;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.GridLayout;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -16,7 +17,9 @@ import customDAO.ItemDAO;
 import customDAO.Items;
 import customDAO.MyInfo;
 import customDAO.SellDAO;
+import frame.CartPanel;
 import frame.Kinds;
+import frame.MyPage;
 import frame.ShopPanel;
 import frame.mainFrame;
 import view.CustomFont;
@@ -32,20 +35,6 @@ public class BottomPanel extends JPanel {
 		
 		CustomFont baemin = new CustomFont();
 		Font font = baemin.getCreateFont2();
-
-		/*// 청바지 버튼 위 이미지
-		ImageIcon jean = new ImageIcon("청바지.jpg");
-		JLabel lb1 = new JLabel(jean);
-
-		add(lb1);
-		lb1.setBounds(72, 100, 185, 250);
-
-		// 반바지 버튼 위 이미지
-		ImageIcon shorts = new ImageIcon("반바지.jpg");
-		JLabel lb2 = new JLabel(shorts);
-
-		add(lb2);
-		lb2.setBounds(320, 100, 185, 250);*/
 
 		// 청바지 버튼 설정
 		RoundedButton btnJean = new RoundedButton("BLUE JEANS");
@@ -107,22 +96,54 @@ public class BottomPanel extends JPanel {
 		});
 		add(bottomSet);
 		
-		/*RoundedButton mainBtn = new RoundedButton("처음으로");
-
-		mainBtn.setBackground(new Color(32, 32, 32));
-		mainBtn.setFont(new Font("나눔고딕코딩", Font.BOLD, 18));
-		mainBtn.setForeground(new Color(255, 255, 255));
-
-		bottomSet.add(mainBtn);
-		add(bottomSet);
+		JPanel topLogo = new JPanel();
+		topLogo.setBounds(0,0,600,70);
+		topLogo.setBackground(new Color(219,206,190));
+		topLogo.setLayout(null);
+		add(topLogo);
 		
-		mainBtn.addActionListener(new ActionListener() {
+		ImageIcon icon = new ImageIcon("cartimg3.png");
+
+		Image image = icon.getImage();
+		Image newImg = image.getScaledInstance(50, 50, java.awt.Image.SCALE_SMOOTH);
+		ImageIcon newIcon = new ImageIcon(newImg);
+
+		JButton cartImgBtn = new JButton(newIcon);
+		cartImgBtn.setBackground(new Color(219,206,190));
+		cartImgBtn.setBorderPainted(false);
+		cartImgBtn.setBounds(500, 10, 50, 50);
+
+		topLogo.add(cartImgBtn);
+		
+		cartImgBtn.addActionListener(new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				mainFrame.getInstance(new ShopPanel(m));
-				system.out.println("1");
+				mainFrame.getInstance(new CartPanel(m,cart,history));
+				
 			}
-		});*/
+		});
+		
+		ImageIcon icon2 = new ImageIcon("mypageIcon2.png");
+		Image image2 = icon2.getImage();
+		Image newImg2 = image2.getScaledInstance(40, 40, java.awt.Image.SCALE_SMOOTH);
+		ImageIcon myIcon = new ImageIcon(newImg2);
+		
+		JButton myPageImgBtn = new JButton(myIcon);
+		myPageImgBtn.setBackground(new Color(219,206,190));
+		myPageImgBtn.setBorderPainted(false);
+		myPageImgBtn.setBounds(430, 10, 50, 50);
+		
+		myPageImgBtn.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				mainFrame.getInstance(new MyPage(m,cart,history));
+				
+			}
+		});
+		
+		topLogo.add(myPageImgBtn);
+		
 	}
 }

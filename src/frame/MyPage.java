@@ -54,7 +54,7 @@ public class MyPage extends JPanel {
 		setSize(600, 800);
 		
 		//맨위 
-		JLabel shopName = new JLabel("마이  페이지");
+	/*	JLabel shopName = new JLabel("마이  페이지");
 		shopName.setHorizontalAlignment(JLabel.CENTER);
 		shopName.setFont(titleF);
 		shopName.setOpaque(true);
@@ -62,7 +62,56 @@ public class MyPage extends JPanel {
 		shopName.setSize(600,70);
 		shopName.setLocation(0,0);
 		//shopName.setHorizontalAlignment(JLabel.CENTER);
-		add(shopName);
+		add(shopName);*/
+		
+		JPanel topLogo = new JPanel();
+		topLogo.setBounds(0,0,600,70);
+		topLogo.setBackground(new Color(219,206,190));
+		topLogo.setLayout(null);
+		add(topLogo);
+		
+		ImageIcon icon = new ImageIcon("cartimg3.png");
+
+		Image image3 = icon.getImage();
+		Image newImg3 = image3.getScaledInstance(50, 50, java.awt.Image.SCALE_SMOOTH);
+		ImageIcon newIcon3 = new ImageIcon(newImg3);
+
+		JButton cartImgBtn = new JButton(newIcon3);
+		cartImgBtn.setBackground(new Color(219,206,190));
+		cartImgBtn.setBorderPainted(false);
+		cartImgBtn.setBounds(500, 10, 50, 50);
+
+		topLogo.add(cartImgBtn);
+		
+		cartImgBtn.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				mainFrame.getInstance(new CartPanel(m,cart,history));
+				
+			}
+		});
+		
+		ImageIcon icon2 = new ImageIcon("mypageIcon2.png");
+		Image image2 = icon2.getImage();
+		Image newImg2 = image2.getScaledInstance(40, 40, java.awt.Image.SCALE_SMOOTH);
+		ImageIcon myIcon = new ImageIcon(newImg2);
+		
+		JButton myPageImgBtn = new JButton(myIcon);
+		myPageImgBtn.setBackground(new Color(219,206,190));
+		myPageImgBtn.setBorderPainted(false);
+		myPageImgBtn.setBounds(430, 10, 50, 50);
+		
+		myPageImgBtn.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				mainFrame.getInstance(new MyPage(m,cart,history));
+				
+			}
+		});
+		
+		topLogo.add(myPageImgBtn);
 		
 		ImageIcon item1 = new ImageIcon("my.png");
 		Image ximg=item1.getImage();
@@ -192,7 +241,7 @@ public class MyPage extends JPanel {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				mainFrame.getInstance(new ShopPanel(m));
+				mainFrame.getInstance(new Kinds(m,cart,history));
 			}
 		});
 	

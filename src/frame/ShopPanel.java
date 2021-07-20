@@ -40,36 +40,31 @@ public class ShopPanel extends JPanel {
 		setSize(600, 800);
 		setBackground(Color.WHITE);
 
-		JPanel bottomSet = new JPanel();
-
-		bottomSet.setBounds(5, 660, 570, 75);
-		bottomSet.setLayout(new GridLayout(1, 3, 5, 0));
-		bottomSet.setBackground(Color.WHITE);
-
 		RoundedButton kindsBtn = new RoundedButton("KIND");
 
-		kindsBtn.setBackground(new Color(32, 32, 32));
-		// kindsBtn.setFont(new Font("나눔고딕코딩", Font.BOLD, 18));
+		kindsBtn.setBackground(Color.WHITE);
+		kindsBtn.setSize(200, 70);
+		kindsBtn.setLocation(190, 220);
+		// TBtn.setFont(new Font("나눔고딕코딩", Font.BOLD, 22));
 		kindsBtn.setFont(font);
-		kindsBtn.setForeground(new Color(255, 255, 255));
-
-		bottomSet.add(kindsBtn);
+		add(kindsBtn);
 
 		RoundedButton cartBtn = new RoundedButton("CART");
 
-		cartBtn.setBackground(new Color(32, 32, 32));
+		cartBtn.setBackground(Color.WHITE);
+		cartBtn.setSize(200, 70);
+		cartBtn.setLocation(190, 220);
 		cartBtn.setFont(font);
-		cartBtn.setForeground(new Color(255, 255, 255));
-		bottomSet.add(cartBtn);
+		add(cartBtn);
 
 		RoundedButton myInfoBtn = new RoundedButton("My Page");
 
 		myInfoBtn.setBackground(new Color(32, 32, 32));
 		myInfoBtn.setFont(font);
 		myInfoBtn.setForeground(new Color(255, 255, 255));
-		bottomSet.add(myInfoBtn);
+		cartBtn.add(myInfoBtn);
 
-		add(bottomSet);
+		add(cartBtn);
 
 		kindsBtn.addActionListener(new ActionListener() {
 			@Override
@@ -91,19 +86,6 @@ public class ShopPanel extends JPanel {
 				mainFrame.getInstance(new CartPanel(m, cart, history));
 			}
 		});
-		add(bottomSet);
 
-		ImageIcon icon = new ImageIcon("cartimg.png");
-
-		Image image = icon.getImage();
-		Image newImg = image.getScaledInstance(50, 50, java.awt.Image.SCALE_SMOOTH);
-		ImageIcon newIcon = new ImageIcon(newImg);
-
-		JButton cartImgBtn = new JButton(newIcon);
-		cartImgBtn.setBackground(Color.WHITE);
-		cartImgBtn.setBorderPainted(false);
-		cartImgBtn.setBounds(500, 400, 50, 50);
-
-		add(cartImgBtn);
 	}
 }

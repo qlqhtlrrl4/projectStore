@@ -24,7 +24,9 @@ import customDAO.ItemDAO;
 import customDAO.Items;
 import customDAO.MyInfo;
 import customDAO.SellDAO;
+import frame.CartPanel;
 import frame.Kinds;
+import frame.MyPage;
 import frame.mainFrame;
 import view.CustomFont;
 import view.RoundedButton;
@@ -63,20 +65,20 @@ public class TopInfoPanel extends JPanel {
 		}
 
 		Image image = itemImg.get(itemId).getImage();
-		Image newImg = image.getScaledInstance(285, 350, java.awt.Image.SCALE_SMOOTH);
+		Image newImg = image.getScaledInstance(285, 280, java.awt.Image.SCALE_SMOOTH);
 
 		ImageIcon newIcon = new ImageIcon(newImg);
 		JLabel img = new JLabel(newIcon);
-		img.setBounds(50, 13, 285, 350);
+		img.setBounds(50, 83, 285, 350);
 		add(img);
 
 		TextArea info = new TextArea("\n ● 상품 이름" + "\n" + "    " + item.getName() + "\n" + "\n ● 상품 가격\n " + "    "
 				+ item.getPrice() + "\n" + "\n ● 상품 정보" + "\n" + "    " + item.getItemInfo(), 0, 0,
 				TextArea.SCROLLBARS_VERTICAL_ONLY);
-		info.setFont(font);
 		
-		info.setSize(580, 280);
-		info.setLocation(0, 375);
+		info.setFont(font);
+		info.setSize(580, 200);
+		info.setLocation(0, 455);
 		info.setBackground(new Color(255, 255, 255));
 		info.setEditable(false);
 		info.setFont(font);
@@ -87,7 +89,7 @@ public class TopInfoPanel extends JPanel {
 		JButton opBtn = new JButton("VIEW SIZE GUIDE");
 		opBtn.setBackground(Color.white);
 		opBtn.setSize(187, 30);
-		opBtn.setLocation(345, 105);
+		opBtn.setLocation(345, 185);
 		//opBtn.setFont(font);
 		// oSet.add(opBtn);
 		add(opBtn);
@@ -119,7 +121,7 @@ public class TopInfoPanel extends JPanel {
 		size.add("L");
 
 		size.setSize(80, 0);
-		size.setLocation(450, 60);
+		size.setLocation(450, 140);
 		add(size);
 
 		// 하단의 버튼
@@ -189,7 +191,7 @@ public class TopInfoPanel extends JPanel {
 						JOptionPane.showMessageDialog(null, m.salePrice(grade, payMoney) + "원을 결제하셨습니다.");
 
 						m.setTotal(m.salePrice(grade, m.salePrice(grade, payMoney)));
-						mainFrame.getInstance(new Kinds(m, c, history));
+						//mainFrame.getInstance(new Kinds(m, c, history));
 
 					} else {
 						JOptionPane.showMessageDialog(null, "결제를 취소하셨습니다.");
@@ -214,17 +216,17 @@ public class TopInfoPanel extends JPanel {
 
 		JLabel countLabel = new JLabel("수량");
 		countLabel.setSize(80, 20);
-		countLabel.setLocation(350, 30);
+		countLabel.setLocation(350, 110);
 		add(countLabel);
 
 		countField = new JTextField(20);
 		countField.setSize(80, 20);
-		countField.setLocation(450, 30);
+		countField.setLocation(450, 110);
 		add(countField);
 		
 		JLabel countLabel2 = new JLabel("사이즈");
 		countLabel2.setSize(80, 20);
-		countLabel2.setLocation(350, 60);
+		countLabel2.setLocation(350, 140);
 		add(countLabel2);
 
 		cartBnt.addActionListener(new ActionListener() {
@@ -260,6 +262,56 @@ public class TopInfoPanel extends JPanel {
 			}
 		});
 		add(bottomSet);
+		
+		JPanel topLogo = new JPanel();
+		topLogo.setBounds(0,0,600,70);
+		topLogo.setBackground(new Color(219,206,190));
+		topLogo.setLayout(null);
+		add(topLogo);
+		
+		ImageIcon icon = new ImageIcon("cartimg3.png");
+
+		Image image3 = icon.getImage();
+		Image newImg3 = image3.getScaledInstance(50, 50, java.awt.Image.SCALE_SMOOTH);
+		ImageIcon newIcon3 = new ImageIcon(newImg3);
+
+		JButton cartImgBtn = new JButton(newIcon3);
+		cartImgBtn.setBackground(new Color(219,206,190));
+		cartImgBtn.setBorderPainted(false);
+		cartImgBtn.setBounds(500, 10, 50, 50);
+
+		topLogo.add(cartImgBtn);
+		
+		cartImgBtn.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				mainFrame.getInstance(new CartPanel(m,c,history));
+				
+			}
+		});
+		
+		ImageIcon icon2 = new ImageIcon("mypageIcon2.png");
+		Image image2 = icon2.getImage();
+		Image newImg2 = image2.getScaledInstance(40, 40, java.awt.Image.SCALE_SMOOTH);
+		ImageIcon myIcon = new ImageIcon(newImg2);
+		
+		JButton myPageImgBtn = new JButton(myIcon);
+		myPageImgBtn.setBackground(new Color(219,206,190));
+		myPageImgBtn.setBorderPainted(false);
+		myPageImgBtn.setBounds(430, 10, 50, 50);
+		
+		myPageImgBtn.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				mainFrame.getInstance(new MyPage(m,c,history));
+				
+			}
+		});
+		
+		topLogo.add(myPageImgBtn);
+		
 
 	}
 
