@@ -35,7 +35,7 @@ public class BottomInfoPanel extends JPanel {
 	int itemId;
 	JTextField countField;
 	List<ImageIcon> itemImg;
-	int temp;
+	String str;
 	
 	public BottomInfoPanel(Items item, MyInfo m, CartDAO c, SellDAO history) {
 
