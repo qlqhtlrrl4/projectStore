@@ -102,7 +102,7 @@ public class BottomPanel extends JPanel {
 		topLogo.setLayout(null);
 		add(topLogo);
 		
-		ImageIcon icon = new ImageIcon("cartimg3.png");
+		ImageIcon icon = new ImageIcon("cartimg4.png");
 
 		Image image = icon.getImage();
 		Image newImg = image.getScaledInstance(50, 50, java.awt.Image.SCALE_SMOOTH);

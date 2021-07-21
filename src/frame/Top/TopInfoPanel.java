@@ -269,7 +269,7 @@ public class TopInfoPanel extends JPanel {
 		topLogo.setLayout(null);
 		add(topLogo);
 		
-		ImageIcon icon = new ImageIcon("cartimg3.png");
+		ImageIcon icon = new ImageIcon("cartimg4.png");
 
 		Image image3 = icon.getImage();
 		Image newImg3 = image3.getScaledInstance(50, 50, java.awt.Image.SCALE_SMOOTH);

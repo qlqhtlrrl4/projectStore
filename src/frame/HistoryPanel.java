@@ -94,7 +94,7 @@ public class HistoryPanel extends JPanel {
 				topLogo.setLayout(null);
 				add(topLogo);
 				
-				ImageIcon icon = new ImageIcon("cartimg3.png");
+				ImageIcon icon = new ImageIcon("cartimg4.png");
 
 				Image image3 = icon.getImage();
 				Image newImg3 = image3.getScaledInstance(50, 50, java.awt.Image.SCALE_SMOOTH);
@@ -275,11 +275,49 @@ public class HistoryPanel extends JPanel {
 						pgNum.get(Integer.parseInt(pageBtn.getText()) - 1).add(sizeInfo);
 						
 						
-						RoundedButton detailBtn = new RoundedButton("변경");
+						RoundedButton detailBtn = new RoundedButton("상세보기");
 						detailBtn.setBounds(430, 102 + ((i % 4) * 115), 130, 70);
 						detailBtn.putClientProperty("id", SellDAO.historyMap.get(m.getId()).get(i).getId());
 						pgNum.get(Integer.parseInt(pageBtn.getText()) - 1).add(detailBtn);
+						
+						detailBtn.addActionListener(new ActionListener() {
+							
+							@Override
+							public void actionPerformed(ActionEvent e) {
+								
+								
+								JFrame detailPage = new JFrame();
+								detailPage.setLayout(null);
+								detailPage.setSize(600,800);
+								detailPage.setBackground(Color.WHITE);
+								int id = Integer.parseInt(String.valueOf((detailBtn.getClientProperty("id"))));
+								
+								
+								ImageIcon icon = new ImageIcon(ItemDAO.itemList.get(id).getItemUrl());
+								
+								Image image = icon.getImage();
+								Image newImg = image.getScaledInstance(350, 340, java.awt.Image.SCALE_SMOOTH);
+								ImageIcon newIcon = new ImageIcon(newImg);
+								JLabel img = new JLabel(newIcon);
+								img.setBounds(20, 0, 500, 370);
+								detailPage.add(img);
+															
+								
+								TextArea info = new TextArea("\n◈ 상품 이름" + "\n" + "   " + ItemDAO.itemList.get(id).getName() + "\n" + "\n◈ 상품 가격\n " + "   "
+										+ ItemDAO.itemList.get(id).getPrice() + "\n" + "\n◈ 상품 정보" + "\n" + "   " + ItemDAO.itemList.get(id).getItemInfo(), 0, 0,
+										TextArea.SCROLLBARS_VERTICAL_ONLY);
 
+								info.setSize(580, 350);
+								info.setLocation(0, 375);
+								info.setBackground(new Color(0xFFD700));
+								info.setFont(new Font(Font.DIALOG, Font.BOLD, 20));
+								detailPage.add(info);
+								detailPage.setDefaultCloseOperation(detailPage.DISPOSE_ON_CLOSE);
+								
+								detailPage.setVisible(true);
+								
+							}
+						});
 					}
 				}
 
@@ -357,7 +395,7 @@ public class HistoryPanel extends JPanel {
 		topLogo.setLayout(null);
 		add(topLogo);
 		
-		ImageIcon icon = new ImageIcon("cartimg3.png");
+		ImageIcon icon = new ImageIcon("cartimg4.png");
 
 		Image image3 = icon.getImage();
 		Image newImg3 = image3.getScaledInstance(50, 50, java.awt.Image.SCALE_SMOOTH);

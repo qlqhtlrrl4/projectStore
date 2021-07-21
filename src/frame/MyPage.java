@@ -53,24 +53,13 @@ public class MyPage extends JPanel {
 		setBackground(Color.WHITE);
 		setSize(600, 800);
 		
-		//맨위 
-	/*	JLabel shopName = new JLabel("마이  페이지");
-		shopName.setHorizontalAlignment(JLabel.CENTER);
-		shopName.setFont(titleF);
-		shopName.setOpaque(true);
-		shopName.setBackground(new Color(229,243,197));
-		shopName.setSize(600,70);
-		shopName.setLocation(0,0);
-		//shopName.setHorizontalAlignment(JLabel.CENTER);
-		add(shopName);*/
-		
 		JPanel topLogo = new JPanel();
 		topLogo.setBounds(0,0,600,70);
 		topLogo.setBackground(new Color(219,206,190));
 		topLogo.setLayout(null);
 		add(topLogo);
 		
-		ImageIcon icon = new ImageIcon("cartimg3.png");
+		ImageIcon icon = new ImageIcon("cartimg4.png");
 
 		Image image3 = icon.getImage();
 		Image newImg3 = image3.getScaledInstance(50, 50, java.awt.Image.SCALE_SMOOTH);
