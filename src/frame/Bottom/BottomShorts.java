@@ -10,6 +10,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import customDAO.Items;
@@ -43,6 +44,16 @@ public class BottomShorts extends JPanel {
 		btnBottom5.setSize(185, 220);
 		btnBottom5.setLocation(72, 105);
 		add(btnBottom5);
+		
+		JLabel aLabel = new JLabel("무신사 스탠다드");
+		aLabel.setBounds(118, 330, 185, 20);
+		aLabel.setFont(font);
+		add(aLabel);
+		
+		JLabel aLabel2 = new JLabel("25,000");
+		aLabel2.setBounds(133, 350, 185, 20);
+		aLabel2.setFont(font);
+		add(aLabel2);
 
 		btnBottom5.addActionListener(new ActionListener() {
 
@@ -62,6 +73,16 @@ public class BottomShorts extends JPanel {
 		btnBottom6.setSize(185, 220);
 		btnBottom6.setLocation(320, 105);
 		add(btnBottom6);
+		
+		JLabel bLabel = new JLabel("에이본");
+		bLabel.setBounds(380, 330, 185, 20);
+		bLabel.setFont(font);
+		add(bLabel);
+
+		JLabel bLabel2 = new JLabel("33,000");
+		bLabel2.setBounds(385, 350, 185, 20);
+		bLabel2.setFont(font);
+		add(bLabel2);
 
 		btnBottom6.addActionListener(new ActionListener() {
 
@@ -81,6 +102,16 @@ public class BottomShorts extends JPanel {
 		btnBottom7.setSize(185, 220);
 		btnBottom7.setLocation(72, 380);
 		add(btnBottom7);
+		
+		JLabel cLabel = new JLabel("더블유브이");
+		cLabel.setBounds(138, 600, 185, 30);
+		cLabel.setFont(font);
+		add(cLabel);
+
+		JLabel cLabel2 = new JLabel("34,000");
+		cLabel2.setBounds(138, 620, 185, 30);
+		cLabel2.setFont(font);
+		add(cLabel2);
 
 		btnBottom7.addActionListener(new ActionListener() {
 
@@ -100,6 +131,16 @@ public class BottomShorts extends JPanel {
 		btnBottom8.setSize(185, 220);
 		btnBottom8.setLocation(320, 380);
 		add(btnBottom8);
+		
+		JLabel dLabel = new JLabel("소프트서울");
+		dLabel.setBounds(380, 600, 185, 30);
+		dLabel.setFont(font);
+		add(dLabel);
+
+		JLabel dLabel2 = new JLabel("100,000");
+		dLabel2.setBounds(382, 620, 185, 30);
+		dLabel2.setFont(font);
+		add(dLabel2);
 
 		btnBottom8.addActionListener(new ActionListener() {
 

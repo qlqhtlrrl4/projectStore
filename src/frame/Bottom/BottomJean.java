@@ -10,6 +10,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import customDAO.CartDAO;
@@ -39,6 +40,16 @@ public class BottomJean extends JPanel {
 		JButton btnBottom1 = new JButton(bottom1);
 		btnBottom1.setName("모드나인");
 		
+		JLabel aLabel = new JLabel("모드나인");
+		aLabel.setBounds(125, 330, 185, 20);
+		aLabel.setFont(font);
+		add(aLabel);
+		
+		JLabel aLabel2 = new JLabel("80,000");
+		aLabel2.setBounds(133, 350, 185, 20);
+		aLabel2.setFont(font);
+		add(aLabel2);
+		
 
 		btnBottom1.setSize(185, 220);
 		btnBottom1.setLocation(72, 105);
@@ -60,6 +71,16 @@ public class BottomJean extends JPanel {
 		btnBottom2.setSize(185, 220);
 		btnBottom2.setLocation(320, 105);
 		add(btnBottom2);
+		
+		JLabel bLabel = new JLabel("브랜디드");
+		bLabel.setBounds(380, 330, 185, 20);
+		bLabel.setFont(font);
+		add(bLabel);
+
+		JLabel bLabel2 = new JLabel("98,000");
+		bLabel2.setBounds(385, 350, 185, 20);
+		bLabel2.setFont(font);
+		add(bLabel2);
 
 		btnBottom2.addActionListener(new ActionListener() {
 
@@ -77,6 +98,16 @@ public class BottomJean extends JPanel {
 		btnBottom3.setSize(185, 220);
 		btnBottom3.setLocation(72, 380);
 		add(btnBottom3);
+		
+		JLabel cLabel = new JLabel("마리떼");
+		cLabel.setBounds(138, 600, 185, 30);
+		cLabel.setFont(font);
+		add(cLabel);
+
+		JLabel cLabel2 = new JLabel("98,000");
+		cLabel2.setBounds(138, 620, 185, 30);
+		cLabel2.setFont(font);
+		add(cLabel2);
 
 		btnBottom3.addActionListener(new ActionListener() {
 
@@ -94,6 +125,16 @@ public class BottomJean extends JPanel {
 		btnBottom4.setSize(185, 220);
 		btnBottom4.setLocation(320, 380);
 		add(btnBottom4);
+		
+		JLabel dLabel = new JLabel("스파오");
+		dLabel.setBounds(380, 600, 185, 30);
+		dLabel.setFont(font);
+		add(dLabel);
+
+		JLabel dLabel2 = new JLabel("30,000");
+		dLabel2.setBounds(382, 620, 185, 30);
+		dLabel2.setFont(font);
+		add(dLabel2);
 
 		btnBottom4.addActionListener(new ActionListener() {
 

@@ -53,12 +53,12 @@ public class rnShoesPanel extends JPanel {
 		add(itemBtn1);
 
 		JLabel aLabel = new JLabel("나이키 에어포스");
-		aLabel.setBounds(105, 325, 185, 20);
+		aLabel.setBounds(100, 325, 185, 20);
 		aLabel.setFont(font);
 		add(aLabel);
 		
 		JLabel aLabel2 = new JLabel("99,000");
-		aLabel2.setBounds(140, 345, 185, 20);
+		aLabel2.setBounds(130, 345, 185, 20);
 		aLabel2.setFont(font);
 		add(aLabel2);
 		
@@ -83,12 +83,12 @@ public class rnShoesPanel extends JPanel {
 		add(itemBtn2);
 		
 		JLabel bLabel = new JLabel("아디다스 제트엑스");
-		bLabel.setBounds(350, 325, 185, 20);
+		bLabel.setBounds(335, 325, 185, 20);
 		bLabel.setFont(font);
 		add(bLabel);
 
 		JLabel bLabel2 = new JLabel("69,000");
-		bLabel2.setBounds(390, 345, 185, 20);
+		bLabel2.setBounds(380, 345, 185, 20);
 		bLabel2.setFont(font);
 		add(bLabel2);
 
@@ -114,7 +114,7 @@ public class rnShoesPanel extends JPanel {
 		add(itemBtn3);
 
 		JLabel cLabel = new JLabel("뉴발란스 480");
-		cLabel.setBounds(115, 600, 185, 30);
+		cLabel.setBounds(105, 600, 185, 30);
 		cLabel.setFont(font);
 		add(cLabel);
 
@@ -145,7 +145,7 @@ public class rnShoesPanel extends JPanel {
 		add(itemBtn4);
 		
 		JLabel dLabel = new JLabel("COURT-MASTER");
-		dLabel.setBounds(352, 600, 185, 30);
+		dLabel.setBounds(330, 600, 185, 30);
 		dLabel.setFont(font);
 		add(dLabel);
 
