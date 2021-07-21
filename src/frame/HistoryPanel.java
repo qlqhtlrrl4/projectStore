@@ -165,24 +165,21 @@ public class HistoryPanel extends JPanel {
 						JLabel nameInfo = new JLabel("상품명 : " + SellDAO.historyMap.get(m.getId()).get(i).getName()); // 상품명
 						JLabel itemInfo = new JLabel("상품 가격 : " + SellDAO.historyMap.get(m.getId()).get(i).getPrice());
 						JLabel cntInfo = new JLabel("수량 : " + SellDAO.historyMap.get(m.getId()).get(i).getCnt());
-						JTextField cntText = new JTextField();
 						JLabel sizeInfo = new JLabel("사이즈 : " + SellDAO.historyMap.get(m.getId()).get(i).getSize());
 
 						nameInfo.setBounds(300, 90 + ((i % 4) * 110), 100, 15);
 						itemInfo.setBounds(300, 115 + ((i % 4) * 110), 200, 15);
 						cntInfo.setBounds(300, 140 + ((i % 4) * 110), 100, 15);
-						cntText.setBounds(350, 135 + ((i % 4) * 110), 60, 20);
-						sizeInfo.setBounds(300, 165 + ((i % 4) * 110), 40, 15);
+						sizeInfo.setBounds(300, 165 + ((i % 4) * 110), 100, 15);
 						
 
 						itemInfo.putClientProperty("id", SellDAO.historyMap.get(m.getId()).get(i).getId());
 
-						cntText.setText(Integer.toString(SellDAO.historyMap.get(m.getId()).get(i).getCnt()));
+						
 
 						pgNum.get(Integer.parseInt(pageBtn.getText()) - 1).add(nameInfo);
 						pgNum.get(Integer.parseInt(pageBtn.getText()) - 1).add(itemInfo);
 						pgNum.get(Integer.parseInt(pageBtn.getText()) - 1).add(cntInfo);
-						pgNum.get(Integer.parseInt(pageBtn.getText()) - 1).add(cntText);
 						pgNum.get(Integer.parseInt(pageBtn.getText()) - 1).add(sizeInfo);
 
 
@@ -220,7 +217,7 @@ public class HistoryPanel extends JPanel {
 
 								info.setSize(580, 350);
 								info.setLocation(0, 375);
-								info.setBackground(new Color(0xFFD700));
+								info.setBackground(Color.WHITE);
 								info.setFont(new Font(Font.DIALOG, Font.BOLD, 20));
 								detailPage.add(info);
 								detailPage.setDefaultCloseOperation(detailPage.DISPOSE_ON_CLOSE);
