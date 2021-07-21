@@ -18,6 +18,7 @@ import customDAO.Items;
 import customDAO.MyInfo;
 import customDAO.SellDAO;
 import frame.CartPanel;
+import frame.Kinds;
 import frame.MyPage;
 import frame.mainFrame;
 import view.CustomFont;
@@ -33,6 +34,7 @@ public class SandlePanel extends JPanel {
 		
 		CustomFont baemin = new CustomFont();
 		Font font = baemin.getCreateFont2();
+		Font font2 = baemin.getCreateFont();
 
 		JPanel bottomSet = new JPanel();
 
@@ -53,13 +55,13 @@ public class SandlePanel extends JPanel {
 		add(itemBtn1);
 		
 		JLabel aLabel = new JLabel("나이키 캐년");
-		aLabel.setBounds(120, 325, 185, 20);
-		aLabel.setFont(font);
+		aLabel.setBounds(120, 330, 185, 20);
+		aLabel.setFont(font2);
 		add(aLabel);
 
 		JLabel aLabel2 = new JLabel("48,000");
-		aLabel2.setBounds(140, 345, 185, 20);
-		aLabel2.setFont(font);
+		aLabel2.setBounds(140, 350, 185, 20);
+		aLabel2.setFont(font2);
 		add(aLabel2);
 
 		itemBtn1.addActionListener(new ActionListener() {
@@ -83,13 +85,13 @@ public class SandlePanel extends JPanel {
 		add(itemBtn2);
 		
 		JLabel bLabel = new JLabel("컴포트 샌들");
-		bLabel.setBounds(370, 325, 185, 20);
-		bLabel.setFont(font);
+		bLabel.setBounds(370, 330, 185, 20);
+		bLabel.setFont(font2);
 		add(bLabel);
 
 		JLabel bLabel2 = new JLabel("48,000");
-		bLabel2.setBounds(387, 345, 185, 20);
-		bLabel2.setFont(font);
+		bLabel2.setBounds(387, 350, 185, 20);
+		bLabel2.setFont(font2);
 		add(bLabel2);
 
 		itemBtn2.addActionListener(new ActionListener() {
@@ -115,12 +117,12 @@ public class SandlePanel extends JPanel {
 		
 		JLabel cLabel = new JLabel("클라리사");
 		cLabel.setBounds(133, 600, 185, 30);
-		cLabel.setFont(font);
+		cLabel.setFont(font2);
 		add(cLabel);
 
 		JLabel cLabel2 = new JLabel("150,000");
-		cLabel2.setBounds(138, 620, 185, 30);
-		cLabel2.setFont(font);
+		cLabel2.setBounds(133, 620, 185, 30);
+		cLabel2.setFont(font2);
 		add(cLabel2);
 
 		itemBtn3.addActionListener(new ActionListener() {
@@ -146,12 +148,12 @@ public class SandlePanel extends JPanel {
 		
 		JLabel dLabel = new JLabel("밀라노");
 		dLabel.setBounds(387, 600, 185, 30);
-		dLabel.setFont(font);
+		dLabel.setFont(font2);
 		add(dLabel);
 
 		JLabel dLabel2 = new JLabel("99,000");
-		dLabel2.setBounds(388, 620, 185, 30);
-		dLabel2.setFont(font);
+		dLabel2.setBounds(384, 620, 185, 30);
+		dLabel2.setFont(font2);
 		add(dLabel2);
 
 		itemBtn4.addActionListener(new ActionListener() {
@@ -189,11 +191,21 @@ public class SandlePanel extends JPanel {
 		topLogo.setLayout(null);
 		add(topLogo);
 		
-		JLabel sName = new JLabel("marchen");
-		sName.setBounds(0,0,365,70);
+		RoundedButton sName = new RoundedButton("marchen");
+		sName.setBackground(new Color(219,206,190));
+		sName.setBorderPainted(false);
+		sName.setBounds(204,0,180,70);
 		sName.setFont(font.deriveFont(38f));
-		sName.setHorizontalAlignment(JLabel.RIGHT);
 		topLogo.add(sName);
+		
+		sName.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				mainFrame.getInstance(new Kinds(m, cart, history));
+				
+			}
+		});
 		
 		
 		ImageIcon icon = new ImageIcon("cartimg4.png");

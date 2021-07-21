@@ -50,6 +50,7 @@ public class BeginPanel extends JPanel {
 		CustomFont font = new CustomFont();
 
 		setF = font.getCreateFont();
+		Font setF3 = font.TitleFont();
 		
 		CustomFont baedal = new CustomFont();
 		Font setF2 = baedal.getCreateFont2();
@@ -101,7 +102,7 @@ public class BeginPanel extends JPanel {
 		
 		userText = new JTextField(20);
 		userText.setText("아이디");
-		userText.setFont(setF);
+		userText.setFont(setF3);
 		userText.setForeground(Color.GRAY);
 		userText.setBounds(55, (int) getLocation().getY() / 2 + 240, 475, 50);
 				
@@ -130,7 +131,7 @@ public class BeginPanel extends JPanel {
 
 		passText = new JPasswordField(20);
 		passText.setBounds(55, (int) getLocation().getY() / 2 + 300, 475, 50);
-		passText.setFont(setF);
+		passText.setFont(setF3);
 		passText.setText("비밀번호");
 		
 		passText.setForeground(Color.GRAY);
@@ -177,7 +178,7 @@ public class BeginPanel extends JPanel {
 					CartDAO cart = new CartDAO(m.getId());
 					SellDAO history = new SellDAO(m.getId());
 					
-					mainFrame.getInstance(new Kinds(UserInfo.UserInfoMap.get(m.getId()),cart,history));
+					mainFrame.getInstance(new ShopPanel(UserInfo.UserInfoMap.get(m.getId()),cart,history));
 					
 				} else {
 					JOptionPane.showMessageDialog(null, "로그인 정보 오류");

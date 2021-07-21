@@ -48,7 +48,7 @@ public class MyPage extends JPanel {
 		CustomFont baemin = new CustomFont();
 		//Font setF = font.getCreateFont();
 		Font font = baemin.getCreateFont2();
-		Font titleF = baemin.TitleFont();
+		
 		setLayout(null);
 		setBackground(Color.WHITE);
 		setSize(600, 800);
@@ -59,11 +59,21 @@ public class MyPage extends JPanel {
 		topLogo.setLayout(null);
 		add(topLogo);
 		
-		JLabel sName = new JLabel("marchen");
-		sName.setBounds(0,0,365,70);
+		RoundedButton sName = new RoundedButton("marchen");
+		sName.setBackground(new Color(219,206,190));
+		sName.setBorderPainted(false);
+		sName.setBounds(204,0,180,70);
 		sName.setFont(font.deriveFont(38f));
-		sName.setHorizontalAlignment(JLabel.RIGHT);
 		topLogo.add(sName);
+		
+		sName.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				mainFrame.getInstance(new Kinds(m, cart, history));
+				
+			}
+		});
 		
 		
 		ImageIcon icon = new ImageIcon("cartimg4.png");
@@ -120,8 +130,8 @@ public class MyPage extends JPanel {
 		
 		
 		
-		/*JLabel info = new JLabel(UserInfo.UserInfoMap.get(m.getId()).getName()+"님");*/
-		JLabel info = new JLabel("김효진님");
+		JLabel info = new JLabel(UserInfo.UserInfoMap.get(m.getId()).getName()+"님");
+		//JLabel info = new JLabel("김효진님");
 		info.setFont(font.deriveFont(24f));
 		info.setBackground(new Color(229,243,197));
 		info.setSize(200,70);
@@ -216,7 +226,6 @@ public class MyPage extends JPanel {
 		
 		backBtn.setBackground(new Color(219,206,190));
 		backBtn.setFont(font);
-		//backBtn.setForeground(new Color(255, 255, 255));
 		
 		bottomSet.add(backBtn);
 
@@ -233,7 +242,6 @@ public class MyPage extends JPanel {
 
 		logOutBtn.setBackground(new Color(219,206,190));
 		logOutBtn.setFont(font);
-		//logOutBtn.setForeground(new Color(255, 255, 255));
 		
 		bottomSet.add(logOutBtn);
 
@@ -261,7 +269,6 @@ public class MyPage extends JPanel {
 
 		cartBnt.setBackground(new Color(219,206,190));
 		cartBnt.setFont(font);
-		//cartBnt.setForeground(new Color(255, 255, 255));
 		
 		bottomSet.add(cartBnt);
 

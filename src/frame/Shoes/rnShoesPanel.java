@@ -18,6 +18,7 @@ import customDAO.Items;
 import customDAO.MyInfo;
 import customDAO.SellDAO;
 import frame.CartPanel;
+import frame.Kinds;
 import frame.MyPage;
 import frame.mainFrame;
 import view.CustomFont;
@@ -33,6 +34,7 @@ public class rnShoesPanel extends JPanel {
 		
 		CustomFont baemin = new CustomFont();
 		Font font = baemin.getCreateFont2();
+		Font font2 = baemin.getCreateFont();
 
 		JPanel bottomSet = new JPanel();
 
@@ -53,13 +55,13 @@ public class rnShoesPanel extends JPanel {
 		add(itemBtn1);
 
 		JLabel aLabel = new JLabel("나이키 에어포스");
-		aLabel.setBounds(100, 325, 185, 20);
-		aLabel.setFont(font);
+		aLabel.setBounds(110, 330, 185, 20);
+		aLabel.setFont(font2);
 		add(aLabel);
 		
 		JLabel aLabel2 = new JLabel("99,000");
-		aLabel2.setBounds(130, 345, 185, 20);
-		aLabel2.setFont(font);
+		aLabel2.setBounds(143, 350, 185, 20);
+		aLabel2.setFont(font2);
 		add(aLabel2);
 		
 		itemBtn1.addActionListener(new ActionListener() {
@@ -83,13 +85,13 @@ public class rnShoesPanel extends JPanel {
 		add(itemBtn2);
 		
 		JLabel bLabel = new JLabel("아디다스 제트엑스");
-		bLabel.setBounds(335, 325, 185, 20);
-		bLabel.setFont(font);
+		bLabel.setBounds(345, 330, 185, 20);
+		bLabel.setFont(font2);
 		add(bLabel);
 
 		JLabel bLabel2 = new JLabel("69,000");
-		bLabel2.setBounds(380, 345, 185, 20);
-		bLabel2.setFont(font);
+		bLabel2.setBounds(385, 350, 185, 20);
+		bLabel2.setFont(font2);
 		add(bLabel2);
 
 		itemBtn2.addActionListener(new ActionListener() {
@@ -114,13 +116,13 @@ public class rnShoesPanel extends JPanel {
 		add(itemBtn3);
 
 		JLabel cLabel = new JLabel("뉴발란스 480");
-		cLabel.setBounds(105, 600, 185, 30);
-		cLabel.setFont(font);
+		cLabel.setBounds(115, 600, 185, 30);
+		cLabel.setFont(font2);
 		add(cLabel);
 
 		JLabel cLabel2 = new JLabel("79,000");
 		cLabel2.setBounds(138, 620, 185, 30);
-		cLabel2.setFont(font);
+		cLabel2.setFont(font2);
 		add(cLabel2);
 		
 		itemBtn3.addActionListener(new ActionListener() {
@@ -145,13 +147,13 @@ public class rnShoesPanel extends JPanel {
 		add(itemBtn4);
 		
 		JLabel dLabel = new JLabel("COURT-MASTER");
-		dLabel.setBounds(330, 600, 185, 30);
-		dLabel.setFont(font);
+		dLabel.setBounds(340, 600, 185, 30);
+		dLabel.setFont(font2);
 		add(dLabel);
 
 		JLabel dLabel2 = new JLabel("119,000");
 		dLabel2.setBounds(382, 620, 185, 30);
-		dLabel2.setFont(font);
+		dLabel2.setFont(font2);
 		add(dLabel2);
 
 		itemBtn4.addActionListener(new ActionListener() {
@@ -189,11 +191,21 @@ public class rnShoesPanel extends JPanel {
 		topLogo.setLayout(null);
 		add(topLogo);
 		
-		JLabel sName = new JLabel("marchen");
-		sName.setBounds(0,0,365,70);
+		RoundedButton sName = new RoundedButton("marchen");
+		sName.setBackground(new Color(219,206,190));
+		sName.setBorderPainted(false);
+		sName.setBounds(204,0,180,70);
 		sName.setFont(font.deriveFont(38f));
-		sName.setHorizontalAlignment(JLabel.RIGHT);
 		topLogo.add(sName);
+		
+		sName.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				mainFrame.getInstance(new Kinds(m, cart, history));
+				
+			}
+		});
 		
 		
 		ImageIcon icon = new ImageIcon("cartimg4.png");

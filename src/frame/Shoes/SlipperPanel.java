@@ -18,6 +18,7 @@ import customDAO.Items;
 import customDAO.MyInfo;
 import customDAO.SellDAO;
 import frame.CartPanel;
+import frame.Kinds;
 import frame.MyPage;
 import frame.mainFrame;
 import view.CustomFont;
@@ -35,6 +36,7 @@ public class SlipperPanel extends JPanel {
 		
 		CustomFont baemin = new CustomFont();
 		Font font = baemin.getCreateFont2();
+		Font font2 = baemin.getCreateFont();
 
 		JPanel bottomSet = new JPanel();
 
@@ -55,13 +57,13 @@ public class SlipperPanel extends JPanel {
 		add(itemBtn1);
 
 		JLabel aLabel = new JLabel("island");
-		aLabel.setBounds(138, 325, 185, 20);
-		aLabel.setFont(font);
+		aLabel.setBounds(138, 330, 185, 20);
+		aLabel.setFont(font2);
 		add(aLabel);
 
 		JLabel aLabel2 = new JLabel("150,000");
-		aLabel2.setBounds(130, 345, 185, 20);
-		aLabel2.setFont(font);
+		aLabel2.setBounds(130, 350, 185, 20);
+		aLabel2.setFont(font2);
 		add(aLabel2);
 
 		itemBtn1.addActionListener(new ActionListener() {
@@ -85,13 +87,13 @@ public class SlipperPanel extends JPanel {
 		add(itemBtn2);
 
 		JLabel bLabel = new JLabel("taw&toe");
-		bLabel.setBounds(375, 325, 185, 20);
-		bLabel.setFont(font);
+		bLabel.setBounds(380, 330, 185, 20);
+		bLabel.setFont(font2);
 		add(bLabel);
 
 		JLabel bLabel2 = new JLabel("50,000");
-		bLabel2.setBounds(377, 345, 185, 20);
-		bLabel2.setFont(font);
+		bLabel2.setBounds(385, 350, 185, 20);
+		bLabel2.setFont(font2);
 		add(bLabel2);
 
 		itemBtn2.addActionListener(new ActionListener() {
@@ -118,12 +120,12 @@ public class SlipperPanel extends JPanel {
 
 		JLabel cLabel = new JLabel("YeezySlide");
 		cLabel.setBounds(120, 600, 185, 30);
-		cLabel.setFont(font);
+		cLabel.setFont(font2);
 		add(cLabel);
 
 		JLabel cLabel2 = new JLabel("250,000");
-		cLabel2.setBounds(128, 620, 185, 30);
-		cLabel2.setFont(font);
+		cLabel2.setBounds(131, 620, 185, 30);
+		cLabel2.setFont(font2);
 		add(cLabel2);
 
 		itemBtn3.addActionListener(new ActionListener() {
@@ -149,12 +151,12 @@ public class SlipperPanel extends JPanel {
 
 		JLabel dLabel = new JLabel("birkenStock");
 		dLabel.setBounds(365, 600, 185, 30);
-		dLabel.setFont(font);
+		dLabel.setFont(font2);
 		add(dLabel);
 
 		JLabel dLabel2 = new JLabel("80,000");
-		dLabel2.setBounds(375, 620, 185, 30);
-		dLabel2.setFont(font);
+		dLabel2.setBounds(380, 620, 185, 30);
+		dLabel2.setFont(font2);
 		add(dLabel2);
 
 		itemBtn4.addActionListener(new ActionListener() {
@@ -192,11 +194,21 @@ public class SlipperPanel extends JPanel {
 		topLogo.setLayout(null);
 		add(topLogo);
 		
-		JLabel sName = new JLabel("marchen");
-		sName.setBounds(0,0,365,70);
+		RoundedButton sName = new RoundedButton("marchen");
+		sName.setBackground(new Color(219,206,190));
+		sName.setBorderPainted(false);
+		sName.setBounds(204,0,180,70);
 		sName.setFont(font.deriveFont(38f));
-		sName.setHorizontalAlignment(JLabel.RIGHT);
 		topLogo.add(sName);
+		
+		sName.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				mainFrame.getInstance(new Kinds(m, cart, history));
+				
+			}
+		});
 		
 		
 		ImageIcon icon = new ImageIcon("cartimg4.png");

@@ -137,11 +137,21 @@ public class ShoesPanel extends JPanel {
 		topLogo.setLayout(null);
 		add(topLogo);
 		
-		JLabel sName = new JLabel("marchen");
-		sName.setBounds(0,0,365,70);
+		RoundedButton sName = new RoundedButton("marchen");
+		sName.setBackground(new Color(219,206,190));
+		sName.setBorderPainted(false);
+		sName.setBounds(204,0,180,70);
 		sName.setFont(font.deriveFont(38f));
-		sName.setHorizontalAlignment(JLabel.RIGHT);
 		topLogo.add(sName);
+		
+		sName.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				mainFrame.getInstance(new Kinds(m, cart, history));
+				
+			}
+		});
 		
 		
 		ImageIcon icon = new ImageIcon("cartimg4.png");

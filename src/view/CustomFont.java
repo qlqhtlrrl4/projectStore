@@ -11,7 +11,7 @@ public class CustomFont {
 		Font customFont = null;
 		try {
 		    //create the font to use. Specify the size!
-			customFont = Font.createFont(Font.TRUETYPE_FONT, new File("NanumGothic-Bold.ttf")).deriveFont(20f);
+			customFont = Font.createFont(Font.TRUETYPE_FONT, new File("KoPubDotumBold.ttf")).deriveFont(18f);
 		    GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
 		    //register the font
 		    ge.registerFont(customFont);
@@ -31,7 +31,7 @@ public class CustomFont {
 		Font customFont = null;
 		try {
 		    //create the font to use. Specify the size!
-			customFont = Font.createFont(Font.TRUETYPE_FONT, new File("NanumGothic-Bold.ttf")).deriveFont(35f);
+			customFont = Font.createFont(Font.TRUETYPE_FONT, new File("NanumGothic-Bold.ttf")).deriveFont(18f);
 		    GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
 		    //register the font
 		    ge.registerFont(customFont);

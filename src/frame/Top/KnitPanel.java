@@ -18,6 +18,7 @@ import customDAO.Items;
 import customDAO.MyInfo;
 import customDAO.SellDAO;
 import frame.CartPanel;
+import frame.Kinds;
 import frame.MyPage;
 import frame.mainFrame;
 import view.CustomFont;
@@ -33,6 +34,7 @@ public class KnitPanel extends JPanel {
 		
 		CustomFont baemin = new CustomFont();
 		Font font = baemin.getCreateFont2();
+		Font font2 = baemin.getCreateFont();
 
 		JPanel bottomSet = new JPanel();
 
@@ -53,13 +55,13 @@ public class KnitPanel extends JPanel {
 		add(itemBtn1);
 
 		JLabel aLabel = new JLabel("Meish");
-		aLabel.setBounds(145, 325, 185, 20);
-		aLabel.setFont(font);
+		aLabel.setBounds(142, 330, 185, 20);
+		aLabel.setFont(font2);
 		add(aLabel);
 		
 		JLabel aLabel2 = new JLabel("43,000");
-		aLabel2.setBounds(140, 345, 185, 20);
-		aLabel2.setFont(font);
+		aLabel2.setBounds(140, 350, 185, 20);
+		aLabel2.setFont(font2);
 		add(aLabel2);
 
 		itemBtn1.addActionListener(new ActionListener() {
@@ -83,13 +85,13 @@ public class KnitPanel extends JPanel {
 		add(itemBtn2);
 
 		JLabel bLabel = new JLabel("Benny");
-		bLabel.setBounds(383, 325, 185, 20);
-		bLabel.setFont(font);
+		bLabel.setBounds(387, 330, 185, 20);
+		bLabel.setFont(font2);
 		add(bLabel);
 
 		JLabel bLabel2 = new JLabel("38,000");
-		bLabel2.setBounds(385, 345, 185, 20);
-		bLabel2.setFont(font);
+		bLabel2.setBounds(385, 350, 185, 20);
+		bLabel2.setFont(font2);
 		add(bLabel2);
 
 		itemBtn2.addActionListener(new ActionListener() {
@@ -115,12 +117,12 @@ public class KnitPanel extends JPanel {
 
 		JLabel cLabel = new JLabel("Beans");
 		cLabel.setBounds(138, 600, 185, 30);
-		cLabel.setFont(font);
+		cLabel.setFont(font2);
 		add(cLabel);
 
 		JLabel cLabel2 = new JLabel("35,000");
-		cLabel2.setBounds(138, 620, 185, 30);
-		cLabel2.setFont(font);
+		cLabel2.setBounds(136, 620, 185, 30);
+		cLabel2.setFont(font2);
 		add(cLabel2);
 
 		itemBtn3.addActionListener(new ActionListener() {
@@ -145,13 +147,13 @@ public class KnitPanel extends JPanel {
 		add(itemBtn4);
 
 		JLabel dLabel = new JLabel("Hush");
-		dLabel.setBounds(388, 600, 185, 30);
-		dLabel.setFont(font);
+		dLabel.setBounds(390, 600, 185, 30);
+		dLabel.setFont(font2);
 		add(dLabel);
 
 		JLabel dLabel2 = new JLabel("35,000");
 		dLabel2.setBounds(386, 620, 185, 30);
-		dLabel2.setFont(font);
+		dLabel2.setFont(font2);
 		add(dLabel2);
 
 		itemBtn4.addActionListener(new ActionListener() {
@@ -168,7 +170,7 @@ public class KnitPanel extends JPanel {
 		RoundedButton backBtn = new RoundedButton("BACK");
 
 		backBtn.setBackground(new Color(219,206,190));
-		backBtn.setFont(new Font("나눔고딕코딩", Font.BOLD, 18));
+		backBtn.setFont(font);
 		//backBtn.setForeground(new Color(255, 255, 255));
 
 		bottomSet.add(backBtn);
@@ -189,11 +191,21 @@ public class KnitPanel extends JPanel {
 		topLogo.setLayout(null);
 		add(topLogo);
 		
-		JLabel sName = new JLabel("marchen");
-		sName.setBounds(0,0,365,70);
+		RoundedButton sName = new RoundedButton("marchen");
+		sName.setBackground(new Color(219,206,190));
+		sName.setBorderPainted(false);
+		sName.setBounds(204,0,180,70);
 		sName.setFont(font.deriveFont(38f));
-		sName.setHorizontalAlignment(JLabel.RIGHT);
 		topLogo.add(sName);
+		
+		sName.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				mainFrame.getInstance(new Kinds(m, cart, history));
+				
+			}
+		});
 		
 		
 		ImageIcon icon = new ImageIcon("cartimg4.png");

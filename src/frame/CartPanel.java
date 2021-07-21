@@ -87,11 +87,21 @@ public class CartPanel extends JPanel {
 				topLogo.setLayout(null);
 				add(topLogo);
 				
-				JLabel sName = new JLabel("marchen");
-				sName.setBounds(0,0,365,70);
+				RoundedButton sName = new RoundedButton("marchen");
+				sName.setBackground(new Color(219,206,190));
+				sName.setBorderPainted(false);
+				sName.setBounds(204,0,180,70);
 				sName.setFont(font.deriveFont(38f));
-				sName.setHorizontalAlignment(JLabel.RIGHT);
 				topLogo.add(sName);
+				
+				sName.addActionListener(new ActionListener() {
+					
+					@Override
+					public void actionPerformed(ActionEvent e) {
+						mainFrame.getInstance(new Kinds(m, cart, history));
+						
+					}
+				});
 				
 				
 				ImageIcon icon = new ImageIcon("cartimg4.png");
@@ -254,6 +264,7 @@ public class CartPanel extends JPanel {
 						});
 
 						RoundedButton editBtn = new RoundedButton("변경");
+						editBtn.setBackground(new Color(245,245,245));
 
 						editBtn.setBounds(430, 102 + ((i % 4) * 115), 65, 50);
 						editBtn.putClientProperty("id", CartDAO.cartMap.get(m.getId()).get(i).getId());
@@ -382,7 +393,7 @@ public class CartPanel extends JPanel {
 						});
 
 						RoundedButton editBtn = new RoundedButton("변경");
-
+						editBtn.setBackground(new Color(245,245,245));
 						editBtn.setBounds(430, 102 + ((i % 4) * 115), 65, 50);
 						editBtn.putClientProperty("id", CartDAO.cartMap.get(m.getId()).get(i).getId());
 						pgNum.get(Integer.parseInt(pageBtn.getText()) - 1).add(editBtn);
@@ -574,11 +585,21 @@ public class CartPanel extends JPanel {
 		topLogo.setLayout(null);
 		add(topLogo);
 		
-		JLabel sName = new JLabel("marchen");
-		sName.setBounds(0,0,365,70);
+		RoundedButton sName = new RoundedButton("marchen");
+		sName.setBackground(new Color(219,206,190));
+		sName.setBorderPainted(false);
+		sName.setBounds(204,0,180,70);
 		sName.setFont(font.deriveFont(38f));
-		sName.setHorizontalAlignment(JLabel.RIGHT);
 		topLogo.add(sName);
+		
+		sName.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				mainFrame.getInstance(new Kinds(m, cart, history));
+				
+			}
+		});
 		
 		
 		ImageIcon icon = new ImageIcon("cartimg4.png");
