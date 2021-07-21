@@ -37,11 +37,10 @@ public class BottomPanel extends JPanel {
 		Font font = baemin.getCreateFont2();
 
 		// 청바지 버튼 설정
-		RoundedButton btnJean = new RoundedButton("BLUE JEANS");
+		RoundedButton btnJean = new RoundedButton("DENIM");
 		btnJean.setBackground(Color.WHITE);
 		btnJean.setSize(200, 70);
-		btnJean.setLocation(190, 220);
-		//TBtn.setFont(new Font("나눔고딕코딩", Font.BOLD, 22));
+		btnJean.setLocation(190, 120);
 		btnJean.setFont(font);
 		add(btnJean);
 
@@ -57,8 +56,7 @@ public class BottomPanel extends JPanel {
 		RoundedButton btnShorts = new RoundedButton("SHORTS");
 		btnShorts.setBackground(Color.WHITE);
 		btnShorts.setSize(200, 70);
-		btnShorts.setLocation(190, 380);
-		//KnitBtn.setFont(new Font("나눔고딕코딩", Font.BOLD, 22));
+		btnShorts.setLocation(190, 240);
 		btnShorts.setFont(font);
 		add(btnShorts);
 
@@ -69,6 +67,23 @@ public class BottomPanel extends JPanel {
 				mainFrame.getInstance(new BottomShorts(m, cart,history));
 			}// BottomShorts로 연결
 		});
+		
+		RoundedButton skirtBtn = new RoundedButton("SKIRT");
+		skirtBtn.setBackground(Color.WHITE);
+		skirtBtn.setSize(200, 70);
+		skirtBtn.setLocation(190, 360);
+		//BlouseBtn.setFont(new Font("나눔고딕코딩", Font.BOLD, 22));
+		skirtBtn.setFont(font);
+		add(skirtBtn);
+		
+		RoundedButton slacksBtn = new RoundedButton("SLACKS");
+		slacksBtn.setBackground(Color.WHITE);
+		slacksBtn.setSize(200, 70);
+		slacksBtn.setLocation(190, 480);
+		//BlouseBtn.setFont(new Font("나눔고딕코딩", Font.BOLD, 22));
+		slacksBtn.setFont(font);
+		add(slacksBtn);
+		
 
 		// 하단의 버튼
 		JPanel bottomSet = new JPanel();

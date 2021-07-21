@@ -17,8 +17,8 @@ import customDAO.ItemDAO;
 import customDAO.Items;
 import customDAO.MyInfo;
 import customDAO.SellDAO;
-
-
+import frame.CartPanel;
+import frame.MyPage;
 import frame.mainFrame;
 import view.CustomFont;
 import view.RoundedButton;
@@ -48,17 +48,17 @@ public class TPanel extends JPanel {
 		JButton itemBtn1 = new JButton(newimg);
 		itemBtn1.setName("beachmono");
 
-		itemBtn1.setSize(185, 250);
-		itemBtn1.setLocation(72, 20);
+		itemBtn1.setSize(185, 220);
+		itemBtn1.setLocation(72, 105);
 		add(itemBtn1);
 
 		JLabel aLabel = new JLabel("beachmono");
-		aLabel.setBounds(118, 280, 185, 20);
+		aLabel.setBounds(118, 325, 185, 20);
 		aLabel.setFont(font);
 		add(aLabel);
 		
 		JLabel aLabel2 = new JLabel("34,000");
-		aLabel2.setBounds(133, 300, 185, 20);
+		aLabel2.setBounds(133, 345, 185, 20);
 		aLabel2.setFont(font);
 		add(aLabel2);
 
@@ -78,17 +78,17 @@ public class TPanel extends JPanel {
 		JButton itemBtn2 = new JButton(newimg2);
 		itemBtn2.setName("kaibear");
 
-		itemBtn2.setSize(185, 250);
-		itemBtn2.setLocation(320, 20);
+		itemBtn2.setSize(185, 220);
+		itemBtn2.setLocation(320, 105);
 		add(itemBtn2);
 
 		JLabel bLabel = new JLabel("kaibear");
-		bLabel.setBounds(380, 280, 185, 20);
+		bLabel.setBounds(380, 325, 185, 20);
 		bLabel.setFont(font);
 		add(bLabel);
 
 		JLabel bLabel2 = new JLabel("22,000");
-		bLabel2.setBounds(385, 300, 185, 20);
+		bLabel2.setBounds(385, 345, 185, 20);
 		bLabel2.setFont(font);
 		add(bLabel2);
 
@@ -109,8 +109,8 @@ public class TPanel extends JPanel {
 		JButton itemBtn3 = new JButton(newimg3);
 		itemBtn3.setName("flower");
 
-		itemBtn3.setSize(185, 250);
-		itemBtn3.setLocation(72, 350);
+		itemBtn3.setSize(185, 220);
+		itemBtn3.setLocation(72, 380);
 		add(itemBtn3);
 
 		JLabel cLabel = new JLabel("flower");
@@ -140,8 +140,8 @@ public class TPanel extends JPanel {
 		JButton itemBtn4 = new JButton(newimg4);
 		itemBtn4.setName("ongbre");
 
-		itemBtn4.setSize(185, 250);
-		itemBtn4.setLocation(320, 350);
+		itemBtn4.setSize(185, 220);
+		itemBtn4.setLocation(320, 380);
 		add(itemBtn4);
 
 		JLabel dLabel = new JLabel("ongbre");
@@ -182,6 +182,55 @@ public class TPanel extends JPanel {
 		});
 
 		add(bottomSet);
+		
+		JPanel topLogo = new JPanel();
+		topLogo.setBounds(0,0,600,70);
+		topLogo.setBackground(new Color(219,206,190));
+		topLogo.setLayout(null);
+		add(topLogo);
+		
+		ImageIcon icon = new ImageIcon("cartimg4.png");
+
+		Image image3 = icon.getImage();
+		Image newImg3 = image3.getScaledInstance(50, 50, java.awt.Image.SCALE_SMOOTH);
+		ImageIcon newIcon3 = new ImageIcon(newImg3);
+
+		JButton cartImgBtn = new JButton(newIcon3);
+		cartImgBtn.setBackground(new Color(219,206,190));
+		cartImgBtn.setBorderPainted(false);
+		cartImgBtn.setBounds(500, 10, 50, 50);
+
+		topLogo.add(cartImgBtn);
+		
+		cartImgBtn.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				mainFrame.getInstance(new CartPanel(m,cart,history));
+				
+			}
+		});
+		
+		ImageIcon icon2 = new ImageIcon("mypageIcon2.png");
+		Image image2 = icon2.getImage();
+		Image newImg2 = image2.getScaledInstance(40, 40, java.awt.Image.SCALE_SMOOTH);
+		ImageIcon myIcon = new ImageIcon(newImg2);
+		
+		JButton myPageImgBtn = new JButton(myIcon);
+		myPageImgBtn.setBackground(new Color(219,206,190));
+		myPageImgBtn.setBorderPainted(false);
+		myPageImgBtn.setBounds(430, 10, 50, 50);
+		
+		myPageImgBtn.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				mainFrame.getInstance(new MyPage(m,cart,history));
+				
+			}
+		});
+		
+		topLogo.add(myPageImgBtn);
 
 	}
 }

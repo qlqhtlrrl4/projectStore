@@ -60,7 +60,6 @@ public class TopPanel extends JPanel {
 		KnitBtn.setBackground(Color.WHITE);
 		KnitBtn.setSize(200, 70);
 		KnitBtn.setLocation(190, 240);
-		//KnitBtn.setFont(new Font("나눔고딕코딩", Font.BOLD, 22));
 		KnitBtn.setFont(font);
 		add(KnitBtn);
 

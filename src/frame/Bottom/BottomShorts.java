@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.GridLayout;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -14,7 +15,9 @@ import javax.swing.JPanel;
 import customDAO.Items;
 import customDAO.MyInfo;
 import customDAO.SellDAO;
+import frame.CartPanel;
 import frame.Kinds;
+import frame.MyPage;
 import frame.mainFrame;
 import view.CustomFont;
 import view.RoundedButton;
@@ -37,8 +40,8 @@ public class BottomShorts extends JPanel {
 		JButton btnBottom5 = new JButton(bottom5);
 		btnBottom5.setName("무신사 스탠다드");
 
-		btnBottom5.setSize(185, 250);
-		btnBottom5.setLocation(72, 30);
+		btnBottom5.setSize(185, 220);
+		btnBottom5.setLocation(72, 105);
 		add(btnBottom5);
 
 		btnBottom5.addActionListener(new ActionListener() {
@@ -56,8 +59,8 @@ public class BottomShorts extends JPanel {
 		JButton btnBottom6 = new JButton(bottom6);
 		btnBottom6.setName("에이본");
 
-		btnBottom6.setSize(185, 250);
-		btnBottom6.setLocation(320, 30);
+		btnBottom6.setSize(185, 220);
+		btnBottom6.setLocation(320, 105);
 		add(btnBottom6);
 
 		btnBottom6.addActionListener(new ActionListener() {
@@ -75,8 +78,8 @@ public class BottomShorts extends JPanel {
 		JButton btnBottom7 = new JButton(bottom7);
 		btnBottom7.setName("더블유브이");
 
-		btnBottom7.setSize(185, 250);
-		btnBottom7.setLocation(72, 340);
+		btnBottom7.setSize(185, 220);
+		btnBottom7.setLocation(72, 380);
 		add(btnBottom7);
 
 		btnBottom7.addActionListener(new ActionListener() {
@@ -94,8 +97,8 @@ public class BottomShorts extends JPanel {
 		JButton btnBottom8 = new JButton(bottom8);
 		btnBottom8.setName("소프트서울");
 
-		btnBottom8.setSize(185, 250);
-		btnBottom8.setLocation(320, 340);
+		btnBottom8.setSize(185, 220);
+		btnBottom8.setLocation(320, 380);
 		add(btnBottom8);
 
 		btnBottom8.addActionListener(new ActionListener() {
@@ -133,6 +136,56 @@ public class BottomShorts extends JPanel {
 
 
 		add(bottomSet);
+		
+		JPanel topLogo = new JPanel();
+		topLogo.setBounds(0,0,600,70);
+		topLogo.setBackground(new Color(219,206,190));
+		topLogo.setLayout(null);
+		add(topLogo);
+		
+		ImageIcon icon = new ImageIcon("cartimg4.png");
+
+		Image image3 = icon.getImage();
+		Image newImg3 = image3.getScaledInstance(50, 50, java.awt.Image.SCALE_SMOOTH);
+		ImageIcon newIcon3 = new ImageIcon(newImg3);
+
+		JButton cartImgBtn = new JButton(newIcon3);
+		cartImgBtn.setBackground(new Color(219,206,190));
+		cartImgBtn.setBorderPainted(false);
+		cartImgBtn.setBounds(500, 10, 50, 50);
+
+		topLogo.add(cartImgBtn);
+		
+		cartImgBtn.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				mainFrame.getInstance(new CartPanel(m,cart,history));
+				
+			}
+		});
+		
+		ImageIcon icon2 = new ImageIcon("mypageIcon2.png");
+		Image image2 = icon2.getImage();
+		Image newImg2 = image2.getScaledInstance(40, 40, java.awt.Image.SCALE_SMOOTH);
+		ImageIcon myIcon = new ImageIcon(newImg2);
+		
+		JButton myPageImgBtn = new JButton(myIcon);
+		myPageImgBtn.setBackground(new Color(219,206,190));
+		myPageImgBtn.setBorderPainted(false);
+		myPageImgBtn.setBounds(430, 10, 50, 50);
+		
+		myPageImgBtn.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				mainFrame.getInstance(new MyPage(m,cart,history));
+				
+			}
+		});
+		
+		topLogo.add(myPageImgBtn);
+
 	}
 
 }
