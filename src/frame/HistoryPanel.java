@@ -94,16 +94,23 @@ public class HistoryPanel extends JPanel {
 				topLogo.setLayout(null);
 				add(topLogo);
 				
+				JLabel sName = new JLabel("marchen");
+				sName.setBounds(0,0,365,70);
+				sName.setFont(font.deriveFont(38f));
+				sName.setHorizontalAlignment(JLabel.RIGHT);
+				topLogo.add(sName);
+				
+				
 				ImageIcon icon = new ImageIcon("cartimg4.png");
 
-				Image image3 = icon.getImage();
-				Image newImg3 = image3.getScaledInstance(50, 50, java.awt.Image.SCALE_SMOOTH);
-				ImageIcon newIcon3 = new ImageIcon(newImg3);
+				Image image = icon.getImage();
+				Image newImg = image.getScaledInstance(25, 25, java.awt.Image.SCALE_SMOOTH);
+				ImageIcon newIcon = new ImageIcon(newImg);
 
-				JButton cartImgBtn = new JButton(newIcon3);
+				JButton cartImgBtn = new JButton(newIcon);
 				cartImgBtn.setBackground(new Color(219,206,190));
 				cartImgBtn.setBorderPainted(false);
-				cartImgBtn.setBounds(500, 10, 50, 50);
+				cartImgBtn.setBounds(500, 17, 40, 40);
 
 				topLogo.add(cartImgBtn);
 				
@@ -118,13 +125,13 @@ public class HistoryPanel extends JPanel {
 				
 				ImageIcon icon2 = new ImageIcon("mypageIcon2.png");
 				Image image2 = icon2.getImage();
-				Image newImg2 = image2.getScaledInstance(40, 40, java.awt.Image.SCALE_SMOOTH);
+				Image newImg2 = image2.getScaledInstance(20, 20, java.awt.Image.SCALE_SMOOTH);
 				ImageIcon myIcon = new ImageIcon(newImg2);
 				
 				JButton myPageImgBtn = new JButton(myIcon);
 				myPageImgBtn.setBackground(new Color(219,206,190));
 				myPageImgBtn.setBorderPainted(false);
-				myPageImgBtn.setBounds(430, 10, 50, 50);
+				myPageImgBtn.setBounds(465, 22, 30, 30);
 				
 				myPageImgBtn.addActionListener(new ActionListener() {
 					
@@ -306,7 +313,7 @@ public class HistoryPanel extends JPanel {
 
 								info.setSize(580, 350);
 								info.setLocation(0, 375);
-								info.setBackground(new Color(0xFFD700));
+								info.setBackground(Color.WHITE);
 								info.setFont(new Font(Font.DIALOG, Font.BOLD, 20));
 								detailPage.add(info);
 								detailPage.setDefaultCloseOperation(detailPage.DISPOSE_ON_CLOSE);
@@ -355,9 +362,9 @@ public class HistoryPanel extends JPanel {
 
 		RoundedButton backBtn = new RoundedButton("BACK");
 
-		backBtn.setBackground(new Color(32, 32, 32));
+		backBtn.setBackground(new Color(219,206,190));
 		backBtn.setFont(font);
-		backBtn.setForeground(new Color(255, 255, 255));
+		//backBtn.setForeground(new Color(255, 255, 255));
 		bottomSet.add(backBtn);
 
 		backBtn.addActionListener(new ActionListener() {
@@ -369,9 +376,9 @@ public class HistoryPanel extends JPanel {
 		});
 
 		RoundedButton mainBtn = new RoundedButton("MAIN");
-		mainBtn.setBackground(new Color(32, 32, 32));
+		mainBtn.setBackground(new Color(219,206,190));
 		mainBtn.setFont(font);
-		mainBtn.setForeground(new Color(255, 255, 255));
+		//mainBtn.setForeground(new Color(255, 255, 255));
 
 		mainBtn.addActionListener(new ActionListener() {
 
@@ -392,16 +399,23 @@ public class HistoryPanel extends JPanel {
 		topLogo.setLayout(null);
 		add(topLogo);
 		
+		JLabel sName = new JLabel("marchen");
+		sName.setBounds(0,0,365,70);
+		sName.setFont(font.deriveFont(38f));
+		sName.setHorizontalAlignment(JLabel.RIGHT);
+		topLogo.add(sName);
+		
+		
 		ImageIcon icon = new ImageIcon("cartimg4.png");
 
-		Image image3 = icon.getImage();
-		Image newImg3 = image3.getScaledInstance(50, 50, java.awt.Image.SCALE_SMOOTH);
-		ImageIcon newIcon3 = new ImageIcon(newImg3);
+		Image image = icon.getImage();
+		Image newImg = image.getScaledInstance(25, 25, java.awt.Image.SCALE_SMOOTH);
+		ImageIcon newIcon = new ImageIcon(newImg);
 
-		JButton cartImgBtn = new JButton(newIcon3);
+		JButton cartImgBtn = new JButton(newIcon);
 		cartImgBtn.setBackground(new Color(219,206,190));
 		cartImgBtn.setBorderPainted(false);
-		cartImgBtn.setBounds(500, 10, 50, 50);
+		cartImgBtn.setBounds(500, 17, 40, 40);
 
 		topLogo.add(cartImgBtn);
 		
@@ -416,13 +430,13 @@ public class HistoryPanel extends JPanel {
 		
 		ImageIcon icon2 = new ImageIcon("mypageIcon2.png");
 		Image image2 = icon2.getImage();
-		Image newImg2 = image2.getScaledInstance(40, 40, java.awt.Image.SCALE_SMOOTH);
+		Image newImg2 = image2.getScaledInstance(20, 20, java.awt.Image.SCALE_SMOOTH);
 		ImageIcon myIcon = new ImageIcon(newImg2);
 		
 		JButton myPageImgBtn = new JButton(myIcon);
 		myPageImgBtn.setBackground(new Color(219,206,190));
 		myPageImgBtn.setBorderPainted(false);
-		myPageImgBtn.setBounds(430, 10, 50, 50);
+		myPageImgBtn.setBounds(465, 22, 30, 30);
 		
 		myPageImgBtn.addActionListener(new ActionListener() {
 			

@@ -59,16 +59,23 @@ public class MyPage extends JPanel {
 		topLogo.setLayout(null);
 		add(topLogo);
 		
+		JLabel sName = new JLabel("marchen");
+		sName.setBounds(0,0,365,70);
+		sName.setFont(font.deriveFont(38f));
+		sName.setHorizontalAlignment(JLabel.RIGHT);
+		topLogo.add(sName);
+		
+		
 		ImageIcon icon = new ImageIcon("cartimg4.png");
 
-		Image image3 = icon.getImage();
-		Image newImg3 = image3.getScaledInstance(50, 50, java.awt.Image.SCALE_SMOOTH);
-		ImageIcon newIcon3 = new ImageIcon(newImg3);
+		Image image = icon.getImage();
+		Image newImg = image.getScaledInstance(25, 25, java.awt.Image.SCALE_SMOOTH);
+		ImageIcon newIcon = new ImageIcon(newImg);
 
-		JButton cartImgBtn = new JButton(newIcon3);
+		JButton cartImgBtn = new JButton(newIcon);
 		cartImgBtn.setBackground(new Color(219,206,190));
 		cartImgBtn.setBorderPainted(false);
-		cartImgBtn.setBounds(500, 10, 50, 50);
+		cartImgBtn.setBounds(500, 17, 40, 40);
 
 		topLogo.add(cartImgBtn);
 		
@@ -83,13 +90,13 @@ public class MyPage extends JPanel {
 		
 		ImageIcon icon2 = new ImageIcon("mypageIcon2.png");
 		Image image2 = icon2.getImage();
-		Image newImg2 = image2.getScaledInstance(40, 40, java.awt.Image.SCALE_SMOOTH);
+		Image newImg2 = image2.getScaledInstance(20, 20, java.awt.Image.SCALE_SMOOTH);
 		ImageIcon myIcon = new ImageIcon(newImg2);
 		
 		JButton myPageImgBtn = new JButton(myIcon);
 		myPageImgBtn.setBackground(new Color(219,206,190));
 		myPageImgBtn.setBorderPainted(false);
-		myPageImgBtn.setBounds(430, 10, 50, 50);
+		myPageImgBtn.setBounds(465, 22, 30, 30);
 		
 		myPageImgBtn.addActionListener(new ActionListener() {
 			
@@ -104,51 +111,38 @@ public class MyPage extends JPanel {
 		
 		ImageIcon item1 = new ImageIcon("my.png");
 		Image ximg=item1.getImage();
-		Image yimg= ximg.getScaledInstance(150, 100, java.awt.Image.SCALE_SMOOTH);
+		Image yimg= ximg.getScaledInstance(200, 150, java.awt.Image.SCALE_SMOOTH);
 		ImageIcon newimg=new ImageIcon(yimg);
 		
+		JLabel prof = new JLabel(newimg);
+		prof.setBounds(100,150,200,150);
+		add(prof);
 		
 		
-		JLabel info = new JLabel(UserInfo.UserInfoMap.get(m.getId()).getName(),newimg,SwingConstants.LEADING);
-		info.setFont(titleF);
+		
+		/*JLabel info = new JLabel(UserInfo.UserInfoMap.get(m.getId()).getName()+"님");*/
+		JLabel info = new JLabel("김효진님");
+		info.setFont(font.deriveFont(24f));
 		info.setBackground(new Color(229,243,197));
-		info.setSize(200,100);
-		info.setLocation(0,90);
+		info.setSize(200,70);
+		info.setLocation(320,150);
 		add(info);
 		
-		RoundedButton member = new RoundedButton(UserInfo.getUserInfoMap((m.getId())).gradeCheck(UserInfo.getUserInfoMap(m.getId()).getTotal()));
-		member.setBackground(new Color(255,192,203));
+		JLabel hello = new JLabel("안녕하세요");
+		hello.setFont(font.deriveFont(24f));
+		hello.setBackground(new Color(229,243,197));
+		hello.setSize(200,70);
+		hello.setLocation(320,180);
+		add(hello);
+		
+		JButton member = new JButton(UserInfo.getUserInfoMap((m.getId())).gradeCheck(UserInfo.getUserInfoMap(m.getId()).getTotal()));
+		member.setBackground(new Color(219,206,190));
 		member.setFont(font);
 		member.setSize(140,60);
-		member.setLocation(280,110);
+		member.setLocation(320,235);
 		add(member);
 		
-		RoundedButton topLogoutBtn = new RoundedButton("LOGOUT");	
-		topLogoutBtn.setFont(font);
-		topLogoutBtn.setBackground(new Color(220,255,255));
-		topLogoutBtn.setSize(150,60);
-		topLogoutBtn.setLocation(430,110);
-		add(topLogoutBtn);
 		
-		topLogoutBtn.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				
-				int result = JOptionPane.showConfirmDialog(null, m.getName()+"님 로그아웃 하시겠습니까 ?","Confirm",JOptionPane.YES_NO_CANCEL_OPTION);
-				if(result == JOptionPane.CLOSED_OPTION) {
-					JOptionPane.showMessageDialog(null, "로그아웃 취소");
-				}
-				else if(result == JOptionPane.YES_OPTION) {
-					//로그아웃
-					JOptionPane.showMessageDialog(null, m.getName()+"님이 로그아웃 하셨습니다.");
-					mainFrame.getInstance(new BeginPanel());
-				}
-				else {
-					JOptionPane.showMessageDialog(null, "로그아웃 취소");
-				} 
-			}
-		});
 		
 		//정보 넣을 패널 
 		JPanel panel = new JPanel();
@@ -174,7 +168,7 @@ public class MyPage extends JPanel {
 		panel.add(userIdValueLabel);
 
 	
-		uesrPwLabel = new JLabel("비밀번호 : ");
+		/*uesrPwLabel = new JLabel("등급 : ");
 		uesrPwLabel.setSize(150, 20);
 		uesrPwLabel.setFont(font);
 		uesrPwLabel.setHorizontalAlignment(JLabel.RIGHT);
@@ -184,7 +178,7 @@ public class MyPage extends JPanel {
 		uesrPwValueLabel.setSize(150, 20);
 		uesrPwValueLabel.setFont(font);
 		uesrPwValueLabel.setHorizontalAlignment(JLabel.RIGHT);
-		panel.add(uesrPwValueLabel);
+		panel.add(uesrPwValueLabel);*/
 
 		
 		// 결제금액
@@ -220,9 +214,9 @@ public class MyPage extends JPanel {
 
 		RoundedButton backBtn = new RoundedButton("BACK");
 		
-		backBtn.setBackground(new Color(32, 32, 32));
+		backBtn.setBackground(new Color(219,206,190));
 		backBtn.setFont(font);
-		backBtn.setForeground(new Color(255, 255, 255));
+		//backBtn.setForeground(new Color(255, 255, 255));
 		
 		bottomSet.add(backBtn);
 
@@ -237,9 +231,9 @@ public class MyPage extends JPanel {
 
 		RoundedButton logOutBtn = new RoundedButton("LOGOUT");
 
-		logOutBtn.setBackground(new Color(32, 32, 32));
+		logOutBtn.setBackground(new Color(219,206,190));
 		logOutBtn.setFont(font);
-		logOutBtn.setForeground(new Color(255, 255, 255));
+		//logOutBtn.setForeground(new Color(255, 255, 255));
 		
 		bottomSet.add(logOutBtn);
 
@@ -265,9 +259,9 @@ public class MyPage extends JPanel {
 
 		RoundedButton cartBnt = new RoundedButton("HISTORY");
 
-		cartBnt.setBackground(new Color(32, 32, 32));
+		cartBnt.setBackground(new Color(219,206,190));
 		cartBnt.setFont(font);
-		cartBnt.setForeground(new Color(255, 255, 255));
+		//cartBnt.setForeground(new Color(255, 255, 255));
 		
 		bottomSet.add(cartBnt);
 

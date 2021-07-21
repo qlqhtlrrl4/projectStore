@@ -2,19 +2,18 @@ package frame;
 
 import java.awt.Color;
 import java.awt.Font;
-import java.awt.GridLayout;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import customDAO.CartDAO;
 import customDAO.MyInfo;
 import customDAO.SellDAO;
-import customDAO.UserInfo;
 import frame.Bottom.BottomPanel;
 import frame.Shoes.ShoesPanel;
 import frame.Top.TopPanel;
@@ -36,27 +35,19 @@ public class Kinds extends JPanel {
 		CustomFont baemin = new CustomFont();
 		Font font = baemin.getCreateFont2();
 		
-		RoundedButton shopBtn = new RoundedButton("CATEGORY");
+		JLabel shopBtn = new JLabel("CATEGORY");
 		shopBtn.setBackground(Color.WHITE);
 		shopBtn.setSize(200, 70);
-		shopBtn.setLocation(190, 100);
+		shopBtn.setLocation(230, 120);
 		shopBtn.setFont(font);
-		add(shopBtn);
-		
-		shopBtn.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				mainFrame.getInstance(new Kinds(m, cart,history));
-			}
-		});
-		
+				
 		RoundedButton topBtn = new RoundedButton("TOP");
 
 		topBtn.setBackground(Color.WHITE);
 		topBtn.setSize(200, 70);
-		topBtn.setLocation(190, 260);
+		topBtn.setLocation(190, 280);
 		topBtn.setFont(font);
-		add(topBtn);
+		
 		
 		topBtn.addActionListener(new ActionListener() {
 			@Override
@@ -69,9 +60,9 @@ public class Kinds extends JPanel {
 
 		bottomBtn.setBackground(Color.WHITE);
 		bottomBtn.setSize(200, 70);
-		bottomBtn.setLocation(190, 420);
+		bottomBtn.setLocation(190, 360);
 		bottomBtn.setFont(font);
-		add(bottomBtn);
+		
 
 		bottomBtn.addActionListener(new ActionListener() {
 			@Override
@@ -84,10 +75,11 @@ public class Kinds extends JPanel {
 
 		shoesBtn.setBackground(Color.WHITE);
 		shoesBtn.setSize(200, 70);
-		shoesBtn.setLocation(190, 580);
+		shoesBtn.setLocation(190, 440);
 		
 		shoesBtn.setFont(font);
-		add(shoesBtn);
+		
+		
 
 		shoesBtn.addActionListener(new ActionListener() {
 			@Override
@@ -96,22 +88,56 @@ public class Kinds extends JPanel {
 			}
 		});
 		
+		RoundedButton todayBtn = new RoundedButton("당일발송");
+
+		todayBtn.setBackground(Color.WHITE);
+		todayBtn.setSize(200, 70);
+		todayBtn.setLocation(190, 200);
+		
+		todayBtn.setFont(font);
+		
+		
+		/*RoundedButton madeBtn = new RoundedButton("MARCHEN MADE");
+
+		madeBtn.setBackground(Color.WHITE);
+		madeBtn.setSize(200, 70);
+		madeBtn.setLocation(190, 520);
+		
+		madeBtn.setFont(font);
+		*/		
+		
+		RoundedButton accBtn = new RoundedButton("ACC");
+
+		accBtn.setBackground(Color.WHITE);
+		accBtn.setSize(200, 70);
+		accBtn.setLocation(190, 520);
+		
+		accBtn.setFont(font);
+		
+		
 		JPanel topLogo = new JPanel();
 		topLogo.setBounds(0,0,600,70);
 		topLogo.setBackground(new Color(219,206,190));
 		topLogo.setLayout(null);
 		add(topLogo);
 		
+		JLabel sName = new JLabel("marchen");
+		sName.setBounds(0,0,365,70);
+		sName.setFont(font.deriveFont(38f));
+		sName.setHorizontalAlignment(JLabel.RIGHT);
+		topLogo.add(sName);
+		
+		
 		ImageIcon icon = new ImageIcon("cartimg4.png");
 
 		Image image = icon.getImage();
-		Image newImg = image.getScaledInstance(50, 50, java.awt.Image.SCALE_SMOOTH);
+		Image newImg = image.getScaledInstance(25, 25, java.awt.Image.SCALE_SMOOTH);
 		ImageIcon newIcon = new ImageIcon(newImg);
 
 		JButton cartImgBtn = new JButton(newIcon);
 		cartImgBtn.setBackground(new Color(219,206,190));
 		cartImgBtn.setBorderPainted(false);
-		cartImgBtn.setBounds(500, 10, 50, 50);
+		cartImgBtn.setBounds(500, 17, 40, 40);
 
 		topLogo.add(cartImgBtn);
 		
@@ -126,13 +152,13 @@ public class Kinds extends JPanel {
 		
 		ImageIcon icon2 = new ImageIcon("mypageIcon2.png");
 		Image image2 = icon2.getImage();
-		Image newImg2 = image2.getScaledInstance(40, 40, java.awt.Image.SCALE_SMOOTH);
+		Image newImg2 = image2.getScaledInstance(20, 20, java.awt.Image.SCALE_SMOOTH);
 		ImageIcon myIcon = new ImageIcon(newImg2);
 		
 		JButton myPageImgBtn = new JButton(myIcon);
 		myPageImgBtn.setBackground(new Color(219,206,190));
 		myPageImgBtn.setBorderPainted(false);
-		myPageImgBtn.setBounds(430, 10, 50, 50);
+		myPageImgBtn.setBounds(465, 22, 30, 30);
 		
 		myPageImgBtn.addActionListener(new ActionListener() {
 			
@@ -144,6 +170,14 @@ public class Kinds extends JPanel {
 		});
 		
 		topLogo.add(myPageImgBtn);
+		add(shopBtn);
+		add(todayBtn);
+		add(topBtn);
+		add(bottomBtn);
+		add(shoesBtn);		
+		add(accBtn);
+
+		
 		
 	}
 

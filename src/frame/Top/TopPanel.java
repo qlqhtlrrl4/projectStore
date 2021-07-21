@@ -9,6 +9,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import customDAO.CartDAO;
@@ -110,10 +111,10 @@ public class TopPanel extends JPanel {
 
 		RoundedButton backBtn = new RoundedButton("BACK");
 
-		backBtn.setBackground(new Color(32, 32, 32));
+		backBtn.setBackground(new Color(219,206,190));
 		//backBtn.setFont(new Font("나눔고딕코딩", Font.BOLD, 18));
 		backBtn.setFont(font);
-		backBtn.setForeground(new Color(255, 255, 255));
+		//backBtn.setForeground(new Color(255, 255, 255));
 
 		bottomSet.add(backBtn);
 
@@ -133,16 +134,23 @@ public class TopPanel extends JPanel {
 		topLogo.setLayout(null);
 		add(topLogo);
 		
+		JLabel sName = new JLabel("marchen");
+		sName.setBounds(0,0,365,70);
+		sName.setFont(font.deriveFont(38f));
+		sName.setHorizontalAlignment(JLabel.RIGHT);
+		topLogo.add(sName);
+		
+		
 		ImageIcon icon = new ImageIcon("cartimg4.png");
 
-		Image image = icon.getImage();
-		Image newImg = image.getScaledInstance(50, 50, java.awt.Image.SCALE_SMOOTH);
-		ImageIcon newIcon = new ImageIcon(newImg);
+		Image image3 = icon.getImage();
+		Image newImg3 = image3.getScaledInstance(25, 25, java.awt.Image.SCALE_SMOOTH);
+		ImageIcon newIcon3 = new ImageIcon(newImg3);
 
-		JButton cartImgBtn = new JButton(newIcon);
+		JButton cartImgBtn = new JButton(newIcon3);
 		cartImgBtn.setBackground(new Color(219,206,190));
 		cartImgBtn.setBorderPainted(false);
-		cartImgBtn.setBounds(500, 10, 50, 50);
+		cartImgBtn.setBounds(500, 17, 40, 40);
 
 		topLogo.add(cartImgBtn);
 		
@@ -157,13 +165,13 @@ public class TopPanel extends JPanel {
 		
 		ImageIcon icon2 = new ImageIcon("mypageIcon2.png");
 		Image image2 = icon2.getImage();
-		Image newImg2 = image2.getScaledInstance(40, 40, java.awt.Image.SCALE_SMOOTH);
+		Image newImg2 = image2.getScaledInstance(20, 20, java.awt.Image.SCALE_SMOOTH);
 		ImageIcon myIcon = new ImageIcon(newImg2);
 		
 		JButton myPageImgBtn = new JButton(myIcon);
 		myPageImgBtn.setBackground(new Color(219,206,190));
 		myPageImgBtn.setBorderPainted(false);
-		myPageImgBtn.setBounds(430, 10, 50, 50);
+		myPageImgBtn.setBounds(465, 22, 30, 30);
 		
 		myPageImgBtn.addActionListener(new ActionListener() {
 			

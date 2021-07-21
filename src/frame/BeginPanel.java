@@ -9,6 +9,7 @@ import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 
 import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
@@ -41,10 +42,10 @@ public class BeginPanel extends JPanel {
 		
 		
 
-		RoundedButton loginButton = new RoundedButton("LOGIN");
-		RoundedButton joinButton = new RoundedButton("JOIN");
-		RoundedButton infoCheckBtn = new RoundedButton("아이디 찾기");
-		RoundedButton infoCheckBtn2 = new RoundedButton("비밀번호 찾기");
+		JButton loginButton = new JButton("LOGIN");
+		JButton joinButton = new JButton("JOIN");
+		JButton infoCheckBtn = new JButton("아이디 찾기");
+		JButton infoCheckBtn2 = new JButton("비밀번호 찾기");
 
 		CustomFont font = new CustomFont();
 
@@ -52,65 +53,57 @@ public class BeginPanel extends JPanel {
 		
 		CustomFont baedal = new CustomFont();
 		Font setF2 = baedal.getCreateFont2();
-		
-		
 
 		loginButton.setFont(setF2);
-		loginButton.setForeground(Color.WHITE);
 		joinButton.setFont(setF2);
 		infoCheckBtn.setFont(setF2);
 		infoCheckBtn2.setFont(setF2);
 
-		loginButton.setBackground(new Color(32, 32, 32));
-		joinButton.setBackground(new Color(224, 224, 224));
-		infoCheckBtn.setBackground(new Color(229, 243, 197));
-		infoCheckBtn2.setBackground(new Color(229, 243, 197));
-
-		JPanel bottom = new JPanel();
-		bottom.setLayout(new GridLayout(4, 10, 0, 10));
-		bottom.setBounds(1, 560, 582, 200);
-		bottom.setBackground(Color.WHITE);
-
-		bottom.add(loginButton); // button 추가
-		bottom.add(joinButton); // button 추가
-
-		bottom.add(infoCheckBtn);
-		bottom.add(infoCheckBtn2);
-		add(bottom);
+		loginButton.setBackground(new Color(219,206,190));
+		joinButton.setBackground(new Color(219,206,190));
+		infoCheckBtn.setBackground(new Color(219,206,190));
+		infoCheckBtn2.setBackground(new Color(219,206,190));
+		
+		loginButton.setBounds(55,400,475,50);
+		joinButton.setBounds(55,460,475,50);
+		infoCheckBtn.setBounds(55,520,240,50);
+		infoCheckBtn2.setBounds(300,520,230,50);
+		
+		add(loginButton);
+		add(joinButton);
+		add(infoCheckBtn);
+		add(infoCheckBtn2);
 		
 		JPanel topSet = new JPanel();
 		topSet.setSize(585,70);
 		topSet.setLocation(0,0);
-		topSet.setLayout(new GridLayout(1,4,2,0));
+		topSet.setLayout(null);
 		
-		JButton topLoginBtn = new JButton("로그인");
-		JButton topJoinBtn = new JButton("회원가입");
-		JButton topShoppingBtn = new JButton("마이쇼핑");
-		JButton topCartBtn = new JButton("장바구니");
+		topSet.setBackground(new Color(219,206,190));
 		
-		topLoginBtn.setBackground(new Color(224,224,224));
-		topJoinBtn.setBackground(new Color(224,224,224));
-		topShoppingBtn.setBackground(new Color(224,224,224));
-		topCartBtn.setBackground(new Color(224,224,224));
-
-		topLoginBtn.setFont(setF);
-		topJoinBtn.setFont(setF);
-		topShoppingBtn.setFont(setF);
-		topCartBtn.setFont(setF);
+		JLabel shoppingName = new JLabel("marchen ");
+		shoppingName.setBackground(new Color(219,206,190));
+		shoppingName.setFont(setF2.deriveFont(38f));
+		shoppingName.setBounds(0,0,600,70);
+		shoppingName.setHorizontalAlignment(JLabel.CENTER);
+		topSet.add(shoppingName);
 		
-		topSet.add(topLoginBtn); // button 추가
-		topSet.add(topJoinBtn); // button 추가
-
-		topSet.add(topShoppingBtn);
-		topSet.add(topCartBtn);
+		
+		add(shoppingName);
+		
 		add(topSet);
 		
-
+		
+		JLabel lo = new JLabel("LOGIN");
+		lo.setBounds(55,(int)getLocation().getY() / 2 + 180,100,50);
+		lo.setFont(setF2.deriveFont(20f));
+		add(lo);
+		
 		userText = new JTextField(20);
 		userText.setText("아이디");
 		userText.setFont(setF);
 		userText.setForeground(Color.GRAY);
-		userText.setBounds(1, (int) getLocation().getY() / 2 + 240, 582, 50);
+		userText.setBounds(55, (int) getLocation().getY() / 2 + 240, 475, 50);
 				
 		userText.addFocusListener(new FocusListener() {
 
@@ -136,7 +129,7 @@ public class BeginPanel extends JPanel {
 		add(userText);
 
 		passText = new JPasswordField(20);
-		passText.setBounds(1, (int) getLocation().getY() / 2 + 300, 582, 50);
+		passText.setBounds(55, (int) getLocation().getY() / 2 + 300, 475, 50);
 		passText.setFont(setF);
 		passText.setText("비밀번호");
 		

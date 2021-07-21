@@ -87,9 +87,9 @@ public class BottomInfoPanel extends JPanel {
 		bottomSet.setBackground(Color.WHITE);
 
 		RoundedButton backBtn = new RoundedButton("BACK");
-		backBtn.setBackground(new Color(32, 32, 32));
+		backBtn.setBackground(new Color(219,206,190));
 		backBtn.setFont(font);
-		backBtn.setForeground(new Color(255, 255, 255));
+		//backBtn.setForeground(new Color(255, 255, 255));
 		bottomSet.add(backBtn);
 
 		backBtn.addActionListener(new ActionListener() {
@@ -108,17 +108,17 @@ public class BottomInfoPanel extends JPanel {
 
 		JLabel countLabel = new JLabel("수량");
 		countLabel.setSize(80, 20);
-		countLabel.setLocation(350, 110);
+		countLabel.setLocation(350, 310);
 		add(countLabel);
 
 		countField = new JTextField(20);
 		countField.setSize(80, 20);
-		countField.setLocation(450, 110);
+		countField.setLocation(400, 310);
 		add(countField);
 		
 		JLabel countLabel2 = new JLabel("사이즈");
-		countLabel2.setSize(80, 20);
-		countLabel2.setLocation(350, 140);
+		countLabel2.setSize(50, 20);
+		countLabel2.setLocation(350, 340);
 		add(countLabel2);
 
 		Choice size = new Choice();
@@ -130,11 +130,11 @@ public class BottomInfoPanel extends JPanel {
 		size.add("34");
 
 		size.setSize(80, 0);
-		size.setLocation(450, 140);
+		size.setLocation(400, 340);
 		add(size);
 
-		TextArea info = new TextArea("\n  ◎브랜드명" + "\n" + "   " + item.getName() + "\n\n" + "  ◎상품가격" + "\n" + "   "
-				+ item.getPrice() + "원" + "\n\n  ◎상품설명" + "\n" + "   " + item.getItemInfo(), 0, 0,
+		TextArea info = new TextArea("\n  ●브랜드명" + "\n" + "   " + item.getName() + "\n\n" + "  ●상품가격" + "\n" + "   "
+				+ item.getPrice() + "원" + "\n\n  ●상품설명" + "\n" + "   " + item.getItemInfo(), 0, 0,
 				TextArea.SCROLLBARS_VERTICAL_ONLY);
 		
 		info.setFont(font);
@@ -147,9 +147,9 @@ public class BottomInfoPanel extends JPanel {
 
 		RoundedButton sellBtn = new RoundedButton("BUY NOW");
 
-		sellBtn.setBackground(new Color(32, 32, 32));
+		sellBtn.setBackground(new Color(219,206,190));
 		sellBtn.setFont(new Font("나눔고딕코딩", Font.BOLD, 18));
-		sellBtn.setForeground(new Color(255, 255, 255));
+		//sellBtn.setForeground(new Color(255, 255, 255));
 		//bottomSet.add(sellBtn);
 
 		sellBtn.addActionListener(new ActionListener() {
@@ -197,9 +197,9 @@ public class BottomInfoPanel extends JPanel {
 
 		RoundedButton cartBnt = new RoundedButton("ADD TO CART");
 
-		cartBnt.setBackground(new Color(32, 32, 32));
+		cartBnt.setBackground(new Color(219,206,190));
 		cartBnt.setFont(font);
-		cartBnt.setForeground(new Color(255, 255, 255));
+		//cartBnt.setForeground(new Color(255, 255, 255));
 		bottomSet.add(cartBnt);
 		bottomSet.add(sellBtn);
 
@@ -246,16 +246,23 @@ public class BottomInfoPanel extends JPanel {
 		topLogo.setLayout(null);
 		add(topLogo);
 		
+		JLabel sName = new JLabel("marchen");
+		sName.setBounds(0,0,365,70);
+		sName.setFont(font.deriveFont(38f));
+		sName.setHorizontalAlignment(JLabel.RIGHT);
+		topLogo.add(sName);
+		
+		
 		ImageIcon icon = new ImageIcon("cartimg4.png");
 
 		Image image3 = icon.getImage();
-		Image newImg3 = image3.getScaledInstance(50, 50, java.awt.Image.SCALE_SMOOTH);
+		Image newImg3 = image3.getScaledInstance(25, 25, java.awt.Image.SCALE_SMOOTH);
 		ImageIcon newIcon3 = new ImageIcon(newImg3);
 
 		JButton cartImgBtn = new JButton(newIcon3);
 		cartImgBtn.setBackground(new Color(219,206,190));
 		cartImgBtn.setBorderPainted(false);
-		cartImgBtn.setBounds(500, 10, 50, 50);
+		cartImgBtn.setBounds(500, 17, 40, 40);
 
 		topLogo.add(cartImgBtn);
 		
@@ -270,13 +277,13 @@ public class BottomInfoPanel extends JPanel {
 		
 		ImageIcon icon2 = new ImageIcon("mypageIcon2.png");
 		Image image2 = icon2.getImage();
-		Image newImg2 = image2.getScaledInstance(40, 40, java.awt.Image.SCALE_SMOOTH);
+		Image newImg2 = image2.getScaledInstance(20, 20, java.awt.Image.SCALE_SMOOTH);
 		ImageIcon myIcon = new ImageIcon(newImg2);
 		
 		JButton myPageImgBtn = new JButton(myIcon);
 		myPageImgBtn.setBackground(new Color(219,206,190));
 		myPageImgBtn.setBorderPainted(false);
-		myPageImgBtn.setBounds(430, 10, 50, 50);
+		myPageImgBtn.setBounds(465, 22, 30, 30);
 		
 		myPageImgBtn.addActionListener(new ActionListener() {
 			
