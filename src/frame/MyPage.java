@@ -164,7 +164,7 @@ public class MyPage extends JPanel {
 		
 		topLogo.add(myPageImgBtn);
 		
-		ImageIcon item1 = new ImageIcon("my.png");
+		ImageIcon item1 = new ImageIcon("my3.png");
 		Image ximg=item1.getImage();
 		Image yimg= ximg.getScaledInstance(200, 150, java.awt.Image.SCALE_SMOOTH);
 		ImageIcon newimg=new ImageIcon(yimg);
