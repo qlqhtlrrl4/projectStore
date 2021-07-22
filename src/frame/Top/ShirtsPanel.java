@@ -271,26 +271,23 @@ public class ShirtsPanel extends JPanel {
 				Kinds.searchItem.clear();
 				String itemName = JOptionPane.showInputDialog("찾으실 상품을 입력하시오");
 
-				boolean flag = true;
+				int d = 0;
 				if (!(itemName == null)) {
 					if (!itemName.equals("")) {
 
 						for (int i = 0; i < ItemDAO.itemList.size(); i++) {
+							
 							if (ItemDAO.itemList.get(i).getName().toLowerCase().contains(itemName.toLowerCase())) {
 								Kinds.searchItem.add(ItemDAO.itemList.get(i));
-								flag = false;
 								mainFrame.getInstance(new FindInfo(m, cart, history, Kinds.searchItem));
-							} else if (!(ItemDAO.itemList.get(i).getName().toLowerCase()
-									.contains(itemName.toLowerCase()))) {
-								if (flag) {
-
-									JOptionPane.showMessageDialog(null, "상품이 존재하지 않습니다.");
-									break;
-								}
-
+								d++;
 							}
-
+							
 						}
+						if(d ==0) {
+							JOptionPane.showMessageDialog(null, "상품이 존재하지 않습니다.");
+						}
+						
 					}
 				}
 			}

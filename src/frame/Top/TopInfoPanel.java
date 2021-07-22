@@ -150,26 +150,23 @@ public class TopInfoPanel extends JPanel {
 				Kinds.searchItem.clear();
 				String itemName = JOptionPane.showInputDialog("찾으실 상품을 입력하시오");
 
-				boolean flag = true;
+				int d = 0;
 				if (!(itemName == null)) {
 					if (!itemName.equals("")) {
 
 						for (int i = 0; i < ItemDAO.itemList.size(); i++) {
+							
 							if (ItemDAO.itemList.get(i).getName().toLowerCase().contains(itemName.toLowerCase())) {
 								Kinds.searchItem.add(ItemDAO.itemList.get(i));
-								flag = false;
 								mainFrame.getInstance(new FindInfo(m, c, history, Kinds.searchItem));
-							} else if (!(ItemDAO.itemList.get(i).getName().toLowerCase()
-									.contains(itemName.toLowerCase()))) {
-								if (flag) {
-
-									JOptionPane.showMessageDialog(null, "상품이 존재하지 않습니다.");
-									break;
-								}
-
+								d++;
 							}
-
+							
 						}
+						if(d ==0) {
+							JOptionPane.showMessageDialog(null, "상품이 존재하지 않습니다.");
+						}
+						
 					}
 				}
 
@@ -391,36 +388,6 @@ public class TopInfoPanel extends JPanel {
 		info.setEditable(false);
 		info.setFont(font);
 		add(info);
-
-
-		// 사이즈 가이드
-		/*JButton opBtn = new JButton("VIEW SIZE GUIDE");
-		opBtn.setBackground(Color.white);
-		opBtn.setSize(187, 30);
-		opBtn.setLocation(345, 185);
-		//opBtn.setFont(font);
-		// oSet.add(opBtn);
-		add(opBtn);
-
-		opBtn.addActionListener(new ActionListener() {
-
-			public void actionPerformed(ActionEvent e) {
-				JFrame f = new JFrame("SIZE GUIDE");
-				f.setLayout(null);
-				f.setBounds(370, 230, 875, 280);
-				// 이미지
-				ImageIcon img = new ImageIcon("사이즈가이드.jpg");
-				JLabel jI = new JLabel(img);
-				jI.setBounds(0, 0, 861, 241);
-				f.add(jI);
-				f.setVisible(true);
-
-				// 이미지 닫을 때 현재의 창만 닫히게 하기
-				f.setDefaultCloseOperation(f.DISPOSE_ON_CLOSE);
-			}
-		});
-
-		add(opBtn);*/
 
 		Choice size = new Choice();
 		size.add("size");
@@ -655,16 +622,23 @@ public class TopInfoPanel extends JPanel {
 				Kinds.searchItem.clear();
 				String itemName = JOptionPane.showInputDialog("찾으실 상품을 입력하시오");
 				
-				if(!(itemName == null)) {
-					for (int i = 0; i < ItemDAO.itemList.size(); i++) {
-						if (!itemName.equals("")) {
+				int d = 0;
+				if (!(itemName == null)) {
+					if (!itemName.equals("")) {
+
+						for (int i = 0; i < ItemDAO.itemList.size(); i++) {
+							
 							if (ItemDAO.itemList.get(i).getName().toLowerCase().contains(itemName.toLowerCase())) {
 								Kinds.searchItem.add(ItemDAO.itemList.get(i));
-
 								mainFrame.getInstance(new FindInfo(m, c, history, Kinds.searchItem));
+								d++;
 							}
+							
 						}
-
+						if(d ==0) {
+							JOptionPane.showMessageDialog(null, "상품이 존재하지 않습니다.");
+						}
+						
 					}
 				}
 

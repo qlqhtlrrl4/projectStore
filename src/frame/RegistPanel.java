@@ -130,11 +130,15 @@ public class RegistPanel extends JPanel {
 				if (!(userId.getText().equals("") || userName.getText().equals("")
 						|| String.valueOf(userPw.getPassword()).equals(""))) {
 					if (rd.checkId(userId.getText())) {
-						rd.registCustomer(userName.getText(), userId.getText(), String.valueOf(userPw.getPassword()));
-						mainFrame.getInstance(new BeginPanel());
-					} else if (!pw.equals(cofirmPw)) {
-						JOptionPane.showMessageDialog(null, "비밀번호를 확인 해주세요.");
-					}
+						if (!pw.equals(cofirmPw)) {
+							JOptionPane.showMessageDialog(null, "비밀번호를 확인 해주세요.");
+						}
+						else {
+							rd.registCustomer(userName.getText(), userId.getText(), String.valueOf(userPw.getPassword()));
+							mainFrame.getInstance(new BeginPanel());
+						}
+						
+					} 
 
 					else {
 						JOptionPane.showMessageDialog(null, "Id 중복 오류");
