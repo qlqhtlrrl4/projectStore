@@ -27,19 +27,19 @@ public class MyInfo {
 	public int salePrice(String grade, int price) {
 		
 		switch(grade) {
-			case "GOLD" : {
+			case "VVIP" : {
 				salePrice = price * 0.9;
 			}break;
 			
-			case "SILVER" : {
+			case "VIP" : {
 				salePrice = price * 0.93;
 			}break;
 			
-			case "BRONZE" : {
+			case "GOLD" : {
 				salePrice = price * 0.96;
 			}break;
 			
-			case "NORMAL" : {
+			case "SILVER" : {
 				salePrice = price;
 			}break;
 		
@@ -50,17 +50,17 @@ public class MyInfo {
 	public String gradeCheck(int total) {
 		
 		if(total >= 1000000) {
-			setGrade("GOLD");
+			setGrade("VVIP");
 		}
 		else if(total>=500000) {
-			setGrade("SILVER");
+			setGrade("VIP");
 		}
 		
 		else if(total>=100000) {
-			setGrade("BRONZE");
+			setGrade("GOLD");
 		}
 		else {
-			setGrade("NORMAL");
+			setGrade("SILVER");
 		}
 		
 		return grade;

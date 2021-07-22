@@ -22,6 +22,7 @@ import customDAO.SellDAO;
 import customDAO.UserInfo;
 import view.CustomFont;
 import view.RoundedButton;
+import view.RoundedButton2;
 
 public class BeginPanel extends JPanel {
 
@@ -39,19 +40,17 @@ public class BeginPanel extends JPanel {
 		// setBackground(new Color(229,243,197));
 		setBackground(Color.WHITE);
 		CustomDAO custom = new CustomDAO();
-		
-		
 
-		JButton loginButton = new JButton("LOGIN");
-		JButton joinButton = new JButton("JOIN");
-		JButton infoCheckBtn = new JButton("아이디 찾기");
-		JButton infoCheckBtn2 = new JButton("비밀번호 찾기");
+		RoundedButton2 loginButton = new RoundedButton2("LOGIN");
+		RoundedButton2 joinButton = new RoundedButton2("JOIN");
+		RoundedButton2 infoCheckBtn = new RoundedButton2("아이디 찾기");
+		RoundedButton2 infoCheckBtn2 = new RoundedButton2("비밀번호 찾기");
 
 		CustomFont font = new CustomFont();
 
 		setF = font.getCreateFont();
 		Font setF3 = font.TitleFont();
-		
+
 		CustomFont baedal = new CustomFont();
 		Font setF2 = baedal.getCreateFont2();
 
@@ -60,52 +59,50 @@ public class BeginPanel extends JPanel {
 		infoCheckBtn.setFont(setF2);
 		infoCheckBtn2.setFont(setF2);
 
-		loginButton.setBackground(new Color(219,206,190));
-		joinButton.setBackground(new Color(219,206,190));
-		infoCheckBtn.setBackground(new Color(219,206,190));
-		infoCheckBtn2.setBackground(new Color(219,206,190));
-		
-		loginButton.setBounds(55,400,475,50);
-		joinButton.setBounds(55,460,475,50);
-		infoCheckBtn.setBounds(55,520,240,50);
-		infoCheckBtn2.setBounds(300,520,230,50);
-		
+		loginButton.setBackground(new Color(219, 206, 190));
+		joinButton.setBackground(new Color(219, 206, 190));
+		infoCheckBtn.setBackground(new Color(219, 206, 190));
+		infoCheckBtn2.setBackground(new Color(219, 206, 190));
+
+		loginButton.setBounds(55, 400, 475, 50);
+		joinButton.setBounds(55, 460, 475, 50);
+		infoCheckBtn.setBounds(55, 520, 240, 50);
+		infoCheckBtn2.setBounds(300, 520, 230, 50);
+
 		add(loginButton);
 		add(joinButton);
 		add(infoCheckBtn);
 		add(infoCheckBtn2);
-		
+
 		JPanel topSet = new JPanel();
-		topSet.setSize(585,70);
-		topSet.setLocation(0,0);
+		topSet.setSize(585, 70);
+		topSet.setLocation(0, 0);
 		topSet.setLayout(null);
-		
-		topSet.setBackground(new Color(219,206,190));
-		
+
+		topSet.setBackground(new Color(219, 206, 190));
+
 		JLabel shoppingName = new JLabel("marchen ");
-		shoppingName.setBackground(new Color(219,206,190));
+		shoppingName.setBackground(new Color(219, 206, 190));
 		shoppingName.setFont(setF2.deriveFont(38f));
-		shoppingName.setBounds(0,0,600,70);
+		shoppingName.setBounds(0, 0, 600, 70);
 		shoppingName.setHorizontalAlignment(JLabel.CENTER);
 		topSet.add(shoppingName);
-		
-		
+
 		add(shoppingName);
-		
+
 		add(topSet);
-		
-		
+
 		JLabel lo = new JLabel("LOGIN");
-		lo.setBounds(55,(int)getLocation().getY() / 2 + 180,100,50);
+		lo.setBounds(55, (int) getLocation().getY() / 2 + 180, 100, 50);
 		lo.setFont(setF2.deriveFont(20f));
 		add(lo);
-		
+
 		userText = new JTextField(20);
 		userText.setText("아이디");
 		userText.setFont(setF3);
 		userText.setForeground(Color.GRAY);
 		userText.setBounds(55, (int) getLocation().getY() / 2 + 240, 475, 50);
-				
+
 		userText.addFocusListener(new FocusListener() {
 
 			@Override
@@ -133,21 +130,21 @@ public class BeginPanel extends JPanel {
 		passText.setBounds(55, (int) getLocation().getY() / 2 + 300, 475, 50);
 		passText.setFont(setF3);
 		passText.setText("비밀번호");
-		
+
 		passText.setForeground(Color.GRAY);
 
 		passText.addFocusListener(new FocusListener() {
-			
+
 			@Override
 			public void focusGained(FocusEvent e) {
 				String pw = String.valueOf(passText.getPassword());
-				
+
 				if (pw.equals("비밀번호")) {
 					passText.setForeground(Color.BLACK);
 					passText.setText("");
 				}
 			}
-			
+
 			@Override
 			public void focusLost(FocusEvent e) {
 				String pw = String.valueOf(passText.getPassword());
@@ -156,7 +153,7 @@ public class BeginPanel extends JPanel {
 					passText.setForeground(Color.GRAY);
 
 				}
-			}	
+			}
 		});
 		add(passText);
 
@@ -171,15 +168,17 @@ public class BeginPanel extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// 로그인 정보 가져가기위해서 객체넘김
-				if (!(custom.loginCheck(userText.getText(), String.valueOf(passText.getPassword())).getId().equals(""))) {
-					MyInfo m = custom.loginCheck(userText.getText(), String.valueOf(String.valueOf(passText.getPassword())));
+				if (!(custom.loginCheck(userText.getText(), String.valueOf(passText.getPassword())).getId()
+						.equals(""))) {
+					MyInfo m = custom.loginCheck(userText.getText(),
+							String.valueOf(String.valueOf(passText.getPassword())));
 					userInfo = new UserInfo(m.getId(), m);
-					
+
 					CartDAO cart = new CartDAO(m.getId());
 					SellDAO history = new SellDAO(m.getId());
-					
-					mainFrame.getInstance(new ShopPanel(UserInfo.UserInfoMap.get(m.getId()),cart,history));
-					
+
+					mainFrame.getInstance(new ShopPanel(UserInfo.UserInfoMap.get(m.getId()), cart, history));
+
 				} else {
 					JOptionPane.showMessageDialog(null, "로그인 정보 오류");
 				}
@@ -190,13 +189,15 @@ public class BeginPanel extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				String name = JOptionPane.showInputDialog("이름을 입력하시오 ");
-
-				if (!(custom.findId(name) == "")) {
-					String id = custom.findId(name);
-					JOptionPane.showMessageDialog(null, "아이디 : " + id);
-				} else {
+				
+				if(custom.findId(name) == null) {
 					JOptionPane.showMessageDialog(null, "정보가 없습니다.");
 				}
+				
+				else if (!(custom.findId(name).equals(""))) {
+					String id = custom.findId(name);
+					JOptionPane.showMessageDialog(null, "아이디 : " + id);
+				} 
 			}
 		});
 
@@ -206,7 +207,7 @@ public class BeginPanel extends JPanel {
 			public void actionPerformed(ActionEvent arg0) {
 				String id = JOptionPane.showInputDialog("아이디를 입력하시오 ");
 
-				if (!(custom.findPw(id) == "")) {
+				if (!(custom.findPw(id)==null)) {
 					String pw = custom.findPw(id);
 					JOptionPane.showMessageDialog(null, "pw : " + pw);
 				} else {
@@ -215,8 +216,6 @@ public class BeginPanel extends JPanel {
 			}
 
 		});
-		
-		
 
 	}
 

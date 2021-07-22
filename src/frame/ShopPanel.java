@@ -83,13 +83,13 @@ public class ShopPanel extends JPanel {
 			}
 		});
 		
-		ImageIcon icon5 = new ImageIcon("logo.png");
+		ImageIcon icon5 = new ImageIcon("logo.jpg");
 		
 		Image image5 = icon5.getImage();
-		Image newImg5 = image5.getScaledInstance(400, 400, java.awt.Image.SCALE_SMOOTH);
+		Image newImg5 = image5.getScaledInstance(200, 180, java.awt.Image.SCALE_SMOOTH);
 		ImageIcon newIcon5 = new ImageIcon(newImg5);
 		JLabel img5 = new JLabel(newIcon5);
-		img5.setBounds(110, 150, 400, 400);
+		img5.setBounds(197, 250, 200, 180);
 		add(img5);
 		
 		topLogo.add(myPageImgBtn);
@@ -98,7 +98,7 @@ public class ShopPanel extends JPanel {
 
 		enterBtn.setBackground(new Color(219,206,190));
 		enterBtn.setFont(font);
-		enterBtn.setBounds(200, 530, 200, 70);
+		enterBtn.setBounds(200, 460, 200, 70);
 		
 		enterBtn.addActionListener(new ActionListener() {
 			

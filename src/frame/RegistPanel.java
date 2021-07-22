@@ -15,7 +15,7 @@ import javax.swing.JTextField;
 
 import customDAO.CustomDAO;
 import view.CustomFont;
-import view.RoundedButton;
+import view.RoundedButton2;
 
 public class RegistPanel extends JPanel {
 
@@ -34,6 +34,7 @@ public class RegistPanel extends JPanel {
 
 		CustomFont font = new CustomFont();
 		Font setF = font.getCreateFont2();
+		Font setF2 = font.TitleFont();
 		setLayout(null);
 		setBackground(Color.WHITE);
 		setSize(600, 800);
@@ -41,7 +42,7 @@ public class RegistPanel extends JPanel {
 		JLabel shopName = new JLabel("merchen");
 		shopName.setFont(setF.deriveFont(38f));
 		shopName.setOpaque(true);
-		shopName.setBackground(new Color(219,206,190));
+		shopName.setBackground(new Color(219, 206, 190));
 		shopName.setSize(600, 70);
 		shopName.setLocation(0, 0);
 		shopName.setHorizontalAlignment(JLabel.CENTER);
@@ -89,7 +90,7 @@ public class RegistPanel extends JPanel {
 
 		userPw = new JPasswordField(20);
 		userPw.setSize(80, 20);
-		userPw.setFont(setF);
+		userPw.setFont(setF2);
 		panel.add(userPw);
 
 		conFirmPwLabel = new JLabel("비밀번호 확인");
@@ -99,23 +100,20 @@ public class RegistPanel extends JPanel {
 
 		conFirmPw = new JPasswordField(20);
 		conFirmPw.setSize(80, 20);
-		conFirmPw.setFont(setF);
+		conFirmPw.setFont(setF2);
 		panel.add(conFirmPw);
 
-		
+		regist = new RoundedButton2("가입");
 
-		regist = new JButton("가입");
-		
 		regist.setFont(setF);
-		regist.setBackground(new Color(219,206,190));
+		regist.setBackground(new Color(219, 206, 190));
 
-
-		cancel = new JButton("취소");
-		cancel.setBackground(new Color(219,206,190));
+		cancel = new RoundedButton2("취소");
+		cancel.setBackground(new Color(219, 206, 190));
 		cancel.setFont(setF);
-		
-		regist.setBounds(150,535,145,50);
-		cancel.setBounds(300,535,150,50);
+
+		regist.setBounds(150, 535, 145, 50);
+		cancel.setBounds(300, 535, 150, 50);
 
 		add(cancel);
 		add(regist);
@@ -128,8 +126,9 @@ public class RegistPanel extends JPanel {
 				String pw = String.valueOf(userPw.getPassword());
 				String cofirmPw = String.valueOf(conFirmPw.getPassword());
 
-				if (!(userId.getText().equals("") && userName.getText().equals("")
-						&& String.valueOf(userPw.getPassword()).equals(""))) {
+
+				if (!(userId.getText().equals("") || userName.getText().equals("")
+						|| String.valueOf(userPw.getPassword()).equals(""))) {
 					if (rd.checkId(userId.getText())) {
 						rd.registCustomer(userName.getText(), userId.getText(), String.valueOf(userPw.getPassword()));
 						mainFrame.getInstance(new BeginPanel());

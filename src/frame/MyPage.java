@@ -14,9 +14,6 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-import javax.swing.SwingConstants;
-import javax.swing.border.EmptyBorder;
-import javax.swing.border.LineBorder;
 
 import customDAO.CartDAO;
 import customDAO.MyInfo;
@@ -24,6 +21,7 @@ import customDAO.SellDAO;
 import customDAO.UserInfo;
 import view.CustomFont;
 import view.RoundedButton;
+import view.RoundedButton2;
 
 public class MyPage extends JPanel {
 
@@ -46,7 +44,6 @@ public class MyPage extends JPanel {
 
 		// JPanel
 		CustomFont baemin = new CustomFont();
-		//Font setF = font.getCreateFont();
 		Font font = baemin.getCreateFont2();
 		
 		setLayout(null);
@@ -131,7 +128,6 @@ public class MyPage extends JPanel {
 		
 		
 		JLabel info = new JLabel(UserInfo.UserInfoMap.get(m.getId()).getName()+"님");
-		//JLabel info = new JLabel("김효진님");
 		info.setFont(font.deriveFont(24f));
 		info.setBackground(new Color(229,243,197));
 		info.setSize(200,70);
@@ -145,22 +141,36 @@ public class MyPage extends JPanel {
 		hello.setLocation(320,180);
 		add(hello);
 		
-		JButton member = new JButton(UserInfo.getUserInfoMap((m.getId())).gradeCheck(UserInfo.getUserInfoMap(m.getId()).getTotal()));
-		member.setBackground(new Color(219,206,190));
+		JButton member = new RoundedButton(UserInfo.getUserInfoMap((m.getId())).gradeCheck(UserInfo.getUserInfoMap(m.getId()).getTotal()));
+		
+		if(UserInfo.getUserInfoMap((m.getId())).gradeCheck(UserInfo.getUserInfoMap(m.getId()).getTotal()).equals("SILVER")) {
+			member.setBackground(new Color(140,140,136));
+		}
+		else if(UserInfo.getUserInfoMap((m.getId())).gradeCheck(UserInfo.getUserInfoMap(m.getId()).getTotal()).equals("GOLD")) {
+			member.setBackground(new Color(242,216,87));
+		
+		}
+		
+		else if(UserInfo.getUserInfoMap((m.getId())).gradeCheck(UserInfo.getUserInfoMap(m.getId()).getTotal()).equals("VIP")) {
+			member.setBackground(new Color(136,28,166));
+		
+		}
+		else {
+			member.setBackground(Color.BLACK);
+		}
+		
 		member.setFont(font);
 		member.setSize(140,60);
 		member.setLocation(320,235);
+		member.setForeground(Color.WHITE);
 		add(member);
-		
-		
-		
+	
 		//정보 넣을 패널 
 		JPanel panel = new JPanel();
 		panel.setSize(300, 200);
 		panel.setLocation(105, 350);
 		panel.setLayout(new GridLayout(4, 2,2,2));
 		panel.setBackground(Color.WHITE);
-		//panel.setBorder(new LineBorder(Color.lightGray));
 		
 		add(panel);
 		

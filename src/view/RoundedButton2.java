@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.FontMetrics;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.Image;
 import java.awt.Rectangle;
 import java.awt.RenderingHints;
 
@@ -11,31 +12,31 @@ import javax.swing.Action;
 import javax.swing.Icon;
 import javax.swing.JButton;
 
-public class RoundedButton extends JButton {
+public class RoundedButton2 extends JButton {
 
-	public RoundedButton() {
+	public RoundedButton2() {
 		super();
 		decorate();
 	}
 
-	public RoundedButton(String text) {
+	public RoundedButton2(String text) {
 		super(text);
 		decorate();
 	}
 
-	public RoundedButton(Action action) {
+	public RoundedButton2(Action action) {
 		super(action);
 		decorate();
 	}
 
-	public RoundedButton(Icon icon) {
+	public RoundedButton2(Icon icon) {
 		super(icon);
 		decorate();
 	}
 	
 	
 
-	public RoundedButton(String text, Icon icon) {
+	public RoundedButton2(String text, Icon icon) {
 		super(text, icon);
 		decorate();
 	}
@@ -58,10 +59,7 @@ public class RoundedButton extends JButton {
 		} else {
 			graphics.setColor(getBackground());
 		}
-		
-		
-		
-		graphics.fillRoundRect(0, 0, width, height, 50, 50);
+		graphics.fillRoundRect(0, 0, width, height, 0, 0);
 		FontMetrics fontMetrics = graphics.getFontMetrics();
 		Rectangle stringBounds = fontMetrics.getStringBounds(this.getText(), graphics).getBounds();
 		int textX = (width - stringBounds.width) / 2;

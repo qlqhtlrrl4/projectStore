@@ -1,7 +1,7 @@
 package frame;
 
-import java.awt.Choice;
 import java.awt.Color;
+import java.awt.Container;
 import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.GridLayout;
@@ -216,6 +216,8 @@ public class HistoryPanel extends JPanel {
 								detailPage.setSize(600,800);
 								detailPage.setBackground(Color.blue);
 								int id = Integer.parseInt(String.valueOf((detailBtn.getClientProperty("id"))));
+								Container c = detailPage.getContentPane();
+								c.setBackground(Color.WHITE);
 								
 								
 								ImageIcon icon = new ImageIcon(ItemDAO.itemList.get(id).getItemUrl());
@@ -235,7 +237,7 @@ public class HistoryPanel extends JPanel {
 								info.setSize(580, 350);
 								info.setLocation(0, 375);
 								info.setBackground(Color.WHITE);
-								info.setFont(new Font(Font.DIALOG, Font.BOLD, 20));
+								info.setFont(font);
 								detailPage.add(info);
 								detailPage.setDefaultCloseOperation(detailPage.DISPOSE_ON_CLOSE);
 								
