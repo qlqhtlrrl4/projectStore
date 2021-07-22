@@ -5,14 +5,18 @@ import java.awt.Font;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import customDAO.CartDAO;
 import customDAO.ItemDAO;
+import customDAO.Items;
 import customDAO.MyInfo;
 import customDAO.SellDAO;
 import view.CustomFont;
@@ -20,7 +24,9 @@ import view.RoundedButton;
 
 public class ShopPanel extends JPanel {
 	
-	public ShopPanel(MyInfo m, CartDAO cart, SellDAO history) {
+	
+	
+	public ShopPanel() {
 		
 		setBackground(new Color(232, 232, 232));
 		setLayout(null);
@@ -41,48 +47,8 @@ public class ShopPanel extends JPanel {
 		sName.setFont(font.deriveFont(38f));
 		sName.setHorizontalAlignment(JLabel.RIGHT);
 		topLogo.add(sName);
+		
 			
-		ImageIcon icon = new ImageIcon("cartimg4.png");
-
-		Image image = icon.getImage();
-		Image newImg = image.getScaledInstance(25, 25, java.awt.Image.SCALE_SMOOTH);
-		ImageIcon newIcon = new ImageIcon(newImg);
-
-		JButton cartImgBtn = new JButton(newIcon);
-		cartImgBtn.setBackground(new Color(219,206,190));
-		cartImgBtn.setBorderPainted(false);
-		cartImgBtn.setBounds(500, 17, 40, 40);
-
-		topLogo.add(cartImgBtn);
-		
-		cartImgBtn.addActionListener(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				mainFrame.getInstance(new CartPanel(m,cart,history));
-				
-			}
-		});
-		
-		ImageIcon icon2 = new ImageIcon("mypageIcon2.png");
-		Image image2 = icon2.getImage();
-		Image newImg2 = image2.getScaledInstance(20, 20, java.awt.Image.SCALE_SMOOTH);
-		ImageIcon myIcon = new ImageIcon(newImg2);
-		
-		JButton myPageImgBtn = new JButton(myIcon);
-		myPageImgBtn.setBackground(new Color(219,206,190));
-		myPageImgBtn.setBorderPainted(false);
-		myPageImgBtn.setBounds(465, 22, 30, 30);
-		
-		myPageImgBtn.addActionListener(new ActionListener() {
-			
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				mainFrame.getInstance(new MyPage(m,cart,history));
-				
-			}
-		});
-		
 		ImageIcon icon5 = new ImageIcon("logo.jpg");
 		
 		Image image5 = icon5.getImage();
@@ -92,9 +58,9 @@ public class ShopPanel extends JPanel {
 		img5.setBounds(197, 250, 200, 180);
 		add(img5);
 		
-		topLogo.add(myPageImgBtn);
+		//topLogo.add(myPageImgBtn);
 		
-		RoundedButton enterBtn = new RoundedButton("ENTER");
+		RoundedButton enterBtn = new RoundedButton("SHOP");
 
 		enterBtn.setBackground(new Color(219,206,190));
 		enterBtn.setFont(font);
@@ -104,7 +70,7 @@ public class ShopPanel extends JPanel {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				mainFrame.getInstance(new Kinds(m,cart,history));
+				mainFrame.getInstance(new BeginPanel());
 				
 			}
 		});

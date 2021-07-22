@@ -10,6 +10,7 @@ import java.awt.event.ActionListener;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import customDAO.CartDAO;
@@ -18,6 +19,7 @@ import customDAO.Items;
 import customDAO.MyInfo;
 import customDAO.SellDAO;
 import frame.CartPanel;
+import frame.FindInfo;
 import frame.Kinds;
 import frame.MyPage;
 import frame.mainFrame;
@@ -31,7 +33,7 @@ public class TPanel extends JPanel {
 		setLayout(null);
 		setSize(600, 800);
 		setBackground(Color.WHITE);
-		
+
 		CustomFont baemin = new CustomFont();
 		Font font = baemin.getCreateFont2();
 		Font font2 = baemin.getCreateFont();
@@ -58,7 +60,7 @@ public class TPanel extends JPanel {
 		aLabel.setBounds(115, 330, 185, 20);
 		aLabel.setFont(font2);
 		add(aLabel);
-		
+
 		JLabel aLabel2 = new JLabel("34,000");
 		aLabel2.setBounds(133, 350, 185, 20);
 		aLabel2.setFont(font2);
@@ -169,9 +171,9 @@ public class TPanel extends JPanel {
 
 		RoundedButton backBtn = new RoundedButton("BACK");
 
-		backBtn.setBackground(new Color(219,206,190));
+		backBtn.setBackground(new Color(219, 206, 190));
 		backBtn.setFont(font);
-		//backBtn.setForeground(new Color(255, 255, 255));
+		// backBtn.setForeground(new Color(255, 255, 255));
 
 		bottomSet.add(backBtn);
 
@@ -184,30 +186,29 @@ public class TPanel extends JPanel {
 		});
 
 		add(bottomSet);
-		
+
 		JPanel topLogo = new JPanel();
-		topLogo.setBounds(0,0,600,70);
-		topLogo.setBackground(new Color(219,206,190));
+		topLogo.setBounds(0, 0, 600, 70);
+		topLogo.setBackground(new Color(219, 206, 190));
 		topLogo.setLayout(null);
 		add(topLogo);
-		
+
 		RoundedButton sName = new RoundedButton("marchen");
-		sName.setBackground(new Color(219,206,190));
+		sName.setBackground(new Color(219, 206, 190));
 		sName.setBorderPainted(false);
-		sName.setBounds(204,0,180,70);
+		sName.setBounds(204, 0, 180, 70);
 		sName.setFont(font.deriveFont(38f));
 		topLogo.add(sName);
-		
+
 		sName.addActionListener(new ActionListener() {
-			
+
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				mainFrame.getInstance(new Kinds(m, cart, history));
-				
+
 			}
 		});
-		
-		
+
 		ImageIcon icon = new ImageIcon("cartimg4.png");
 
 		Image image3 = icon.getImage();
@@ -215,41 +216,88 @@ public class TPanel extends JPanel {
 		ImageIcon newIcon3 = new ImageIcon(newImg3);
 
 		JButton cartImgBtn = new JButton(newIcon3);
-		cartImgBtn.setBackground(new Color(219,206,190));
+		cartImgBtn.setBackground(new Color(219, 206, 190));
 		cartImgBtn.setBorderPainted(false);
-		cartImgBtn.setBounds(500, 17, 40, 40);
+		cartImgBtn.setBounds(520, 17, 40, 40);
 
 		topLogo.add(cartImgBtn);
-		
+
 		cartImgBtn.addActionListener(new ActionListener() {
-			
+
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				mainFrame.getInstance(new CartPanel(m,cart,history));
-				
+				mainFrame.getInstance(new CartPanel(m, cart, history));
+
 			}
 		});
-		
+
 		ImageIcon icon2 = new ImageIcon("mypageIcon2.png");
 		Image image2 = icon2.getImage();
 		Image newImg2 = image2.getScaledInstance(20, 20, java.awt.Image.SCALE_SMOOTH);
 		ImageIcon myIcon = new ImageIcon(newImg2);
-		
+
 		JButton myPageImgBtn = new JButton(myIcon);
-		myPageImgBtn.setBackground(new Color(219,206,190));
+		myPageImgBtn.setBackground(new Color(219, 206, 190));
 		myPageImgBtn.setBorderPainted(false);
-		myPageImgBtn.setBounds(465, 22, 30, 30);
-		
+		myPageImgBtn.setBounds(485, 22, 30, 30);
+
 		myPageImgBtn.addActionListener(new ActionListener() {
-			
+
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				mainFrame.getInstance(new MyPage(m,cart,history));
-				
+				mainFrame.getInstance(new MyPage(m, cart, history));
+
 			}
 		});
-		
+
 		topLogo.add(myPageImgBtn);
+
+		ImageIcon icon4 = new ImageIcon("search.png");
+		Image image4 = icon4.getImage();
+		Image newImg4 = image4.getScaledInstance(20, 20, java.awt.Image.SCALE_SMOOTH);
+		ImageIcon myIcon4 = new ImageIcon(newImg4);
+
+		JButton searchBtn = new JButton(myIcon4);
+		searchBtn.setBackground(new Color(219, 206, 190));
+		searchBtn.setBorderPainted(false);
+		searchBtn.setBounds(445, 22, 30, 30);
+		// myPageImgBtn.setBounds(465, 22, 30, 30);
+
+		searchBtn.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				Kinds.searchItem.clear();
+				String itemName = JOptionPane.showInputDialog("찾으실 상품을 입력하시오");
+
+
+				boolean flag = true;
+				if (!(itemName == null)) {
+					if (!itemName.equals("")) {
+
+						for (int i = 0; i < ItemDAO.itemList.size(); i++) {
+							if (ItemDAO.itemList.get(i).getName().toLowerCase().contains(itemName.toLowerCase())) {
+								Kinds.searchItem.add(ItemDAO.itemList.get(i));
+								flag = false;
+								mainFrame.getInstance(new FindInfo(m, cart, history, Kinds.searchItem));
+							} else if (!(ItemDAO.itemList.get(i).getName().toLowerCase()
+									.contains(itemName.toLowerCase()))) {
+								if (flag) {
+
+									JOptionPane.showMessageDialog(null, "상품이 존재하지 않습니다.");
+									break;
+								}
+
+							}
+
+						}
+					}
+				}
+
+			}
+		});
+
+		topLogo.add(searchBtn);
 
 	}
 }

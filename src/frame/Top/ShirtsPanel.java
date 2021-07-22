@@ -10,6 +10,7 @@ import java.awt.event.ActionListener;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import customDAO.CartDAO;
@@ -18,6 +19,7 @@ import customDAO.Items;
 import customDAO.MyInfo;
 import customDAO.SellDAO;
 import frame.CartPanel;
+import frame.FindInfo;
 import frame.Kinds;
 import frame.MyPage;
 import frame.mainFrame;
@@ -217,7 +219,7 @@ public class ShirtsPanel extends JPanel {
 		JButton cartImgBtn = new JButton(newIcon3);
 		cartImgBtn.setBackground(new Color(219,206,190));
 		cartImgBtn.setBorderPainted(false);
-		cartImgBtn.setBounds(500, 17, 40, 40);
+		cartImgBtn.setBounds(520, 17, 40, 40);
 
 		topLogo.add(cartImgBtn);
 		
@@ -238,7 +240,7 @@ public class ShirtsPanel extends JPanel {
 		JButton myPageImgBtn = new JButton(myIcon);
 		myPageImgBtn.setBackground(new Color(219,206,190));
 		myPageImgBtn.setBorderPainted(false);
-		myPageImgBtn.setBounds(465, 22, 30, 30);
+		myPageImgBtn.setBounds(485, 22, 30, 30);
 		
 		myPageImgBtn.addActionListener(new ActionListener() {
 			
@@ -250,6 +252,51 @@ public class ShirtsPanel extends JPanel {
 		});
 		
 		topLogo.add(myPageImgBtn);
+		
+		ImageIcon icon4 = new ImageIcon("search.png");
+		Image image4 = icon4.getImage();
+		Image newImg4 = image4.getScaledInstance(20, 20, java.awt.Image.SCALE_SMOOTH);
+		ImageIcon myIcon4 = new ImageIcon(newImg4);
+
+		JButton searchBtn = new JButton(myIcon4);
+		searchBtn.setBackground(new Color(219, 206, 190));
+		searchBtn.setBorderPainted(false);
+		searchBtn.setBounds(445, 22, 30, 30);
+		// myPageImgBtn.setBounds(465, 22, 30, 30);
+
+		searchBtn.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				Kinds.searchItem.clear();
+				String itemName = JOptionPane.showInputDialog("찾으실 상품을 입력하시오");
+
+				boolean flag = true;
+				if (!(itemName == null)) {
+					if (!itemName.equals("")) {
+
+						for (int i = 0; i < ItemDAO.itemList.size(); i++) {
+							if (ItemDAO.itemList.get(i).getName().toLowerCase().contains(itemName.toLowerCase())) {
+								Kinds.searchItem.add(ItemDAO.itemList.get(i));
+								flag = false;
+								mainFrame.getInstance(new FindInfo(m, cart, history, Kinds.searchItem));
+							} else if (!(ItemDAO.itemList.get(i).getName().toLowerCase()
+									.contains(itemName.toLowerCase()))) {
+								if (flag) {
+
+									JOptionPane.showMessageDialog(null, "상품이 존재하지 않습니다.");
+									break;
+								}
+
+							}
+
+						}
+					}
+				}
+			}
+		});
+
+		topLogo.add(searchBtn);
 
 
 	}

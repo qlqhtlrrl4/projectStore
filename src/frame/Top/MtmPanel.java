@@ -10,6 +10,7 @@ import java.awt.event.ActionListener;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 import customDAO.CartDAO;
@@ -18,6 +19,7 @@ import customDAO.Items;
 import customDAO.MyInfo;
 import customDAO.SellDAO;
 import frame.CartPanel;
+import frame.FindInfo;
 import frame.Kinds;
 import frame.MyPage;
 import frame.mainFrame;
@@ -45,7 +47,7 @@ public class MtmPanel extends JPanel {
 		// 맨투맨1의 정보
 		ImageIcon item1 = new ImageIcon("로지T.jpg");
 		Image ximg = item1.getImage();
-		Image yimg = ximg.getScaledInstance(185, 250, java.awt.Image.SCALE_SMOOTH);
+		Image yimg = ximg.getScaledInstance(185, 220, java.awt.Image.SCALE_SMOOTH);
 		ImageIcon newimg = new ImageIcon(yimg);
 		JButton itemBtn1 = new JButton(newimg);
 		itemBtn1.setName("Rosy");
@@ -75,7 +77,7 @@ public class MtmPanel extends JPanel {
 		// 맨투맨2의 정보
 		ImageIcon item2 = new ImageIcon("브이T.jpg");
 		Image ximg2 = item2.getImage();
-		Image yimg2 = ximg2.getScaledInstance(185, 250, java.awt.Image.SCALE_SMOOTH);
+		Image yimg2 = ximg2.getScaledInstance(185, 220, java.awt.Image.SCALE_SMOOTH);
 		ImageIcon newimg2 = new ImageIcon(yimg2);
 		JButton itemBtn2 = new JButton(newimg2);
 		itemBtn2.setName("Vee");
@@ -106,7 +108,7 @@ public class MtmPanel extends JPanel {
 		// 맨투맨3의 정보
 		ImageIcon item3 = new ImageIcon("스프링T.jpg");
 		Image ximg3 = item3.getImage();
-		Image yimg3 = ximg3.getScaledInstance(185, 250, java.awt.Image.SCALE_SMOOTH);
+		Image yimg3 = ximg3.getScaledInstance(185, 220, java.awt.Image.SCALE_SMOOTH);
 		ImageIcon newimg3 = new ImageIcon(yimg3);
 		JButton itemBtn3 = new JButton(newimg3);
 		itemBtn3.setName("Spring");
@@ -137,7 +139,7 @@ public class MtmPanel extends JPanel {
 		// 맨투맨4의 정보
 		ImageIcon item4 = new ImageIcon("쭈리T.jpg");
 		Image ximg4 = item4.getImage();
-		Image yimg4 = ximg4.getScaledInstance(185, 250, java.awt.Image.SCALE_SMOOTH);
+		Image yimg4 = ximg4.getScaledInstance(185, 220, java.awt.Image.SCALE_SMOOTH);
 		ImageIcon newimg4 = new ImageIcon(yimg4);
 		JButton itemBtn4 = new JButton(newimg4);
 		itemBtn4.setName("Chewy");
@@ -217,7 +219,7 @@ public class MtmPanel extends JPanel {
 		JButton cartImgBtn = new JButton(newIcon3);
 		cartImgBtn.setBackground(new Color(219,206,190));
 		cartImgBtn.setBorderPainted(false);
-		cartImgBtn.setBounds(500, 17, 40, 40);
+		cartImgBtn.setBounds(520, 17, 40, 40);
 
 		topLogo.add(cartImgBtn);
 		
@@ -238,7 +240,7 @@ public class MtmPanel extends JPanel {
 		JButton myPageImgBtn = new JButton(myIcon);
 		myPageImgBtn.setBackground(new Color(219,206,190));
 		myPageImgBtn.setBorderPainted(false);
-		myPageImgBtn.setBounds(465, 22, 30, 30);
+		myPageImgBtn.setBounds(485, 22, 30, 30);
 		
 		myPageImgBtn.addActionListener(new ActionListener() {
 			
@@ -250,6 +252,52 @@ public class MtmPanel extends JPanel {
 		});
 		
 		topLogo.add(myPageImgBtn);
+		
+		ImageIcon icon4 = new ImageIcon("search.png");
+		Image image4 = icon4.getImage();
+		Image newImg4 = image4.getScaledInstance(20, 20, java.awt.Image.SCALE_SMOOTH);
+		ImageIcon myIcon4 = new ImageIcon(newImg4);
+
+		JButton searchBtn = new JButton(myIcon4);
+		searchBtn.setBackground(new Color(219, 206, 190));
+		searchBtn.setBorderPainted(false);
+		searchBtn.setBounds(445, 22, 30, 30);
+		// myPageImgBtn.setBounds(465, 22, 30, 30);
+
+		searchBtn.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				Kinds.searchItem.clear();
+				String itemName = JOptionPane.showInputDialog("찾으실 상품을 입력하시오");
+
+				boolean flag = true;
+				if (!(itemName == null)) {
+					if (!itemName.equals("")) {
+
+						for (int i = 0; i < ItemDAO.itemList.size(); i++) {
+							if (ItemDAO.itemList.get(i).getName().toLowerCase().contains(itemName.toLowerCase())) {
+								Kinds.searchItem.add(ItemDAO.itemList.get(i));
+								flag = false;
+								mainFrame.getInstance(new FindInfo(m, cart, history, Kinds.searchItem));
+							} else if (!(ItemDAO.itemList.get(i).getName().toLowerCase()
+									.contains(itemName.toLowerCase()))) {
+								if (flag) {
+
+									JOptionPane.showMessageDialog(null, "상품이 존재하지 않습니다.");
+									break;
+								}
+
+							}
+
+						}
+					}
+				}
+
+			}
+		});
+
+		topLogo.add(searchBtn);
 
 
 	}
