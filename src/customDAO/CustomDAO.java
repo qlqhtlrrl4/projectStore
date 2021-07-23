@@ -25,12 +25,10 @@ public class CustomDAO {
 	private void init() { // 초기 정보
 
 		customList = new ArrayList<>();
-
-		customList.add(new CustomerInfo("1", "1", "1",0,"NORMAL"));
+		/*customList.add(new CustomerInfo("1", "1", "1",0,"NORMAL"));
 		customList.add(new CustomerInfo("2", "2", "2",0, "NORMAL"));
 		customList.add(new CustomerInfo("3", "3", "3",0,"NORMAL"));
-		customList.add(new CustomerInfo("4", "4", "4",0,"NORMAL"));
-
+		customList.add(new CustomerInfo("4", "4", "4",0,"NORMAL"));*/
 	}
 
 	// login 확인 -> id, pw 맞으면 true | 틀리면 false
